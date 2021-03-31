@@ -20,9 +20,19 @@ namespace FlightSimulatorApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        FlightSimulatorViewModel vm;
+
         public MainWindow()
         {
             InitializeComponent();
+            vm = new FlightSimulatorViewModel(new MyFlightSimulatorModel(new MyTelnetClient()));
+            DataContext = vm;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            vm.connect();
+            vm.start();
         }
     }
 }
