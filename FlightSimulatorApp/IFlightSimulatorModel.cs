@@ -19,6 +19,8 @@ namespace FlightSimulatorApp
         int CurrentLineIndex { set; get; }
 
         int CSVLinesNumber { set; get; }
+
+        
     }
 
 
