@@ -42,8 +42,6 @@ namespace FlightSimulatorApp
 
         public void start()
         {
-            this.csvLines = System.IO.File.ReadLines(this.csvPath).ToList();
-            this.CSVLinesNumber = this.csvLines.Count();
             new Thread(delegate ()
             {
                 while (!stop)
@@ -78,7 +76,9 @@ namespace FlightSimulatorApp
         public void updateCSVPath(string csvPath)
         {
             this.csvPath = csvPath;
+            csvParser();
         }
+
 
         private int csvLinesNumber;
         public int CSVLinesNumber
@@ -91,5 +91,27 @@ namespace FlightSimulatorApp
             }
         }
 
+        public void csvParser()
+        {
+            this.csvLines = System.IO.File.ReadLines(this.csvPath).ToList();
+            this.CSVLinesNumber = this.csvLines.Count();
+            System.IO.StreamReader file = new System.IO.StreamReader(this.csvPath);
+
+            int colSize = this.csvLines[0].Split(',').Count();
+            string[][] csvTable = new string[this.CSVLinesNumber][];
+            string line = String.Empty;
+            for (int i = 0; i < this.csvLinesNumber; i++)
+            {
+                String[] parts_of_line = line.Split(',');
+                for (int j = 0; j < parts_of_line.Length; j++)
+                {
+                    csvTable[i][j] = parts_of_line[j].Trim();
+
+                }
+            }
+        }
+
     }
+
+}
 }

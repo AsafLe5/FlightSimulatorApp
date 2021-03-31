@@ -20,6 +20,7 @@ namespace FlightSimulatorApp
 
         int CSVLinesNumber { set; get; }
 
+        void csvParser();
         
     }
 
