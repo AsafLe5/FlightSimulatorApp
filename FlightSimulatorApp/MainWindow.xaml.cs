@@ -34,5 +34,20 @@ namespace FlightSimulatorApp
             vm.connect();
             vm.start();
         }
+
+        private void Open_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+
+            bool? response = openFileDialog.ShowDialog();
+
+            if(response == true)
+            {
+                string filepath = openFileDialog.FileName;
+
+                MessageBox.Show(filepath);
+            }
+
+        }
     }
 }
