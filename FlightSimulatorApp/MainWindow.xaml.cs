@@ -43,7 +43,6 @@ namespace FlightSimulatorApp
 
             if(response == true)
             {
-
                 vm.updateCSVPath(openFileDialog.FileName);
             }
 

@@ -12,10 +12,8 @@ namespace FlightSimulatorApp
 {
     class MyFlightSimulatorModel : IFlightSimulatorModel
     {
-
         ITelnetClient telnetClient;
         volatile Boolean stop;
-
 
         public MyFlightSimulatorModel(ITelnetClient telnetClient)
         {
@@ -41,6 +39,7 @@ namespace FlightSimulatorApp
             stop = true;
             telnetClient.disconnect();
         }
+
         public void start()
         {
             //TODO csvpath
@@ -59,13 +58,10 @@ namespace FlightSimulatorApp
             }).Start();
         }
 
-
         private string csvPath;
         public void updateCSVPath(string csvPath)
         {
             this.csvPath = csvPath;
         }
-
-
     }
 }
