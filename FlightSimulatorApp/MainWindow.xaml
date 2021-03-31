@@ -36,29 +36,70 @@
             Margin="0,366,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Minimum="0"
             Maximum="{Binding VM_CSVLinesNumber, Mode=OneWay}"
-            Value="{Binding VM_CurrentLineIndex, Mode=TwoWay}"/>
-        <Slider HorizontalAlignment="Left" Margin="63,234,0,0" VerticalAlignment="Top" Width="182" Grid.ColumnSpan="2"/>
-        <Slider HorizontalAlignment="Left" Margin="-52,145,0,0" VerticalAlignment="Top" Width="182" RenderTransformOrigin="0.5,0.5">
+            Minimum="0"
+            Value="{Binding VM_CurrentLineIndex, Mode=TwoWay}" />
+        <Slider
+            x:Name="rudderSlider"
+            Grid.ColumnSpan="2"
+            Width="182"
+            Margin="63,234,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Maximum="{Binding VM_RudderMaximunValue, Mode=OneWay}"
+            Minimum="{Binding VM_RudderMinimumValue, Mode=OneWay}"
+            Value="{Binding VM_RudderCurrentValue, Mode=OneWay}" />
+        <Slider
+            x:Name="throttleSlider"
+            Width="182"
+            Margin="-52,145,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Maximum="{Binding VM_ThrottleMaximunValue, Mode=OneWay}"
+            Minimum="{Binding VM_ThrottleMinimumValue, Mode=OneWay}"
+            Value="{Binding VM_ThrottleCurrentValue, Mode=OneWay}"
+            RenderTransformOrigin="0.5,0.5">
             <Slider.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="90"/>
-                    <TranslateTransform/>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="90" />
+                    <TranslateTransform />
                 </TransformGroup>
             </Slider.RenderTransform>
         </Slider>
-        <Ellipse Fill="#FF67655C" HorizontalAlignment="Left" Height="137" Margin="77,78,0,0" Stroke="Black" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2"/>
-        <Ellipse Fill="Black" HorizontalAlignment="Left" Height="67" Margin="113,113,0,0" Stroke="Black" VerticalAlignment="Top" Width="67"/>
-        <Ellipse Fill="#FFD5D5D5" HorizontalAlignment="Left" Height="34" Margin="130,129,0,0" Stroke="Black" VerticalAlignment="Top" Width="34" RenderTransformOrigin="0.5,0.5">
+        <Ellipse
+            Grid.ColumnSpan="2"
+            Width="137"
+            Height="137"
+            Margin="77,78,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Fill="#FF67655C"
+            Stroke="Black" />
+        <Ellipse
+            Width="67"
+            Height="67"
+            Margin="113,113,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Fill="Black"
+            Stroke="Black" />
+        <Ellipse
+            Width="34"
+            Height="34"
+            Margin="130,129,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Fill="#FFD5D5D5"
+            RenderTransformOrigin="0.5,0.5"
+            Stroke="Black">
             <Ellipse.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform ScaleY="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
+                    <ScaleTransform ScaleY="-1" />
+                    <SkewTransform />
+                    <RotateTransform />
+                    <TranslateTransform />
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>

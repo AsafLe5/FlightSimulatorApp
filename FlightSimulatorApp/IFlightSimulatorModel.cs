@@ -21,7 +21,22 @@ namespace FlightSimulatorApp
         int CSVLinesNumber { set; get; }
 
         void csvParser();
-        
+
+        double AileronCurrentValue { set; get; }
+        double AileronMaximunValue { set; get; }
+        double AileronMinimumValue { set; get; }
+
+        double ElevatorCurrentValue { set; get; }
+        double ElevatorMaximunValue { set; get; }
+        double ElevatorMinimumValue { set; get; }
+
+        double ThrottleCurrentValue { set; get; }
+        double ThrottleMaximunValue { set; get; }
+        double ThrottleMinimumValue { set; get; }
+
+        double RudderCurrentValue { set; get; }
+        double RudderMaximunValue { set; get; }
+        double RudderMinimumValue { set; get; }
     }
 
 

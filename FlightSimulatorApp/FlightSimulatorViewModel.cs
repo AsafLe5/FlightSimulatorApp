@@ -30,11 +30,11 @@ namespace FlightSimulatorApp
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
-     
-        
+
+
         public void updateCSVPath(string csvPath)
         {
-            model.updateCSVPath(csvPath); 
+            model.updateCSVPath(csvPath);
         }
         public void start()
         {
@@ -47,7 +47,7 @@ namespace FlightSimulatorApp
             set { this.model.CurrentLineIndex = value; }
         }
 
-        public int  VM_CSVLinesNumber
+        public int VM_CSVLinesNumber
         {
             get { return model.CSVLinesNumber; }
         }
@@ -55,6 +55,75 @@ namespace FlightSimulatorApp
         public void connect()
         {
             model.connect();
+        }
+
+        public double VM_AileronCurrentValue
+        {
+            get { return model.AileronCurrentValue; }
+        }
+
+        public double VM_AileronMaximunValue
+        {
+            get { return model.AileronMaximunValue; }
+
+        }
+
+        public double VM_AileronMinimumValue
+        {
+            get { return model.AileronMinimumValue; }
+
+        }
+
+        public double VM_ElevatorCurrentValue
+        {
+            get { return model.ElevatorCurrentValue; }
+        }
+
+
+        public double VM_ElevatorMaximunValue
+        {
+            get { return model.ElevatorMaximunValue; }
+
+        }
+
+        public double VM_ElevatorMinimumValue
+        {
+            get { return model.ElevatorMinimumValue; }
+
+        }
+
+        public double VM_ThrottleCurrentValue
+        {
+            get { return model.ThrottleCurrentValue; }
+        }
+
+        public double VM_ThrottleMaximunValue
+        {
+            get { return model.ThrottleMaximunValue; }
+
+        }
+
+        public double VM_ThrottleMinimumValue
+        {
+            get { return model.ThrottleMinimumValue; }
+
+        }
+
+        public double VM_RudderCurrentValue
+        {
+            get { return model.RudderCurrentValue; }
+        }
+
+        public double VM_RudderMaximunValue
+        {
+            get { return model.RudderMaximunValue; }
+
+        }
+
+        public double VM_RudderMinimumValue
+        {
+            get { return model.RudderMinimumValue; }
+
         }
     }
 }
