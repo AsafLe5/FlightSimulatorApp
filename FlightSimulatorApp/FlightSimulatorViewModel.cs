@@ -41,6 +41,17 @@ namespace FlightSimulatorApp
             model.start();
         }
 
+        public int VM_CurrentLineIndex
+        {
+            get { return model.CurrentLineIndex; }
+            set { this.model.CurrentLineIndex = value; }
+        }
+
+        public int  VM_CSVLinesNumber
+        {
+            get { return model.CSVLinesNumber; }
+        }
+
         public void connect()
         {
             model.connect();

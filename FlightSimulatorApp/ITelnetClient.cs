@@ -10,7 +10,7 @@ namespace FlightSimulatorApp
     {
         void connect();
         void write(string command);
-        string read(); // blocking call
+        //string read();
         void disconnect();
     }
 }

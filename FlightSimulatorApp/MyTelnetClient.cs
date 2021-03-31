@@ -14,8 +14,6 @@ namespace FlightSimulatorApp
         private string ip;
         private int port;
         private Socket socket;
-        //TODO for read?
-        private byte[] buffer;
 
         public MyTelnetClient()
         {
@@ -32,14 +30,6 @@ namespace FlightSimulatorApp
         public void disconnect()
         {
             socket.Disconnect(true);
-        }
-
-        //TODO Do we need this?
-        public string read()
-        {
-            //TODO size of buffer
-            socket.Receive(buffer, 0, 1024, 0);
-            return buffer.ToString();
         }
 
         public void write(string command)

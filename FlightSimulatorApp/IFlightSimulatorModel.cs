@@ -15,6 +15,10 @@ namespace FlightSimulatorApp
         void start();
 
         void updateCSVPath(string csvPath);
+
+        int CurrentLineIndex { set; get; }
+
+        int CSVLinesNumber { set; get; }
     }
 
 

@@ -42,20 +42,36 @@ namespace FlightSimulatorApp
 
         public void start()
         {
-            //TODO csvpath
-            var lines = File.ReadLines("C:\\Users\\97250\\Downloads\\reg_flight.csv");
+            this.csvLines = System.IO.File.ReadLines(this.csvPath).ToList();
+            this.CSVLinesNumber = this.csvLines.Count();
             new Thread(delegate ()
             {
-                foreach (string line in lines)
+                while (!stop)
                 {
-                    if (stop)
-                    {
-                        break;
-                    }
-                    telnetClient.write(line);
+                    telnetClient.write(this.csvLines[this.currentLineIndex]);
                     Thread.Sleep(100);
+                    this.CurrentLineIndex += 1;
+
+                    // Keeping the animation running
+                    if (this.CurrentLineIndex >= this.CSVLinesNumber)
+                    {
+                        this.CurrentLineIndex -= 2;
+                    }
                 }
             }).Start();
+        }
+
+        private List<string> csvLines;
+
+        private int currentLineIndex;
+        public int CurrentLineIndex
+        {
+            get { return currentLineIndex; }
+            set
+            {
+                currentLineIndex = value;
+                NotifyPropertyChanged("CurrentLineIndex");
+            }
         }
 
         private string csvPath;
@@ -63,5 +79,17 @@ namespace FlightSimulatorApp
         {
             this.csvPath = csvPath;
         }
+
+        private int csvLinesNumber;
+        public int CSVLinesNumber
+        {
+            get { return csvLinesNumber; }
+            set
+            {
+                csvLinesNumber = value;
+                NotifyPropertyChanged("CSVLinesNumber");
+            }
+        }
+
     }
 }
