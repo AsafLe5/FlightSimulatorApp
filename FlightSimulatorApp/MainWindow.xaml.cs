@@ -43,9 +43,8 @@ namespace FlightSimulatorApp
 
             if(response == true)
             {
-                string filepath = openFileDialog.FileName;
 
-                MessageBox.Show(filepath);
+                vm.updateCSVPath(openFileDialog.FileName);
             }
 
         }

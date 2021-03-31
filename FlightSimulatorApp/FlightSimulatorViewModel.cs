@@ -30,11 +30,12 @@ namespace FlightSimulatorApp
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
-        public string VM_CSVPath
+     
+        
+        public void updateCSVPath(string csvPath)
         {
-            get { return model.CSVPath; }
+            model.updateCSVPath(csvPath); 
         }
-
         public void start()
         {
             model.start();

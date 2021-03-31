@@ -10,11 +10,15 @@ namespace FlightSimulatorApp
 {
     interface IFlightSimulatorModel : INotifyPropertyChanged
     {
-        void uploadCSV();
+
         void connect();
         void disconnect();
         void start();
 
         string CSVPath { get; set; }
+
+         void updateCSVPath(string csvPath);
     }
+
+
 }

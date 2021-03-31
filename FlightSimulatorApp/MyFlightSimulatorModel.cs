@@ -59,20 +59,11 @@ namespace FlightSimulatorApp
             }).Start();
         }
 
-        public void uploadCSV()
-        {
-            throw new NotImplementedException();
-        }
 
         private string csvPath;
-        public string CSVPath
+        public void updateCSVPath(string csvPath)
         {
-            get { return csvPath; }
-            set
-            {
-                csvPath = value;
-                NotifyPropertyChanged("CSVPath");
-            }
+            this.csvPath = csvPath;
         }
 
 
