@@ -141,6 +141,21 @@ namespace FlightSimulatorApp
             setMinAndMax(this.ElevatorMaximunValue, this.ElevatorMinimumValue, 1);
             setMinAndMax(this.ThrottleMaximunValue, this.ThrottleMaximunValue, 6);
             setMinAndMax(this.RudderMinimumValue, this.RudderMinimumValue, 2);
+
+
+            Dictionary<int, List<string>> csvDic = new Dictionary<int, List<string>>();
+
+            String CurrentLine = String.Empty;
+            System.IO.StreamReader filCurrentLinee = new System.IO.StreamReader(this.csvPath);
+            while ((CurrentLine = file.ReadLine()) != null)
+            {
+                String[] parts_of_line = CurrentLine.Split(',');
+                for (j = 0; j < parts_of_line.Length; j++)
+                {
+                    csvDic[csvLinesNumberCounter].Add(parts_of_line[j].Trim());
+                }
+                csvLinesNumberCounter++;
+            }
         }
 
         private CSVProperty aileron = new CSVProperty();
