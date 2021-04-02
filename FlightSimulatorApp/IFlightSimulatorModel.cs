@@ -22,6 +22,8 @@ namespace FlightSimulatorApp
 
         void csvParser();
 
+        int PlaybackSpeed { set; get; }
+
         double AileronCurrentValue { set; get; }
         double AileronMaximunValue { set; get; }
         double AileronMinimumValue { set; get; }

@@ -25,10 +25,9 @@
             Click="Button_Click"
             Content="Button" />
         <Button
-            Grid.ColumnSpan="2"
             Width="75"
             Height="42"
-            Margin="121,306,0,0"
+            Margin="19,306,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="Open_Click"
@@ -36,8 +35,8 @@
         <Slider
             x:Name="Timeline"
             Grid.ColumnSpan="2"
-            Width="594"
-            Margin="113,363,0,0"
+            Width="641"
+            Margin="11,363,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Maximum="{Binding VM_CSVLinesNumber, Mode=OneWay}"
@@ -46,9 +45,9 @@
         <Label
             x:Name="TimelineLabel"
             Grid.Column="1"
-            Width="67"
+            Width="61"
             Height="42"
-            Margin="453,306,0,0"
+            Margin="472,306,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="{Binding VM_CurrentLineIndex, Mode=OneWay}" />
@@ -116,7 +115,7 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Button Grid.Column="1">
+        <Button>
             <Image Source="skip_to_start_64px.png" />
             <Button.Background>Transparent</Button.Background>
             <Button.BorderThickness>0</Button.BorderThickness>
@@ -127,7 +126,7 @@
                 <System:Double>42</System:Double>
             </Button.Height>
             <Button.Margin>
-                <Thickness>24,306,0,0</Thickness>
+                <Thickness>109,306,0,0</Thickness>
             </Button.Margin>
             <Button.HorizontalAlignment>
                 <HorizontalAlignment>Left</HorizontalAlignment>
@@ -136,7 +135,7 @@
                 <VerticalAlignment>Top</VerticalAlignment>
             </Button.VerticalAlignment>
         </Button>
-        <Button Grid.Column="1">
+        <Button Grid.ColumnSpan="2">
             <Image Source="fast_forward_left.png" />
             <Button.Background>Transparent</Button.Background>
             <Button.BorderThickness>0</Button.BorderThickness>
@@ -147,7 +146,7 @@
                 <System:Double>42</System:Double>
             </Button.Height>
             <Button.Margin>
-                <Thickness>71,306,0,0</Thickness>
+                <Thickness>156,306,0,0</Thickness>
             </Button.Margin>
             <Button.HorizontalAlignment>
                 <HorizontalAlignment>Left</HorizontalAlignment>
@@ -167,7 +166,7 @@
                 <System:Double>42</System:Double>
             </Button.Height>
             <Button.Margin>
-                <Thickness>118,306,0,0</Thickness>
+                <Thickness>16,306,0,0</Thickness>
             </Button.Margin>
             <Button.HorizontalAlignment>
                 <HorizontalAlignment>Left</HorizontalAlignment>
@@ -187,7 +186,7 @@
                 <System:Double>42</System:Double>
             </Button.Height>
             <Button.Margin>
-                <Thickness>165,306,0,0</Thickness>
+                <Thickness>63,306,0,0</Thickness>
             </Button.Margin>
             <Button.HorizontalAlignment>
                 <HorizontalAlignment>Left</HorizontalAlignment>
@@ -207,7 +206,7 @@
                 <System:Double>42</System:Double>
             </Button.Height>
             <Button.Margin>
-                <Thickness>212,306,0,0</Thickness>
+                <Thickness>110,306,0,0</Thickness>
             </Button.Margin>
             <Button.HorizontalAlignment>
                 <HorizontalAlignment>Left</HorizontalAlignment>
@@ -227,7 +226,7 @@
                 <System:Double>42</System:Double>
             </Button.Height>
             <Button.Margin>
-                <Thickness>259,306,0,0</Thickness>
+                <Thickness>157,306,0,0</Thickness>
             </Button.Margin>
             <Button.HorizontalAlignment>
                 <HorizontalAlignment>Left</HorizontalAlignment>
@@ -247,7 +246,7 @@
                 <System:Double>42</System:Double>
             </Button.Height>
             <Button.Margin>
-                <Thickness>306,306,0,0</Thickness>
+                <Thickness>204,306,0,0</Thickness>
             </Button.Margin>
             <Button.HorizontalAlignment>
                 <HorizontalAlignment>Left</HorizontalAlignment>
@@ -256,5 +255,25 @@
                 <VerticalAlignment>Top</VerticalAlignment>
             </Button.VerticalAlignment>
         </Button>
+        <Label
+            x:Name="playSpeedLabel"
+            Grid.Column="1"
+            Width="72"
+            Height="34"
+            Margin="261,314,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Play speed"
+            RenderTransformOrigin="-0.758,0.218" />
+        <Slider
+            x:Name="playSpeedSlider"
+            Grid.Column="1"
+            Width="108"
+            Margin="338,322,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Maximum="30"
+            Minimum="0"
+            Value="{Binding VM_PlaybackSpeed, Mode=TwoWay}" />
     </Grid>
 </Window>

@@ -57,6 +57,10 @@ namespace FlightSimulatorApp
             model.connect();
         }
 
+        public int VM_PlaybackSpeed
+        {
+            get { return model.PlaybackSpeed; }
+        }
         public double VM_AileronCurrentValue
         {
             get { return model.AileronCurrentValue; }

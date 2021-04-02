@@ -44,6 +44,7 @@ namespace FlightSimulatorApp
         {
             new Thread(delegate ()
             {
+                bool playbackSpeedZero = false;
                 while (!stop)
                 {
                     telnetClient.write(this.csvLines[this.currentLineIndex]);
@@ -52,17 +53,35 @@ namespace FlightSimulatorApp
                     ThrottleCurrentValue = Convert.ToDouble(this.csvAsList[6][this.currentLineIndex]);
                     RudderCurrentValue = Convert.ToDouble(this.csvAsList[2][this.currentLineIndex]);
 
-                    Thread.Sleep(100);
-                    this.CurrentLineIndex += 1;
-
-                    // Keeping the animation running
-                    if (this.CurrentLineIndex >= this.CSVLinesNumber)
+                    float playbackSpeedRational = 10;
+                    if (playbackSpeed == 0.0)
                     {
-                        this.CurrentLineIndex -= 2;
+                        playbackSpeedZero = true;
+                    } else
+                    {
+                        playbackSpeedRational = 1000 / playbackSpeed;
+                    }
+                    Thread.Sleep((int)playbackSpeedRational);
+                    
+                    // Keeping the animation running
+                    if (this.CurrentLineIndex < this.CSVLinesNumber && !playbackSpeedZero)
+                    {
+                        this.CurrentLineIndex += 1;
                     }
                 }
             }).Start();
         }
+
+        private int playbackSpeed;
+        public int PlaybackSpeed
+        {
+            get { return playbackSpeed; }
+            set {
+                playbackSpeed = value;
+                NotifyPropertyChanged("PlaybackSpeed");
+            }
+        }
+
 
         private int currentLineIndex;
         public int CurrentLineIndex
