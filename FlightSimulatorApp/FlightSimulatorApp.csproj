@@ -100,5 +100,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="end_64px.png" />
+    <Resource Include="fast_forward_left.png" />
+    <Resource Include="fast_forward_right.png" />
+    <Resource Include="pause_64px.png" />
+    <Resource Include="play_64px.png" />
+    <Resource Include="skip_to_start_64px.png" />
+    <Resource Include="stop_64px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

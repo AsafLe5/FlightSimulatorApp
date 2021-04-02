@@ -2,6 +2,7 @@
     x:Class="FlightSimulatorApp.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:FlightSimulatorApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -24,21 +25,33 @@
             Click="Button_Click"
             Content="Button" />
         <Button
+            Grid.ColumnSpan="2"
             Width="75"
-            Margin="55,369,0,0"
+            Height="42"
+            Margin="121,306,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="Open_Click"
             Content="Open" />
         <Slider
-            Grid.Column="1"
-            Width="521"
-            Margin="0,366,0,0"
+            x:Name="Timeline"
+            Grid.ColumnSpan="2"
+            Width="594"
+            Margin="113,363,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Maximum="{Binding VM_CSVLinesNumber, Mode=OneWay}"
             Minimum="0"
             Value="{Binding VM_CurrentLineIndex, Mode=TwoWay}" />
+        <Label
+            x:Name="TimelineLabel"
+            Grid.Column="1"
+            Width="67"
+            Height="42"
+            Margin="453,306,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="{Binding VM_CurrentLineIndex, Mode=OneWay}" />
         <Slider
             x:Name="rudderSlider"
             Grid.ColumnSpan="2"
@@ -57,8 +70,8 @@
             VerticalAlignment="Top"
             Maximum="{Binding VM_ThrottleMaximunValue, Mode=OneWay}"
             Minimum="{Binding VM_ThrottleMinimumValue, Mode=OneWay}"
-            Value="{Binding VM_ThrottleCurrentValue, Mode=OneWay}"
-            RenderTransformOrigin="0.5,0.5">
+            RenderTransformOrigin="0.5,0.5"
+            Value="{Binding VM_ThrottleCurrentValue, Mode=OneWay}">
             <Slider.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />
@@ -103,5 +116,145 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
+        <Button Grid.Column="1">
+            <Image Source="skip_to_start_64px.png" />
+            <Button.Background>Transparent</Button.Background>
+            <Button.BorderThickness>0</Button.BorderThickness>
+            <Button.Width>
+                <System:Double>42</System:Double>
+            </Button.Width>
+            <Button.Height>
+                <System:Double>42</System:Double>
+            </Button.Height>
+            <Button.Margin>
+                <Thickness>24,306,0,0</Thickness>
+            </Button.Margin>
+            <Button.HorizontalAlignment>
+                <HorizontalAlignment>Left</HorizontalAlignment>
+            </Button.HorizontalAlignment>
+            <Button.VerticalAlignment>
+                <VerticalAlignment>Top</VerticalAlignment>
+            </Button.VerticalAlignment>
+        </Button>
+        <Button Grid.Column="1">
+            <Image Source="fast_forward_left.png" />
+            <Button.Background>Transparent</Button.Background>
+            <Button.BorderThickness>0</Button.BorderThickness>
+            <Button.Width>
+                <System:Double>42</System:Double>
+            </Button.Width>
+            <Button.Height>
+                <System:Double>42</System:Double>
+            </Button.Height>
+            <Button.Margin>
+                <Thickness>71,306,0,0</Thickness>
+            </Button.Margin>
+            <Button.HorizontalAlignment>
+                <HorizontalAlignment>Left</HorizontalAlignment>
+            </Button.HorizontalAlignment>
+            <Button.VerticalAlignment>
+                <VerticalAlignment>Top</VerticalAlignment>
+            </Button.VerticalAlignment>
+        </Button>
+        <Button Grid.Column="1">
+            <Image Source="play_64px.png" />
+            <Button.Background>Transparent</Button.Background>
+            <Button.BorderThickness>0</Button.BorderThickness>
+            <Button.Width>
+                <System:Double>42</System:Double>
+            </Button.Width>
+            <Button.Height>
+                <System:Double>42</System:Double>
+            </Button.Height>
+            <Button.Margin>
+                <Thickness>118,306,0,0</Thickness>
+            </Button.Margin>
+            <Button.HorizontalAlignment>
+                <HorizontalAlignment>Left</HorizontalAlignment>
+            </Button.HorizontalAlignment>
+            <Button.VerticalAlignment>
+                <VerticalAlignment>Top</VerticalAlignment>
+            </Button.VerticalAlignment>
+        </Button>
+        <Button Grid.Column="1">
+            <Image Source="pause_64px.png" />
+            <Button.Background>Transparent</Button.Background>
+            <Button.BorderThickness>0</Button.BorderThickness>
+            <Button.Width>
+                <System:Double>42</System:Double>
+            </Button.Width>
+            <Button.Height>
+                <System:Double>42</System:Double>
+            </Button.Height>
+            <Button.Margin>
+                <Thickness>165,306,0,0</Thickness>
+            </Button.Margin>
+            <Button.HorizontalAlignment>
+                <HorizontalAlignment>Left</HorizontalAlignment>
+            </Button.HorizontalAlignment>
+            <Button.VerticalAlignment>
+                <VerticalAlignment>Top</VerticalAlignment>
+            </Button.VerticalAlignment>
+        </Button>
+        <Button Grid.Column="1">
+            <Image Source="stop_64px.png" />
+            <Button.Background>Transparent</Button.Background>
+            <Button.BorderThickness>0</Button.BorderThickness>
+            <Button.Width>
+                <System:Double>42</System:Double>
+            </Button.Width>
+            <Button.Height>
+                <System:Double>42</System:Double>
+            </Button.Height>
+            <Button.Margin>
+                <Thickness>212,306,0,0</Thickness>
+            </Button.Margin>
+            <Button.HorizontalAlignment>
+                <HorizontalAlignment>Left</HorizontalAlignment>
+            </Button.HorizontalAlignment>
+            <Button.VerticalAlignment>
+                <VerticalAlignment>Top</VerticalAlignment>
+            </Button.VerticalAlignment>
+        </Button>
+        <Button Grid.Column="1">
+            <Image Source="fast_forward_right.png" />
+            <Button.Background>Transparent</Button.Background>
+            <Button.BorderThickness>0</Button.BorderThickness>
+            <Button.Width>
+                <System:Double>42</System:Double>
+            </Button.Width>
+            <Button.Height>
+                <System:Double>42</System:Double>
+            </Button.Height>
+            <Button.Margin>
+                <Thickness>259,306,0,0</Thickness>
+            </Button.Margin>
+            <Button.HorizontalAlignment>
+                <HorizontalAlignment>Left</HorizontalAlignment>
+            </Button.HorizontalAlignment>
+            <Button.VerticalAlignment>
+                <VerticalAlignment>Top</VerticalAlignment>
+            </Button.VerticalAlignment>
+        </Button>
+        <Button Grid.Column="1">
+            <Image Source="end_64px.png" />
+            <Button.Background>Transparent</Button.Background>
+            <Button.BorderThickness>0</Button.BorderThickness>
+            <Button.Width>
+                <System:Double>42</System:Double>
+            </Button.Width>
+            <Button.Height>
+                <System:Double>42</System:Double>
+            </Button.Height>
+            <Button.Margin>
+                <Thickness>306,306,0,0</Thickness>
+            </Button.Margin>
+            <Button.HorizontalAlignment>
+                <HorizontalAlignment>Left</HorizontalAlignment>
+            </Button.HorizontalAlignment>
+            <Button.VerticalAlignment>
+                <VerticalAlignment>Top</VerticalAlignment>
+            </Button.VerticalAlignment>
+        </Button>
     </Grid>
 </Window>
