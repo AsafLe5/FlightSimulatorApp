@@ -55,7 +55,7 @@
             x:Name="rudderSlider"
             Grid.ColumnSpan="2"
             Width="182"
-            Margin="63,234,0,0"
+            Margin="62,233,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Maximum="{Binding VM_RudderMaximunValue, Mode=OneWay}"
