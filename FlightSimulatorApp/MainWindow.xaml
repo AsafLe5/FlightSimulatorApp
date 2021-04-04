@@ -15,51 +15,39 @@
             <ColumnDefinition Width="187*" />
             <ColumnDefinition Width="609*" />
         </Grid.ColumnDefinitions>
-        <Button>
-            <Image Source="start_button.png" />
-            <Button.Background>Transparent</Button.Background>
-            <Button.BorderThickness>0</Button.BorderThickness>
-            <Button.Width>
-                <System:Double>42</System:Double>
-            </Button.Width>
-            <Button.Height>
-                <System:Double>42</System:Double>
-            </Button.Height>
-            <Button.Margin>
-                <Thickness>116,305,0,0</Thickness>
-            </Button.Margin>
-            <Button.HorizontalAlignment>
-                <HorizontalAlignment>Left</HorizontalAlignment>
-            </Button.HorizontalAlignment>
-            <Button.VerticalAlignment>
-                <VerticalAlignment>Top</VerticalAlignment>
-            </Button.VerticalAlignment>
-        </Button>
+
         <Button
             Grid.Column="1"
-            Width="140"
-            Height="61"
-            Margin="204,145,0,0"
+            Width="42"
+            Height="42"
+            Margin="-80,306,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="Button_Click"
-            Content="Button" />
+            BorderThickness="0,0,0,0"
+            Background="#00FF">
+            <Image Source="start_button.png"/>
+        </Button>
         <Button
-            Width="75"
+            Width="42"
             Height="42"
-            Margin="19,306,0,0"
+            Margin="35,306,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="Open_Click"
-            Content="Open" RenderTransformOrigin="0.5,0.5" >
-            <Button.RenderTransform>
+            BorderThickness="0,0,0,0"
+            Background="#00FF">
+            <Image Source="open_button.png"/>
+            <!--             Content="Open" RenderTransformOrigin="0.5,0.5" >
+         <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform AngleY="-1.314"/>
                     <RotateTransform/>
                     <TranslateTransform Y="-0.86"/>
                 </TransformGroup>
-            </Button.RenderTransform>
+            </Button.RenderTransform>-->
+            
         </Button>
         <Slider
             x:Name="Timeline"
