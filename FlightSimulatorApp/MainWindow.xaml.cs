@@ -47,5 +47,28 @@ namespace FlightSimulatorApp
             }
 
         }
+
+
+        private void Skip_To_Start(object sender, RoutedEventArgs e)
+        {
+        }
+        private void Fast_Forward_Left(object sender, RoutedEventArgs e)
+        {
+        }
+        private void Play_Button(object sender, RoutedEventArgs e)
+        {
+        }
+        private void Pause_Button(object sender, RoutedEventArgs e)
+        {
+        }
+        private void Stop_Button(object sender, RoutedEventArgs e)
+        {
+        }      
+        private void Fast_Forward_Right(object sender, RoutedEventArgs e)
+        {
+        }
+        private void End_Button(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
