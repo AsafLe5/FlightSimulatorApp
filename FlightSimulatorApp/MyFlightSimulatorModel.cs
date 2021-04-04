@@ -52,7 +52,8 @@ namespace FlightSimulatorApp
                     if (this.playbackSpeed == 0.0)
                     {
                         playbackSpeedZero = true;
-                    } else
+                    }
+                    else
                     {
                         playbackSpeedZero = false;
                         playbackSpeedRational = 1000 / this.playbackSpeed;
@@ -66,11 +67,17 @@ namespace FlightSimulatorApp
                         ElevatorCurrentValue = (float)Convert.ToDouble(this.csvDict[1][this.currentLineIndex]);
                         ThrottleCurrentValue = (float)Convert.ToDouble(this.csvDict[6][this.currentLineIndex]);
                         RudderCurrentValue = (float)Convert.ToDouble(this.csvDict[2][this.currentLineIndex]);
+                        CurrentAltimeter = (float)Convert.ToDouble(this.csvDict[24][this.currentLineIndex]);
+                        CurrentAirSpeed = (float)Convert.ToDouble(this.csvDict[20][this.currentLineIndex]);
+                        CurrentHeading = (float)Convert.ToDouble(this.csvDict[18][this.currentLineIndex]);
+                        CurrentPitch = (float)Convert.ToDouble(this.csvDict[17][this.CurrentLineIndex]);
+                        CurrentRoll = (float)Convert.ToDouble(this.csvDict[16][this.CurrentLineIndex]);
+                        CurrentYaw = (float)Convert.ToDouble(this.csvDict[19][this.currentLineIndex]);
                         this.CurrentLineIndex += 1;
                     }
 
-                    Thread.Sleep((int)playbackSpeedRational);      
-                    
+                    Thread.Sleep((int)playbackSpeedRational);
+
                 }
             }).Start();
         }
@@ -79,7 +86,8 @@ namespace FlightSimulatorApp
         public int PlaybackSpeed
         {
             get { return playbackSpeed; }
-            set {
+            set
+            {
                 playbackSpeed = value;
                 NotifyPropertyChanged("PlaybackSpeed");
             }
@@ -294,6 +302,69 @@ namespace FlightSimulatorApp
             }
         }
 
-    }
+        private CSVProperty altimeter = new CSVProperty();
+        public float CurrentAltimeter
+        {
+            get { return altimeter.propertyCurrentValue; }
+            set
+            {
+                altimeter.propertyCurrentValue = value;
+                NotifyPropertyChanged("CurrentAltimeter");
+            }
+        }
 
+        private CSVProperty airSpeed = new CSVProperty();
+        public float CurrentAirSpeed
+        {
+            get { return airSpeed.propertyCurrentValue; }
+            set
+            {
+                airSpeed.propertyCurrentValue = value;
+                NotifyPropertyChanged("CurrentAirSpeed");
+            }
+        }
+        
+        private CSVProperty heading = new CSVProperty();
+        public float CurrentHeading
+        {
+            get { return heading.propertyCurrentValue; }
+            set
+            {
+                heading.propertyCurrentValue = value;
+                NotifyPropertyChanged("CurrentHeading");
+            }
+        }
+
+        private CSVProperty pitch = new CSVProperty();
+        public float CurrentPitch
+        {
+            get { return pitch.propertyCurrentValue; }
+            set {
+            pitch.propertyCurrentValue = value;
+                NotifyPropertyChanged("CurrentPitch");
+                    }
+        }
+
+        private CSVProperty roll = new CSVProperty();
+        public float CurrentRoll 
+        {
+            get { return roll.propertyCurrentValue; }
+            set 
+            {
+                roll.propertyCurrentValue = value;
+                NotifyPropertyChanged("CurrentRoll");
+            }
+        }
+
+        private CSVProperty yaw = new CSVProperty();
+        public float CurrentYaw
+        {
+            get { return yaw.propertyCurrentValue; }
+            set 
+            {
+                yaw.propertyCurrentValue = value;
+                NotifyPropertyChanged("CurrentYaw");
+            }
+        }
+    }
 }

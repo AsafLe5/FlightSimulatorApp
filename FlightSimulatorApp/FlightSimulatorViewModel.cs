@@ -130,5 +130,35 @@ namespace FlightSimulatorApp
             get { return model.RudderMinimumValue; }
 
         }
+
+        public float VM_AltimeterCurrentValue
+        {
+            get { return model.CurrentAltimeter; }
+        }
+
+        public float VM_AirSpeedCurrentValue
+        {
+            get { return model.CurrentAirSpeed; }
+        }
+
+        public float VM_HeadingCurrentValue
+        {
+            get { return model.CurrentHeading; }
+        }
+
+        public float VM_PitchCurrentValue
+        {
+            get { return model.CurrentPitch; }
+        }
+
+        public float VM_RollCurrentValue
+        {
+            get { return model.CurrentRoll; }
+        }
+
+        public float VM_YawCurrentValue
+        {
+            get { return model.CurrentYaw; }
+        }
     }
 }

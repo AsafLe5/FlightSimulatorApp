@@ -39,6 +39,13 @@ namespace FlightSimulatorApp
         float RudderCurrentValue { set; get; }
         float RudderMaximunValue { set; get; }
         float RudderMinimumValue { set; get; }
+
+        float CurrentAltimeter { set; get; }
+        float CurrentAirSpeed { set; get; }
+        float CurrentHeading { set; get; }
+        float CurrentPitch { set; get; }
+        float CurrentRoll { set; get; }
+        float CurrentYaw { set; get; }
     }
 
 
