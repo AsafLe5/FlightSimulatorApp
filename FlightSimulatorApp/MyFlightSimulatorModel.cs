@@ -42,32 +42,35 @@ namespace FlightSimulatorApp
 
         public void start()
         {
+            this.PlaybackSpeed = 10;
             new Thread(delegate ()
             {
                 bool playbackSpeedZero = false;
                 while (!stop)
                 {
-                    telnetClient.write(this.csvLines[this.currentLineIndex]);
-                    AileronCurrentValue = Convert.ToDouble(this.csvAsList[0][this.currentLineIndex]);
-                    ElevatorCurrentValue = Convert.ToDouble(this.csvAsList[1][this.currentLineIndex]);
-                    ThrottleCurrentValue = Convert.ToDouble(this.csvAsList[6][this.currentLineIndex]);
-                    RudderCurrentValue = Convert.ToDouble(this.csvAsList[2][this.currentLineIndex]);
-
                     float playbackSpeedRational = 10;
-                    if (playbackSpeed == 0.0)
+                    if (this.playbackSpeed == 0.0)
                     {
                         playbackSpeedZero = true;
                     } else
                     {
-                        playbackSpeedRational = 1000 / playbackSpeed;
+                        playbackSpeedZero = false;
+                        playbackSpeedRational = 1000 / this.playbackSpeed;
                     }
-                    Thread.Sleep((int)playbackSpeedRational);
-                    
+
                     // Keeping the animation running
-                    if (this.CurrentLineIndex < this.CSVLinesNumber && !playbackSpeedZero)
+                    if (this.CurrentLineIndex < this.csvLinesNumber && !playbackSpeedZero)
                     {
+                        telnetClient.write(this.csvLines[this.currentLineIndex]);
+                        AileronCurrentValue = (float)Convert.ToDouble(this.csvDict[0][this.currentLineIndex]);
+                        ElevatorCurrentValue = (float)Convert.ToDouble(this.csvDict[1][this.currentLineIndex]);
+                        ThrottleCurrentValue = (float)Convert.ToDouble(this.csvDict[6][this.currentLineIndex]);
+                        RudderCurrentValue = (float)Convert.ToDouble(this.csvDict[2][this.currentLineIndex]);
                         this.CurrentLineIndex += 1;
                     }
+
+                    Thread.Sleep((int)playbackSpeedRational);      
+                    
                 }
             }).Start();
         }
@@ -113,13 +116,13 @@ namespace FlightSimulatorApp
             }
         }
 
-        private void setMinAndMax(double max, double min, int columnNumber)
+        private void setMinAndMax(float max, float min, int columnNumber)
         {
-            double tempMaximunValue = Double.MinValue;
-            double tempMinimumValue = Double.MaxValue;
+            float tempMaximunValue = float.MinValue;
+            float tempMinimumValue = float.MaxValue;
             for (int i = 0; i < this.csvLinesNumber; i++)
             {
-                double currentValue = Convert.ToDouble(this.csvAsList[columnNumber][i]);
+                float currentValue = (float)Convert.ToDouble(this.csvDict[columnNumber][i]);
                 if (currentValue > tempMaximunValue)
                 {
                     tempMaximunValue = currentValue;
@@ -134,10 +137,16 @@ namespace FlightSimulatorApp
         }
 
         private List<string> csvLines;
-        private int csvColumnsNumber;
-        List<List<string>> csvAsList = new List<List<string>>();
+        private Dictionary<int, List<string>> csvDict = new Dictionary<int, List<string>>();
         public void csvParser()
         {
+
+            // Init dict:
+            for (int i = 0; i < 50; i++)
+            {
+                csvDict.Add(i, new List<string>());
+            }
+
             this.csvLines = File.ReadLines(this.csvPath).ToList();
 
             int csvLinesNumberCounter = 0;
@@ -149,36 +158,20 @@ namespace FlightSimulatorApp
                 String[] parts_of_line = line.Split(',');
                 for (j = 0; j < parts_of_line.Length; j++)
                 {
-                    this.csvAsList[csvLinesNumberCounter].Add(parts_of_line[j].Trim());
+                    csvDict[j].Add(parts_of_line[j].Trim());
                 }
                 csvLinesNumberCounter++;
             }
-            this.csvColumnsNumber = j;
             this.CSVLinesNumber = csvLinesNumberCounter;
 
             setMinAndMax(this.AileronMaximunValue, this.AileronMinimumValue, 0);
             setMinAndMax(this.ElevatorMaximunValue, this.ElevatorMinimumValue, 1);
             setMinAndMax(this.ThrottleMaximunValue, this.ThrottleMaximunValue, 6);
             setMinAndMax(this.RudderMinimumValue, this.RudderMinimumValue, 2);
-
-
-            Dictionary<int, List<string>> csvDic = new Dictionary<int, List<string>>();
-
-            String CurrentLine = String.Empty;
-            System.IO.StreamReader filCurrentLinee = new System.IO.StreamReader(this.csvPath);
-            while ((CurrentLine = file.ReadLine()) != null)
-            {
-                String[] parts_of_line = CurrentLine.Split(',');
-                for (j = 0; j < parts_of_line.Length; j++)
-                {
-                    csvDic[csvLinesNumberCounter].Add(parts_of_line[j].Trim());
-                }
-                csvLinesNumberCounter++;
-            }
         }
 
         private CSVProperty aileron = new CSVProperty();
-        public double AileronCurrentValue
+        public float AileronCurrentValue
         {
             get { return aileron.propertyCurrentValue; }
             set
@@ -188,7 +181,7 @@ namespace FlightSimulatorApp
             }
         }
 
-        public double AileronMaximunValue
+        public float AileronMaximunValue
         {
             get { return aileron.propertyMaximunValue; }
             set
@@ -198,7 +191,7 @@ namespace FlightSimulatorApp
             }
         }
 
-        public double AileronMinimumValue
+        public float AileronMinimumValue
         {
             get { return aileron.propertyMinimumValue; }
             set
@@ -209,7 +202,7 @@ namespace FlightSimulatorApp
         }
 
         private CSVProperty elevator = new CSVProperty();
-        public double ElevatorCurrentValue
+        public float ElevatorCurrentValue
         {
             get { return elevator.propertyCurrentValue; }
             set
@@ -219,7 +212,7 @@ namespace FlightSimulatorApp
             }
         }
 
-        public double ElevatorMaximunValue
+        public float ElevatorMaximunValue
         {
             get { return elevator.propertyMaximunValue; }
             set
@@ -229,7 +222,7 @@ namespace FlightSimulatorApp
             }
         }
 
-        public double ElevatorMinimumValue
+        public float ElevatorMinimumValue
         {
             get { return elevator.propertyMinimumValue; }
             set
@@ -240,7 +233,7 @@ namespace FlightSimulatorApp
         }
 
         private CSVProperty throttle = new CSVProperty();
-        public double ThrottleCurrentValue
+        public float ThrottleCurrentValue
         {
             get { return throttle.propertyCurrentValue; }
             set
@@ -250,7 +243,7 @@ namespace FlightSimulatorApp
             }
         }
 
-        public double ThrottleMaximunValue
+        public float ThrottleMaximunValue
         {
             get { return throttle.propertyMaximunValue; }
             set
@@ -260,7 +253,7 @@ namespace FlightSimulatorApp
             }
         }
 
-        public double ThrottleMinimumValue
+        public float ThrottleMinimumValue
         {
             get { return throttle.propertyMinimumValue; }
             set
@@ -271,7 +264,7 @@ namespace FlightSimulatorApp
         }
 
         private CSVProperty rudder = new CSVProperty();
-        public double RudderCurrentValue
+        public float RudderCurrentValue
         {
             get { return rudder.propertyCurrentValue; }
             set
@@ -281,7 +274,7 @@ namespace FlightSimulatorApp
             }
         }
 
-        public double RudderMaximunValue
+        public float RudderMaximunValue
         {
             get { return rudder.propertyMaximunValue; }
             set
@@ -291,7 +284,7 @@ namespace FlightSimulatorApp
             }
         }
 
-        public double RudderMinimumValue
+        public float RudderMinimumValue
         {
             get { return rudder.propertyMinimumValue; }
             set

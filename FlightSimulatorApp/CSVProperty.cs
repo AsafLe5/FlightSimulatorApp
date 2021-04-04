@@ -8,8 +8,8 @@ namespace FlightSimulatorApp
 {
     class CSVProperty
     {
-        public double propertyCurrentValue;
-        public double propertyMaximunValue;
-        public double propertyMinimumValue;
+        public float propertyCurrentValue;
+        public float propertyMaximunValue;
+        public float propertyMinimumValue;
     }
 }
