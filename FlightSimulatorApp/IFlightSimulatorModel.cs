@@ -24,21 +24,21 @@ namespace FlightSimulatorApp
 
         int PlaybackSpeed { set; get; }
 
-        double AileronCurrentValue { set; get; }
-        double AileronMaximunValue { set; get; }
-        double AileronMinimumValue { set; get; }
+        float AileronCurrentValue { set; get; }
+        float AileronMaximunValue { set; get; }
+        float AileronMinimumValue { set; get; }
 
-        double ElevatorCurrentValue { set; get; }
-        double ElevatorMaximunValue { set; get; }
-        double ElevatorMinimumValue { set; get; }
+        float ElevatorCurrentValue { set; get; }
+        float ElevatorMaximunValue { set; get; }
+        float ElevatorMinimumValue { set; get; }
 
-        double ThrottleCurrentValue { set; get; }
-        double ThrottleMaximunValue { set; get; }
-        double ThrottleMinimumValue { set; get; }
+        float ThrottleCurrentValue { set; get; }
+        float ThrottleMaximunValue { set; get; }
+        float ThrottleMinimumValue { set; get; }
 
-        double RudderCurrentValue { set; get; }
-        double RudderMaximunValue { set; get; }
-        double RudderMinimumValue { set; get; }
+        float RudderCurrentValue { set; get; }
+        float RudderMaximunValue { set; get; }
+        float RudderMinimumValue { set; get; }
     }
 
 

@@ -15,7 +15,7 @@ namespace FlightSimulatorApp
         public FlightSimulatorViewModel(IFlightSimulatorModel model)
         {
             this.model = model;
-            model.PropertyChanged +=
+            this.model.PropertyChanged +=
                 delegate (Object sender, PropertyChangedEventArgs e)
                 {
                     NotifyPropertyChanged("VM_" + e.PropertyName);
@@ -60,71 +60,72 @@ namespace FlightSimulatorApp
         public int VM_PlaybackSpeed
         {
             get { return model.PlaybackSpeed; }
+            set { this.model.PlaybackSpeed = value; }
         }
-        public double VM_AileronCurrentValue
+        public float VM_AileronCurrentValue
         {
             get { return model.AileronCurrentValue; }
         }
 
-        public double VM_AileronMaximunValue
+        public float VM_AileronMaximunValue
         {
             get { return model.AileronMaximunValue; }
 
         }
 
-        public double VM_AileronMinimumValue
+        public float VM_AileronMinimumValue
         {
             get { return model.AileronMinimumValue; }
 
         }
 
-        public double VM_ElevatorCurrentValue
+        public float VM_ElevatorCurrentValue
         {
             get { return model.ElevatorCurrentValue; }
         }
 
 
-        public double VM_ElevatorMaximunValue
+        public float VM_ElevatorMaximunValue
         {
             get { return model.ElevatorMaximunValue; }
 
         }
 
-        public double VM_ElevatorMinimumValue
+        public float VM_ElevatorMinimumValue
         {
             get { return model.ElevatorMinimumValue; }
 
         }
 
-        public double VM_ThrottleCurrentValue
+        public float VM_ThrottleCurrentValue
         {
             get { return model.ThrottleCurrentValue; }
         }
 
-        public double VM_ThrottleMaximunValue
+        public float VM_ThrottleMaximunValue
         {
             get { return model.ThrottleMaximunValue; }
 
         }
 
-        public double VM_ThrottleMinimumValue
+        public float VM_ThrottleMinimumValue
         {
             get { return model.ThrottleMinimumValue; }
 
         }
 
-        public double VM_RudderCurrentValue
+        public float VM_RudderCurrentValue
         {
             get { return model.RudderCurrentValue; }
         }
 
-        public double VM_RudderMaximunValue
+        public float VM_RudderMaximunValue
         {
             get { return model.RudderMaximunValue; }
 
         }
 
-        public double VM_RudderMinimumValue
+        public float VM_RudderMinimumValue
         {
             get { return model.RudderMinimumValue; }
 
