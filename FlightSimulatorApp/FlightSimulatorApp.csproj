@@ -109,5 +109,9 @@
     <Resource Include="skip_to_start_64px.png" />
     <Resource Include="stop_64px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="open_button.png" />
+    <Resource Include="start_button.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
