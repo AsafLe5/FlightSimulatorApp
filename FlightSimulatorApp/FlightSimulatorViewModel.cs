@@ -131,32 +131,32 @@ namespace FlightSimulatorApp
 
         }
 
-        public float VM_AltimeterCurrentValue
+        public float VM_CurrentAltimeter
         {
             get { return model.CurrentAltimeter; }
         }
 
-        public float VM_AirSpeedCurrentValue
+        public float VM_CurrentAirSpeed
         {
             get { return model.CurrentAirSpeed; }
         }
 
-        public float VM_HeadingCurrentValue
+        public float VM_CurrentHeading
         {
             get { return model.CurrentHeading; }
         }
 
-        public float VM_PitchCurrentValue
+        public float VM_CurrentPitch
         {
             get { return model.CurrentPitch; }
         }
 
-        public float VM_RollCurrentValue
+        public float VM_CurrentRoll
         {
             get { return model.CurrentRoll; }
         }
 
-        public float VM_YawCurrentValue
+        public float VM_CurrentYaw
         {
             get { return model.CurrentYaw; }
         }

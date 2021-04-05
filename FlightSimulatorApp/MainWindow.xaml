@@ -14,7 +14,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="187*" />
             <ColumnDefinition Width="223*" />
-            <ColumnDefinition Width="383*"/>
+            <ColumnDefinition Width="383*" />
         </Grid.ColumnDefinitions>
 
         <Button
@@ -77,7 +77,8 @@
             VerticalAlignment="Top"
             Maximum="{Binding VM_RudderMaximunValue, Mode=OneWay}"
             Minimum="{Binding VM_RudderMinimumValue, Mode=OneWay}"
-            Value="{Binding VM_RudderCurrentValue, Mode=OneWay}" ValueChanged="rudderSlider_ValueChanged" />
+            ValueChanged="rudderSlider_ValueChanged"
+            Value="{Binding VM_RudderCurrentValue, Mode=OneWay}" />
         <Slider
             x:Name="throttleSlider"
             Width="182"
@@ -145,6 +146,7 @@
             <Image Source="skip_to_start_64px.png" />
         </Button>
         <Button
+            Grid.Column="1"
             Width="42"
             Height="42"
             Margin="35.333,306,0,0"
@@ -152,10 +154,11 @@
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
-            Click="Fast_Forward_Left" Grid.Column="1">
+            Click="Fast_Forward_Left">
             <Image Source="fast_forward_left.png" />
         </Button>
         <Button
+            Grid.Column="1"
             Width="42"
             Height="42"
             Margin="84.333,306,0,0"
@@ -163,10 +166,11 @@
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
-            Click="Play_Button" Grid.Column="1">
+            Click="Play_Button">
             <Image Source="play_64px.png" />
         </Button>
         <Button
+            Grid.Column="1"
             Width="42"
             Height="42"
             Margin="133.333,306,0,0"
@@ -174,10 +178,11 @@
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
-            Click="Pause_Button" Grid.Column="1">
+            Click="Pause_Button">
             <Image Source="pause_64px.png" />
         </Button>
         <Button
+            Grid.Column="1"
             Grid.ColumnSpan="2"
             Width="42"
             Height="42"
@@ -186,10 +191,11 @@
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
-            Click="Stop_Button" Grid.Column="1">
+            Click="Stop_Button">
             <Image Source="stop_64px.png" />
         </Button>
         <Button
+            Grid.Column="2"
             Width="42"
             Height="42"
             Margin="8,306,0,0"
@@ -197,10 +203,11 @@
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
-            Click="Fast_Forward_Right" Grid.Column="2">
+            Click="Fast_Forward_Right">
             <Image Source="fast_forward_right.png" />
         </Button>
         <Button
+            Grid.Column="2"
             Width="42"
             Height="42"
             Margin="57,306,0,0"
@@ -208,7 +215,7 @@
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
-            Click="End_Button" Grid.Column="2">
+            Click="End_Button">
             <Image Source="end_64px.png" />
         </Button>
         <Label
@@ -291,59 +298,59 @@
             VerticalAlignment="Top"
             Content="Yaw:"
             RenderTransformOrigin="-0.758,0.218" />
-        <Label 
+        <Label
             x:Name="CurrectAltimeterLabel"
             Grid.Column="2"
-            HorizontalAlignment="Left"
+            Width="120"
             Height="23"
             Margin="286,24,-22.667,0"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Width="120"
-            Content="{Binding VM_AltimeterCurrentValue, Mode=OneWay}" />
-        <Label 
+            Content="{Binding VM_CurrentAltimeter, Mode=OneWay}" />
+        <Label
             x:Name="CurrectAirSpeedLabel"
             Grid.Column="2"
-            HorizontalAlignment="Left"
+            Width="120"
             Height="23"
             Margin="286,54,-22.667,0"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Width="120"
-            Content="{Binding VM_AirSpeedCurrentValue, Mode=OneWay}" />
-        <Label 
+            Content="{Binding VM_CurrentAirSpeed, Mode=OneWay}" />
+        <Label
             x:Name="CurrectHeadingLabel"
             Grid.Column="2"
-            HorizontalAlignment="Left"
+            Width="120"
             Height="23"
             Margin="286,84,-22.667,0"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Width="120"
-            Content="{Binding VM_HeadingCurrentValue, Mode=OneWay}" />
-        <Label 
+            Content="{Binding VM_CurrentHeading, Mode=OneWay}" />
+        <Label
             x:Name="CurrectPitchLabel"
             Grid.Column="2"
-            HorizontalAlignment="Left"
+            Width="120"
             Height="23"
             Margin="286,114,-22.667,0"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Width="120"
-            Content="{Binding VM_PitchCurrentValue, Mode=OneWay}" />
-        <Label 
+            Content="{Binding VM_CurrentPitch, Mode=OneWay}" />
+        <Label
             x:Name="CurrectRollLabel"
             Grid.Column="2"
-            HorizontalAlignment="Left"
+            Width="120"
             Height="23"
             Margin="286,144,-22.667,0"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Width="120"
-            Content="{Binding VM_RollCurrentValue, Mode=OneWay}" />
-        <Label 
+            Content="{Binding VM_CurrentRoll, Mode=OneWay}" />
+        <Label
             x:Name="CurrectYawLabel"
             Grid.Column="2"
-            HorizontalAlignment="Left"
+            Width="120"
             Height="23"
             Margin="286,174,-22.667,0"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Width="120"
-            Content="{Binding VM_YawCurrentValue, Mode=OneWay}" />
+            Content="{Binding VM_CurrentYaw, Mode=OneWay}" />
     </Grid>
 </Window>
