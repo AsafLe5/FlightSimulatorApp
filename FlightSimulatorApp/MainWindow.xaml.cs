@@ -41,7 +41,7 @@ namespace FlightSimulatorApp
 
             bool? response = openFileDialog.ShowDialog();
 
-            if(response == true)
+            if (response == true)
             {
                 vm.updateCSVPath(openFileDialog.FileName);
             }
@@ -51,24 +51,49 @@ namespace FlightSimulatorApp
 
         private void Skip_To_Start(object sender, RoutedEventArgs e)
         {
+            this.vm.VM_CurrentLineIndex = 0;
         }
+
         private void Fast_Forward_Left(object sender, RoutedEventArgs e)
         {
+            if (this.vm.VM_CurrentLineIndex > 50)
+            {
+                this.vm.VM_CurrentLineIndex -= 50;
+            }
+            else
+            {
+                this.vm.VM_CurrentLineIndex = 0;
+            }
         }
+
         private void Play_Button(object sender, RoutedEventArgs e)
         {
+            this.vm.onPlay();
         }
+
         private void Pause_Button(object sender, RoutedEventArgs e)
         {
+            this.vm.onPause();
         }
         private void Stop_Button(object sender, RoutedEventArgs e)
         {
-        }      
+            this.vm.onPause();
+            this.vm.VM_CurrentLineIndex = 0;
+        }
         private void Fast_Forward_Right(object sender, RoutedEventArgs e)
         {
+            if (this.vm.VM_CurrentLineIndex + 50 < this.vm.VM_CSVLinesNumber)
+            {
+                this.vm.VM_CurrentLineIndex += 50;
+            }
+            else
+            {
+                this.vm.VM_CurrentLineIndex = this.vm.VM_CSVLinesNumber;
+            }
         }
         private void End_Button(object sender, RoutedEventArgs e)
         {
+            this.vm.VM_CurrentLineIndex = this.vm.VM_CSVLinesNumber;
         }
 
         private void rudderSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -78,7 +103,7 @@ namespace FlightSimulatorApp
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
         }
     }
 }

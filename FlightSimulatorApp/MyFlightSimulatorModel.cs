@@ -40,6 +40,7 @@ namespace FlightSimulatorApp
             telnetClient.disconnect();
         }
 
+        private bool isPaused = false;
         public void start()
         {
             this.PlaybackSpeed = 10;
@@ -60,7 +61,7 @@ namespace FlightSimulatorApp
                     }
 
                     // Keeping the animation running
-                    if (this.CurrentLineIndex < this.csvLinesNumber && !playbackSpeedZero)
+                    if (this.CurrentLineIndex < this.csvLinesNumber && !playbackSpeedZero && !isPaused)
                     {
                         telnetClient.write(this.csvLines[this.currentLineIndex]);
                         AileronCurrentValue = (float)Convert.ToDouble(this.csvDict[0][this.currentLineIndex]);
@@ -81,6 +82,18 @@ namespace FlightSimulatorApp
                 }
             }).Start();
         }
+
+        public void onPlay()
+        {
+            this.isPaused = false;
+        }
+
+        public void onPause()
+        {
+            this.isPaused = true;
+        }
+
+        
 
         private int playbackSpeed;
         public int PlaybackSpeed

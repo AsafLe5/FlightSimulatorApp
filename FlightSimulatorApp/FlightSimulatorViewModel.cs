@@ -41,6 +41,16 @@ namespace FlightSimulatorApp
             model.start();
         }
 
+        public void onPlay()
+        {
+            this.model.onPlay();
+        }
+
+        public void onPause()
+        {
+            this.model.onPause();
+        }
+        
         public int VM_CurrentLineIndex
         {
             get { return model.CurrentLineIndex; }
