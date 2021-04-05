@@ -13,14 +13,14 @@
     <Grid RenderTransformOrigin="0.467,0.449">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="187*" />
-            <ColumnDefinition Width="609*" />
+            <ColumnDefinition Width="223*" />
+            <ColumnDefinition Width="383*"/>
         </Grid.ColumnDefinitions>
 
         <Button
-            Grid.Column="1"
             Width="42"
             Height="42"
-            Margin="-80,306,0,0"
+            Margin="107,306,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#00FF"
@@ -51,7 +51,7 @@
         </Button>
         <Slider
             x:Name="Timeline"
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="3"
             Width="641"
             Margin="11,363,0,0"
             HorizontalAlignment="Left"
@@ -61,10 +61,10 @@
             Value="{Binding VM_CurrentLineIndex, Mode=TwoWay}" />
         <Label
             x:Name="TimelineLabel"
-            Grid.Column="1"
+            Grid.Column="2"
             Width="61"
             Height="42"
-            Margin="537,306,0,0"
+            Margin="314,306,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="{Binding VM_CurrentLineIndex, Mode=OneWay}" />
@@ -77,7 +77,7 @@
             VerticalAlignment="Top"
             Maximum="{Binding VM_RudderMaximunValue, Mode=OneWay}"
             Minimum="{Binding VM_RudderMinimumValue, Mode=OneWay}"
-            Value="{Binding VM_RudderCurrentValue, Mode=OneWay}" />
+            Value="{Binding VM_RudderCurrentValue, Mode=OneWay}" ValueChanged="rudderSlider_ValueChanged" />
         <Slider
             x:Name="throttleSlider"
             Width="182"
@@ -145,97 +145,205 @@
             <Image Source="skip_to_start_64px.png" />
         </Button>
         <Button
-            Grid.ColumnSpan="2"
             Width="42"
             Height="42"
-            Margin="222,306,0,0"
+            Margin="35.333,306,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
-            Click="Fast_Forward_Left">
+            Click="Fast_Forward_Left" Grid.Column="1">
             <Image Source="fast_forward_left.png" />
         </Button>
         <Button
-            Grid.ColumnSpan="2"
             Width="42"
             Height="42"
-            Margin="271,306,0,0"
+            Margin="84.333,306,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
-            Click="Play_Button">
+            Click="Play_Button" Grid.Column="1">
             <Image Source="play_64px.png" />
         </Button>
         <Button
-            Grid.ColumnSpan="2"
             Width="42"
             Height="42"
-            Margin="320,306,0,0"
+            Margin="133.333,306,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
-            Click="Pause_Button">
+            Click="Pause_Button" Grid.Column="1">
             <Image Source="pause_64px.png" />
         </Button>
         <Button
             Grid.ColumnSpan="2"
             Width="42"
             Height="42"
-            Margin="369,306,0,0"
+            Margin="182.333,306,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
-            Click="Stop_Button">
+            Click="Stop_Button" Grid.Column="1">
             <Image Source="stop_64px.png" />
         </Button>
         <Button
-            Grid.ColumnSpan="2"
             Width="42"
             Height="42"
-            Margin="418,306,0,0"
+            Margin="8,306,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
-            Click="Fast_Forward_Right">
+            Click="Fast_Forward_Right" Grid.Column="2">
             <Image Source="fast_forward_right.png" />
         </Button>
         <Button
-            Grid.ColumnSpan="2"
             Width="42"
             Height="42"
-            Margin="467,306,0,0"
+            Margin="57,306,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
-            Click="End_Button">
+            Click="End_Button" Grid.Column="2">
             <Image Source="end_64px.png" />
         </Button>
         <Label
             x:Name="playSpeedLabel"
-            Grid.Column="1"
+            Grid.Column="2"
             Width="72"
             Height="34"
-            Margin="326,314,0,0"
+            Margin="103,314,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Play speed"
             RenderTransformOrigin="-0.758,0.218" />
         <Slider
             x:Name="playSpeedSlider"
-            Grid.Column="1"
+            Grid.Column="2"
             Width="108"
-            Margin="403,322,0,0"
+            Margin="180,322,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Maximum="30"
             Minimum="0"
             Value="{Binding VM_PlaybackSpeed, Mode=TwoWay}" />
-        
+        <Label
+            x:Name="Altimeter"
+            Grid.Column="2"
+            Width="72"
+            Height="34"
+            Margin="227,20,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Altimeter:"
+            RenderTransformOrigin="-0.758,0.218" />
+        <Label
+            x:Name="AirSpeed"
+            Grid.Column="2"
+            Width="72"
+            Height="34"
+            Margin="227,50,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="AirSpeed:"
+            RenderTransformOrigin="-0.758,0.218" />
+        <Label
+            x:Name="Heading"
+            Grid.Column="2"
+            Width="72"
+            Height="34"
+            Margin="230,80,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Heading:"
+            RenderTransformOrigin="-0.758,0.218" />
+        <Label
+            x:Name="Pitch"
+            Grid.Column="2"
+            Width="72"
+            Height="34"
+            Margin="247,110,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Pitch:"
+            RenderTransformOrigin="-0.758,0.218" />
+        <Label
+            x:Name="Roll"
+            Grid.Column="2"
+            Width="72"
+            Height="34"
+            Margin="252,140,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Roll:"
+            RenderTransformOrigin="-0.758,0.218" />
+        <Label
+            x:Name="Yaw"
+            Grid.Column="2"
+            Width="72"
+            Height="34"
+            Margin="252,170,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Yaw:"
+            RenderTransformOrigin="-0.758,0.218" />
+        <Label 
+            x:Name="CurrectAltimeterLabel"
+            Grid.Column="2"
+            HorizontalAlignment="Left"
+            Height="23"
+            Margin="286,24,-22.667,0"
+            VerticalAlignment="Top"
+            Width="120"
+            Content="{Binding VM_AltimeterCurrentValue, Mode=OneWay}" />
+        <Label 
+            x:Name="CurrectAirSpeedLabel"
+            Grid.Column="2"
+            HorizontalAlignment="Left"
+            Height="23"
+            Margin="286,54,-22.667,0"
+            VerticalAlignment="Top"
+            Width="120"
+            Content="{Binding VM_AirSpeedCurrentValue, Mode=OneWay}" />
+        <Label 
+            x:Name="CurrectHeadingLabel"
+            Grid.Column="2"
+            HorizontalAlignment="Left"
+            Height="23"
+            Margin="286,84,-22.667,0"
+            VerticalAlignment="Top"
+            Width="120"
+            Content="{Binding VM_HeadingCurrentValue, Mode=OneWay}" />
+        <Label 
+            x:Name="CurrectPitchLabel"
+            Grid.Column="2"
+            HorizontalAlignment="Left"
+            Height="23"
+            Margin="286,114,-22.667,0"
+            VerticalAlignment="Top"
+            Width="120"
+            Content="{Binding VM_PitchCurrentValue, Mode=OneWay}" />
+        <Label 
+            x:Name="CurrectRollLabel"
+            Grid.Column="2"
+            HorizontalAlignment="Left"
+            Height="23"
+            Margin="286,144,-22.667,0"
+            VerticalAlignment="Top"
+            Width="120"
+            Content="{Binding VM_RollCurrentValue, Mode=OneWay}" />
+        <Label 
+            x:Name="CurrectYawLabel"
+            Grid.Column="2"
+            HorizontalAlignment="Left"
+            Height="23"
+            Margin="286,174,-22.667,0"
+            VerticalAlignment="Top"
+            Width="120"
+            Content="{Binding VM_YawCurrentValue, Mode=OneWay}" />
     </Grid>
 </Window>

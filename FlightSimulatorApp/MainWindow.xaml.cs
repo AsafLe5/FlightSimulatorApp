@@ -70,5 +70,15 @@ namespace FlightSimulatorApp
         private void End_Button(object sender, RoutedEventArgs e)
         {
         }
+
+        private void rudderSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
     }
 }
