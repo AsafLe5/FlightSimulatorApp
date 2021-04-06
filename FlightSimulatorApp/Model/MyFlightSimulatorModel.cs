@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace FlightSimulatorApp.Model
 {
@@ -97,17 +98,50 @@ namespace FlightSimulatorApp.Model
 
         private Dictionary<int, string> xmlDict = new Dictionary<int, string>();
 
-        private string xmlPath;
-
-        public void updateXMLPath(string xmlPath)
+        public void initXML()
         {
-            this.xmlPath = xmlPath;
-            parseXML();
-        }
-
-        public void parseXML()
-        {
-
+            xmlDict[0] = "aileron";
+            xmlDict[1] = "elevator";
+            xmlDict[2] = "rudder";
+            xmlDict[3] = "flaps";
+            xmlDict[4] = "slats";
+            xmlDict[5] = "speedbrake";
+            xmlDict[6] = "throttle";
+            xmlDict[7] = "throttle";
+            xmlDict[8] = "engine-pump";
+            xmlDict[9] = "engine-pump";
+            xmlDict[10] ="electric-pump";
+            xmlDict[11] = "electric-pump";
+            xmlDict[12] = "external-power";
+            xmlDict[13] = "APU-generator";
+            xmlDict[14] = "latitude-deg";
+            xmlDict[15] = "longitude-deg";
+            xmlDict[16] = "altitude-ft";
+            xmlDict[17] = "roll-deg";
+            xmlDict[18] = "pitch-deg";
+            xmlDict[19] = "heading-deg";
+            xmlDict[20] = "side-slip-deg";
+            xmlDict[21] = "airspeed-kt";
+            xmlDict[22] = "glideslope";
+            xmlDict[23] = "vertical-speed-fps";
+            xmlDict[24] = "airspeed-indicator_indicated-speed-kt";
+            xmlDict[25] = "altimeter_indicated-altitude-ft";
+            xmlDict[26] = "altimeter_pressure-alt-ft";
+            xmlDict[27] = "attitude-indicator_indicated-pitch-deg";
+            xmlDict[28] = "attitude-indicator_indicated-roll-deg";
+            xmlDict[29] = "attitude-indicator_internal-pitch-deg";
+            xmlDict[30] = "attitude-indicator_internal-roll-deg";
+            xmlDict[31] = "encoder_indicated-altitude-ft";
+            xmlDict[32] = "encoder_pressure-alt-ft";
+            xmlDict[33] = "gps_indicated-altitude-ft";
+            xmlDict[34] = "gps_indicated-ground-speed-kt";
+            xmlDict[35] = "gps_indicated-vertical-speed";
+            xmlDict[36] = "indicated-heading-deg";
+            xmlDict[37] = "magnetic-compass_indicated-heading-deg";
+            xmlDict[38] = "slip-skid-ball_indicated-slip-skid";
+            xmlDict[39] = "turn-indicator_indicated-turn-rate";
+            xmlDict[40] = "vertical-speed-indicator_indicated-speed-fpm";
+            xmlDict[41] = "engine_rpm";
         }
 
         #endregion
@@ -135,12 +169,7 @@ namespace FlightSimulatorApp.Model
             }
         }
 
-        private string csvPath;
-        public void updateCSVPath(string csvPath)
-        {
-            this.csvPath = csvPath;
-            csvParser();
-        }
+
 
 
         private int csvLinesNumber;
@@ -153,6 +182,8 @@ namespace FlightSimulatorApp.Model
                 NotifyPropertyChanged("CSVLinesNumber");
             }
         }
+
+       
 
         private void setMinAndMax(float max, float min, int columnNumber)
         {
@@ -174,13 +205,24 @@ namespace FlightSimulatorApp.Model
             min = tempMinimumValue;
         }
 
+
+        #region CSV Region
+
+        private string csvPath;
+        public void updateCSVPath(string csvPath)
+        {
+            this.csvPath = csvPath;
+            csvParser();
+        }
+
         private List<string> csvLines;
         private Dictionary<int, List<string>> csvDict = new Dictionary<int, List<string>>();
         public void csvParser()
         {
+            initXML();
 
-            // Init dict:
-            for (int i = 0; i < 50; i++)
+            // Init csvDict:
+            for (int i = 0; i < 41; i++)
             {
                 csvDict.Add(i, new List<string>());
             }
@@ -207,6 +249,8 @@ namespace FlightSimulatorApp.Model
             setMinAndMax(this.ThrottleMaximunValue, this.ThrottleMaximunValue, 6);
             setMinAndMax(this.RudderMinimumValue, this.RudderMinimumValue, 2);
         }
+
+        #endregion
 
         private CSVProperty aileron = new CSVProperty();
         public float AileronCurrentValue
