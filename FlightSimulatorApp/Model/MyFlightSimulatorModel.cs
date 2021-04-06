@@ -40,6 +40,7 @@ namespace FlightSimulatorApp.Model
         }
 
         private bool isPaused = false;
+
         public void start()
         {
             this.PlaybackSpeed = 10;
@@ -92,7 +93,24 @@ namespace FlightSimulatorApp.Model
             this.isPaused = true;
         }
 
+        #region XML Region
 
+        private Dictionary<int, string> xmlDict = new Dictionary<int, string>();
+
+        private string xmlPath;
+
+        public void updateXMLPath(string xmlPath)
+        {
+            this.xmlPath = xmlPath;
+            parseXML();
+        }
+
+        public void parseXML()
+        {
+
+        }
+
+        #endregion
 
         private int playbackSpeed;
         public int PlaybackSpeed
