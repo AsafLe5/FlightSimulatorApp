@@ -9,13 +9,13 @@ using System.ComponentModel;
 
 namespace FlightSimulatorApp.ViewModel
 {
-    class FlightSimulatorViewModel : INotifyPropertyChanged
+    class InitViewModel : INotifyPropertyChanged
     {
         #region CTOR and INPC
 
         IFlightSimulatorModel model;
 
-        public FlightSimulatorViewModel(IFlightSimulatorModel model)
+        public InitViewModel(IFlightSimulatorModel model)
         {
             this.model = model;
             this.model.PropertyChanged +=
@@ -35,15 +35,23 @@ namespace FlightSimulatorApp.ViewModel
 
         #endregion
 
-        public int VM_CurrentLineIndex
+        #region Functions
+
+        public void updateCSVPath(string csvPath)
         {
-            get { return model.CurrentLineIndex; }
-            set { this.model.CurrentLineIndex = value; }
+            model.updateCSVPath(csvPath);
         }
 
-        public int VM_CSVLinesNumber
+        public void connect()
         {
-            get { return model.CSVLinesNumber; }
+            model.connect();
         }
+
+        public void start()
+        {
+            model.start();
+        }
+
+        #endregion
     }
 }

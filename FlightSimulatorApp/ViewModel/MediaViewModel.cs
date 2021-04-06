@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FlightSimulatorApp.Model;
 
-using System.ComponentModel;
-
 namespace FlightSimulatorApp.ViewModel
 {
-    class FlightSimulatorViewModel : INotifyPropertyChanged
+    class MediaViewModel : INotifyPropertyChanged
     {
         #region CTOR and INPC
 
         IFlightSimulatorModel model;
 
-        public FlightSimulatorViewModel(IFlightSimulatorModel model)
+        public MediaViewModel(IFlightSimulatorModel model)
         {
             this.model = model;
             this.model.PropertyChanged +=
@@ -35,15 +35,28 @@ namespace FlightSimulatorApp.ViewModel
 
         #endregion
 
-        public int VM_CurrentLineIndex
+        #region Proprties Region
+
+        public int VM_PlaybackSpeed
         {
-            get { return model.CurrentLineIndex; }
-            set { this.model.CurrentLineIndex = value; }
+            get { return model.PlaybackSpeed; }
+            set { this.model.PlaybackSpeed = value; }
         }
 
-        public int VM_CSVLinesNumber
+        #endregion
+
+        #region Functions
+
+        public void onPlay()
         {
-            get { return model.CSVLinesNumber; }
+            this.model.onPlay();
         }
+
+        public void onPause()
+        {
+            this.model.onPause();
+        }
+        #endregion
+
     }
 }

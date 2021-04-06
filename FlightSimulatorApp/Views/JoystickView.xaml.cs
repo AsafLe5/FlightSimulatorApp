@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FlightSimulatorApp
+namespace FlightSimulatorApp.Views
 {
     /// <summary>
-    /// Interaction logic for Joystick.xaml
+    /// Interaction logic for JoystickView.xaml
     /// </summary>
-    public partial class Joystick : UserControl
+    public partial class JoystickView : UserControl
     {
-        public Joystick()
+        public JoystickView()
         {
             InitializeComponent();
         }

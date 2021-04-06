@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FlightSimulatorApp.Model;
 
-using System.ComponentModel;
-
 namespace FlightSimulatorApp.ViewModel
 {
-    class FlightSimulatorViewModel : INotifyPropertyChanged
+    class DataDisplayViewModel : INotifyPropertyChanged
     {
         #region CTOR and INPC
 
         IFlightSimulatorModel model;
 
-        public FlightSimulatorViewModel(IFlightSimulatorModel model)
+        public DataDisplayViewModel(IFlightSimulatorModel model)
         {
             this.model = model;
             this.model.PropertyChanged +=
@@ -35,15 +34,38 @@ namespace FlightSimulatorApp.ViewModel
 
         #endregion
 
-        public int VM_CurrentLineIndex
+        #region Data Region
+
+        public float VM_CurrentAltimeter
         {
-            get { return model.CurrentLineIndex; }
-            set { this.model.CurrentLineIndex = value; }
+            get { return model.CurrentAltimeter; }
         }
 
-        public int VM_CSVLinesNumber
+        public float VM_CurrentAirSpeed
         {
-            get { return model.CSVLinesNumber; }
+            get { return model.CurrentAirSpeed; }
         }
+
+        public float VM_CurrentHeading
+        {
+            get { return model.CurrentHeading; }
+        }
+
+        public float VM_CurrentPitch
+        {
+            get { return model.CurrentPitch; }
+        }
+
+        public float VM_CurrentRoll
+        {
+            get { return model.CurrentRoll; }
+        }
+
+        public float VM_CurrentYaw
+        {
+            get { return model.CurrentYaw; }
+        }
+
+        #endregion
     }
 }

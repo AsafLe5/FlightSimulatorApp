@@ -65,11 +65,17 @@
     </ApplicationDefinition>
     <Compile Include="Model\MyFlightSimulatorModel.cs" />
     <Compile Include="Model\IFlightSimulatorModel.cs" />
+    <Compile Include="ViewModel\DataDisplayViewModel.cs" />
     <Compile Include="ViewModel\FlightSimulatorViewModel.cs" />
-    <Page Include="Joystick.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="ViewModel\InitViewModel.cs" />
+    <Compile Include="ViewModel\JoystickViewModel.cs" />
+    <Compile Include="ViewModel\MediaViewModel.cs" />
+    <Compile Include="Views\DataDisplayView.xaml.cs">
+      <DependentUpon>DataDisplayView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JoystickView.xaml.cs">
+      <DependentUpon>JoystickView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,13 +86,18 @@
     </Compile>
     <Compile Include="CSVProperty.cs" />
     <Compile Include="ITelnetClient.cs" />
-    <Compile Include="Joystick.xaml.cs">
-      <DependentUpon>Joystick.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\DataDisplayView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\JoystickView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MyTelnetClient.cs" />
