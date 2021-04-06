@@ -35,7 +35,18 @@ namespace FlightSimulatorApp.ViewModel
 
         #endregion
 
-        #region Proprties Region
+        #region Proprties
+
+        public int VM_CurrentLineIndex
+        {
+            get { return model.CurrentLineIndex; }
+            set { this.model.CurrentLineIndex = value; }
+        }
+
+        public int VM_CSVLinesNumber
+        {
+            get { return model.CSVLinesNumber; }
+        }
 
         public int VM_PlaybackSpeed
         {

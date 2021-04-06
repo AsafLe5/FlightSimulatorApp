@@ -12,6 +12,8 @@ namespace FlightSimulatorApp.Model
 {
     class MyFlightSimulatorModel : IFlightSimulatorModel
     {
+        #region CTOR and INPC
+
         ITelnetClient telnetClient;
         volatile Boolean stop;
 
@@ -29,6 +31,8 @@ namespace FlightSimulatorApp.Model
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
+        #endregion
+
         public void connect()
         {
             telnetClient.connect();
@@ -39,8 +43,6 @@ namespace FlightSimulatorApp.Model
             stop = true;
             telnetClient.disconnect();
         }
-
-        private bool isPaused = false;
 
         public void start()
         {
@@ -84,17 +86,7 @@ namespace FlightSimulatorApp.Model
             }).Start();
         }
 
-        public void onPlay()
-        {
-            this.isPaused = false;
-        }
-
-        public void onPause()
-        {
-            this.isPaused = true;
-        }
-
-        #region XML Region
+        #region XML
 
         private Dictionary<int, string> xmlDict = new Dictionary<int, string>();
 
@@ -146,67 +138,7 @@ namespace FlightSimulatorApp.Model
 
         #endregion
 
-        private int playbackSpeed;
-        public int PlaybackSpeed
-        {
-            get { return playbackSpeed; }
-            set
-            {
-                playbackSpeed = value;
-                NotifyPropertyChanged("PlaybackSpeed");
-            }
-        }
-
-
-        private int currentLineIndex;
-        public int CurrentLineIndex
-        {
-            get { return currentLineIndex; }
-            set
-            {
-                currentLineIndex = value;
-                NotifyPropertyChanged("CurrentLineIndex");
-            }
-        }
-
-
-
-
-        private int csvLinesNumber;
-        public int CSVLinesNumber
-        {
-            get { return csvLinesNumber; }
-            set
-            {
-                csvLinesNumber = value;
-                NotifyPropertyChanged("CSVLinesNumber");
-            }
-        }
-
-       
-
-        private void setMinAndMax(float max, float min, int columnNumber)
-        {
-            float tempMaximunValue = float.MinValue;
-            float tempMinimumValue = float.MaxValue;
-            for (int i = 0; i < this.csvLinesNumber; i++)
-            {
-                float currentValue = (float)Convert.ToDouble(this.csvDict[columnNumber][i]);
-                if (currentValue > tempMaximunValue)
-                {
-                    tempMaximunValue = currentValue;
-                }
-                if (currentValue < tempMinimumValue)
-                {
-                    tempMinimumValue = currentValue;
-                }
-            }
-            max = tempMaximunValue;
-            min = tempMinimumValue;
-        }
-
-
-        #region CSV Region
+        #region CSV
 
         private string csvPath;
         public void updateCSVPath(string csvPath)
@@ -250,7 +182,78 @@ namespace FlightSimulatorApp.Model
             setMinAndMax(this.RudderMinimumValue, this.RudderMinimumValue, 2);
         }
 
+         private void setMinAndMax(float max, float min, int columnNumber)
+        {
+            float tempMaximunValue = float.MinValue;
+            float tempMinimumValue = float.MaxValue;
+            for (int i = 0; i < this.csvLinesNumber; i++)
+            {
+                float currentValue = (float)Convert.ToDouble(this.csvDict[columnNumber][i]);
+                if (currentValue > tempMaximunValue)
+                {
+                    tempMaximunValue = currentValue;
+                }
+                if (currentValue < tempMinimumValue)
+                {
+                    tempMinimumValue = currentValue;
+                }
+            }
+            max = tempMaximunValue;
+            min = tempMinimumValue;
+        }
+
         #endregion
+
+        #region Media
+
+        private bool isPaused = false;
+
+        public void onPlay()
+        {
+            this.isPaused = false;
+        }
+
+        public void onPause()
+        {
+            this.isPaused = true;
+        }
+
+        private int playbackSpeed;
+        public int PlaybackSpeed
+        {
+            get { return playbackSpeed; }
+            set
+            {
+                playbackSpeed = value;
+                NotifyPropertyChanged("PlaybackSpeed");
+            }
+        }
+
+        private int currentLineIndex;
+        public int CurrentLineIndex
+        {
+            get { return currentLineIndex; }
+            set
+            {
+                currentLineIndex = value;
+                NotifyPropertyChanged("CurrentLineIndex");
+            }
+        }
+
+        private int csvLinesNumber;
+        public int CSVLinesNumber
+        {
+            get { return csvLinesNumber; }
+            set
+            {
+                csvLinesNumber = value;
+                NotifyPropertyChanged("CSVLinesNumber");
+            }
+        }
+
+        #endregion
+
+        #region Joystick
 
         private CSVProperty aileron = new CSVProperty();
         public float AileronCurrentValue
@@ -376,6 +379,10 @@ namespace FlightSimulatorApp.Model
             }
         }
 
+        #endregion
+
+        #region DataDisplay
+
         private CSVProperty altimeter = new CSVProperty();
         public float CurrentAltimeter
         {
@@ -441,5 +448,7 @@ namespace FlightSimulatorApp.Model
                 NotifyPropertyChanged("CurrentYaw");
             }
         }
+
+        #endregion
     }
 }
