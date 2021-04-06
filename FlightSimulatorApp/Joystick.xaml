@@ -263,11 +263,6 @@
                 </Canvas.Resources>
             </Canvas>
         </Canvas>
-        <Js:Joystick
-            x:Name="joystick"
-            Margin="-133,27,85,-549"
-            Loaded="Player_Loaded" />
-
     </Grid>
 
 </UserControl>

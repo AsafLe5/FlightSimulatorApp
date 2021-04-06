@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FlightSimulatorApp.Model;
 
 using System.ComponentModel;
 
-namespace FlightSimulatorApp
+namespace FlightSimulatorApp.ViewModel
 {
     class FlightSimulatorViewModel : INotifyPropertyChanged
     {
@@ -31,7 +32,6 @@ namespace FlightSimulatorApp
         }
 
 
-
         public void updateCSVPath(string csvPath)
         {
             model.updateCSVPath(csvPath);
@@ -50,7 +50,7 @@ namespace FlightSimulatorApp
         {
             this.model.onPause();
         }
-        
+
         public int VM_CurrentLineIndex
         {
             get { return model.CurrentLineIndex; }

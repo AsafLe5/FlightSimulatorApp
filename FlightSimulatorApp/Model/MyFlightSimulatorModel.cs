@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
-using System.ComponentModel;
-using System.Threading;
-using System.IO;
-
-namespace FlightSimulatorApp
+namespace FlightSimulatorApp.Model
 {
     class MyFlightSimulatorModel : IFlightSimulatorModel
     {
@@ -93,7 +92,7 @@ namespace FlightSimulatorApp
             this.isPaused = true;
         }
 
-        
+
 
         private int playbackSpeed;
         public int PlaybackSpeed
@@ -336,7 +335,7 @@ namespace FlightSimulatorApp
                 NotifyPropertyChanged("CurrentAirSpeed");
             }
         }
-        
+
         private CSVProperty heading = new CSVProperty();
         public float CurrentHeading
         {
@@ -352,17 +351,18 @@ namespace FlightSimulatorApp
         public float CurrentPitch
         {
             get { return pitch.propertyCurrentValue; }
-            set {
-            pitch.propertyCurrentValue = value;
+            set
+            {
+                pitch.propertyCurrentValue = value;
                 NotifyPropertyChanged("CurrentPitch");
-                    }
+            }
         }
 
         private CSVProperty roll = new CSVProperty();
-        public float CurrentRoll 
+        public float CurrentRoll
         {
             get { return roll.propertyCurrentValue; }
-            set 
+            set
             {
                 roll.propertyCurrentValue = value;
                 NotifyPropertyChanged("CurrentRoll");
@@ -373,7 +373,7 @@ namespace FlightSimulatorApp
         public float CurrentYaw
         {
             get { return yaw.propertyCurrentValue; }
-            set 
+            set
             {
                 yaw.propertyCurrentValue = value;
                 NotifyPropertyChanged("CurrentYaw");
