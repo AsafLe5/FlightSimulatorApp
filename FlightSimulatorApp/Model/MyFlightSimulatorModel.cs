@@ -185,7 +185,7 @@ namespace FlightSimulatorApp.Model
             initXML();
 
             // Init csvDict:
-            for (int i = 0; i < 41; i++)
+            for (int i = 0; i < 42; i++)
             {
                 csvDict.Add(i, new List<string>());
             }

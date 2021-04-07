@@ -5,11 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using FlightSimulatorApp.Model;
 using System.ComponentModel;
+using OxyPlot;
 
 namespace FlightSimulatorApp.ViewModel
 {
-
-    using OxyPlot;
     class GraphViewModel : INotifyPropertyChanged
     {
         #region CTOR and INPC
@@ -40,7 +39,6 @@ namespace FlightSimulatorApp.ViewModel
         {
             get { return this.model.AttributesList; }
         }
-
 
         public List<DataPoint> VM_DataPointsList
         {

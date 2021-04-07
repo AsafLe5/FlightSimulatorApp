@@ -1,129 +1,126 @@
-﻿<UserControl x:Class="FlightSimulatorApp.Views.MediaPanelView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:FlightSimulatorApp.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="FlightSimulatorApp.Views.MediaPanelView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:FlightSimulatorApp.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="100"
+    d:DesignWidth="650"
+    mc:Ignorable="d">
     <Grid>
-        <Canvas
-            x:Name="Base"
-            Width="340"
-            Height="340"
-            Margin="0">
-            <Button
+
+        <Button
             Width="42"
             Height="42"
-            Margin="134,202,0,0"
+            Margin="10,12,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
             Click="Skip_To_Start">
-                <Image Source="/FlightSimulatorApp;component/Images/skip_to_start_64px.png" />
-            </Button>
-            <Button
+            <Image Source="/FlightSimulatorApp;component/Images/skip_to_start_64px.png" />
+        </Button>
+        <Button
             Width="42"
             Height="42"
-            Margin="180,202,0,0"
+            Margin="56,12,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
             Click="Fast_Forward_Left">
-                <Image Source="/FlightSimulatorApp;component/Images/fast_forward_left.png" />
-            </Button>
-            <Button
+            <Image Source="/FlightSimulatorApp;component/Images/fast_forward_left.png" />
+        </Button>
+        <Button
             Width="42"
             Height="42"
-            Margin="229,202,0,0"
+            Margin="105,12,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
             Click="Play_Button">
-                <Image Source="/FlightSimulatorApp;component/Images/play_64px.png" />
-            </Button>
-            <Button
+            <Image Source="/FlightSimulatorApp;component/Images/play_64px.png" />
+        </Button>
+        <Button
             Width="42"
             Height="42"
-            Margin="278,202,0,0"
+            Margin="154,12,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
             Click="Pause_Button">
-                <Image Source="/FlightSimulatorApp;component/Images/pause_64px.png" />
-            </Button>
-            <Button
+            <Image Source="/FlightSimulatorApp;component/Images/pause_64px.png" />
+        </Button>
+        <Button
             Width="42"
             Height="42"
-            Margin="327,202,0,0"
+            Margin="203,12,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
             Click="Stop_Button">
-                <Image Source="/FlightSimulatorApp;component/Images/stop_64px.png" />
-            </Button>
-            <Button
+            <Image Source="/FlightSimulatorApp;component/Images/stop_64px.png" />
+        </Button>
+        <Button
             Width="42"
             Height="42"
-            Margin="370,202,0,0"
+            Margin="246,12,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
             Click="Fast_Forward_Right">
-                <Image Source="/FlightSimulatorApp;component/Images/fast_forward_right.png" />
-            </Button>
-            <Button
+            <Image Source="/FlightSimulatorApp;component/Images/fast_forward_right.png" />
+        </Button>
+        <Button
             Width="42"
             Height="42"
-            Margin="419,202,0,0"
+            Margin="295,12,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#00FF"
             BorderThickness="0,0,0,0"
             Click="End_Button">
-                <Image Source="/FlightSimulatorApp;component/Images/end_64px.png" />
-            </Button>
-            <Label
+            <Image Source="/FlightSimulatorApp;component/Images/end_64px.png" />
+        </Button>
+        <Label
             x:Name="playSpeedLabel"
             Width="72"
             Height="34"
-            Margin="465,210,0,0"
+            Margin="341,20,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Play speed"
             RenderTransformOrigin="-0.758,0.218" />
-            <Slider
+        <Slider
             x:Name="playSpeedSlider"
             Width="108"
-            Margin="542,218,0,0"
+            Margin="418,28,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Maximum="30"
             Minimum="0"
             Value="{Binding VM_PlaybackSpeed, Mode=TwoWay}" />
-            <Label
+        <Label
             x:Name="TimelineLabel"
             Width="61"
             Height="42"
-            Margin="670,202,0,0"
+            Margin="546,12,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="{Binding VM_CurrentLineIndex, Mode=OneWay}" />
-            <Slider
+        <Slider
             x:Name="Timeline"
             Width="641"
-            Margin="134,262,0,0"
+            Margin="10,72,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Maximum="{Binding VM_CSVLinesNumber, Mode=OneWay}"
             Minimum="0"
             Value="{Binding VM_CurrentLineIndex, Mode=TwoWay}" />
-        </Canvas>
     </Grid>
 </UserControl>
