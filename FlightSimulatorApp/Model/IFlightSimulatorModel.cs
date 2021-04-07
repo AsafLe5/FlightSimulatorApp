@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OxyPlot;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -49,5 +50,12 @@ namespace FlightSimulatorApp.Model
         float CurrentPitch { set; get; }
         float CurrentRoll { set; get; }
         float CurrentYaw { set; get; }
+
+
+        List<string> AttributesList { set; get; }
+
+        string CurrentAttribute { set; get; }
+
+        List<DataPoint> DataPointsList { set; get; }
     }
 }

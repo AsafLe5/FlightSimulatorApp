@@ -6,6 +6,7 @@
     xmlns:contorls="clr-namespace:FlightSimulatorApp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:FlightSimulatorApp"
+     xmlns:oxy="http://oxyplot.org/wpf"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
     Width="800"
@@ -22,8 +23,11 @@
         </Style>
 
     </Window.Resources>
+
     <Grid>
 
+        
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
             <RowDefinition Height="1*" />
@@ -48,7 +52,7 @@
             <!--  Graph  -->
             <Grid Grid.Column="2">
                 <Border Style="{StaticResource roundedCornersBorder}" />
-
+                
             </Grid>
 
         </Grid>

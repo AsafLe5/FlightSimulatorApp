@@ -67,10 +67,14 @@
     <Compile Include="Model\IFlightSimulatorModel.cs" />
     <Compile Include="ViewModel\DataDisplayViewModel.cs" />
     <Compile Include="ViewModel\FlightSimulatorViewModel.cs" />
+    <Compile Include="ViewModel\GraphViewModel.cs" />
     <Compile Include="ViewModel\JoystickViewModel.cs" />
     <Compile Include="ViewModel\MediaViewModel.cs" />
     <Compile Include="Views\DataDisplayView.xaml.cs">
       <DependentUpon>DataDisplayView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GraphView.xaml.cs">
+      <DependentUpon>GraphView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\JoystickView.xaml.cs">
       <DependentUpon>JoystickView.xaml</DependentUpon>
@@ -93,6 +97,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\DataDisplayView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GraphView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

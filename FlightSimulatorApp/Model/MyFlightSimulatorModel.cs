@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OxyPlot;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -47,6 +48,10 @@ namespace FlightSimulatorApp.Model
         public void start()
         {
             this.PlaybackSpeed = 10;
+
+            // For graph
+            RenderDataPointsList();
+
             new Thread(delegate ()
             {
                 bool playbackSpeedZero = false;
@@ -89,7 +94,7 @@ namespace FlightSimulatorApp.Model
         #region XML
 
         private Dictionary<int, string> xmlDict = new Dictionary<int, string>();
-
+        private List<string> attributesList = new List<string>();
         public void initXML()
         {
             xmlDict[0] = "aileron";
@@ -102,7 +107,7 @@ namespace FlightSimulatorApp.Model
             xmlDict[7] = "throttle";
             xmlDict[8] = "engine-pump";
             xmlDict[9] = "engine-pump";
-            xmlDict[10] ="electric-pump";
+            xmlDict[10] = "electric-pump";
             xmlDict[11] = "electric-pump";
             xmlDict[12] = "external-power";
             xmlDict[13] = "APU-generator";
@@ -134,9 +139,35 @@ namespace FlightSimulatorApp.Model
             xmlDict[39] = "turn-indicator_indicated-turn-rate";
             xmlDict[40] = "vertical-speed-indicator_indicated-speed-fpm";
             xmlDict[41] = "engine_rpm";
+
+            initAttributesList();
         }
 
+        private void initAttributesList()
+        {
+            // all strings from this.xmlDict to list
+            List<string> xmlPropList = new List<string>();
+            for (int i = 0; i < xmlDict.Count; i++)
+            {
+                attributesList.Add(xmlDict[i]);
+            }
+        }
+
+        public List<string> AttributesList
+        {
+            get { return this.attributesList; }
+            set
+            {
+                this.attributesList = value;
+                NotifyPropertyChanged("AttributesList");
+            }
+        }
+
+
+
         #endregion
+
+        // initXML out of csvParser
 
         #region CSV
 
@@ -182,7 +213,7 @@ namespace FlightSimulatorApp.Model
             setMinAndMax(this.RudderMinimumValue, this.RudderMinimumValue, 2);
         }
 
-         private void setMinAndMax(float max, float min, int columnNumber)
+        private void setMinAndMax(float max, float min, int columnNumber)
         {
             float tempMaximunValue = float.MinValue;
             float tempMinimumValue = float.MaxValue;
@@ -448,6 +479,60 @@ namespace FlightSimulatorApp.Model
                 NotifyPropertyChanged("CurrentYaw");
             }
         }
+
+        #endregion
+
+        #region Graph
+
+        private List<DataPoint> dataPointsList = new List<DataPoint>();
+
+        private void RenderDataPointsList()
+        {
+            new Thread(delegate ()
+            {
+                // 
+                // 
+                List<DataPoint> currentList = new List<DataPoint>();
+                int a=0; 
+                for (int i = 0; i < csvDict.Count; i++)
+                {
+                    if (csvDict[i].Equals(currentAttribute))
+                        a = i;
+                }
+
+                for (int i = 0; i < this.currentLineIndex; i++)
+                {
+                    // in xxx = number of this.currentAttribute by xmlDict
+                    currentList.Add(new DataPoint(i, Convert.ToDouble(csvDict[a][i])));
+                }
+
+                DataPointsList = currentList;
+                // 100 != by time of start
+                Thread.Sleep(100);
+            }).Start();
+        }
+
+        public List<DataPoint> DataPointsList
+        {
+            get { return this.dataPointsList; }
+            set
+            {
+                dataPointsList = value;
+                NotifyPropertyChanged("DataPointsList");
+            }
+        }
+
+        private string currentAttribute;
+        public string CurrentAttribute
+        {
+            get { return this.currentAttribute; }
+            set
+            {
+                this.currentAttribute = value;
+                NotifyPropertyChanged("CurrentAttribute");
+            }
+        }
+
 
         #endregion
     }

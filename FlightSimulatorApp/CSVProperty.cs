@@ -11,5 +11,6 @@ namespace FlightSimulatorApp
         public float propertyCurrentValue;
         public float propertyMaximunValue;
         public float propertyMinimumValue;
+        public Dictionary<int, String> CSVDict;
     }
 }

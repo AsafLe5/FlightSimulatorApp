@@ -24,7 +24,7 @@ namespace FlightSimulatorApp
     public partial class MainWindow : Window
     {
         #region CTOR
-
+       
         FlightSimulatorViewModel vm;
 
         public MainWindow()
