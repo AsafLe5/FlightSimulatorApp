@@ -24,7 +24,7 @@ namespace FlightSimulatorApp.ViewModel
                     NotifyPropertyChanged("VM_" + e.PropertyName);
                 };
         }
-
+        //hey mother fucker!!!
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string propName)
