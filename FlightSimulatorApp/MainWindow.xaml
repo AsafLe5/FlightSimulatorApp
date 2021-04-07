@@ -5,311 +5,118 @@
     xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:FlightSimulatorApp"
+    xmlns:contorls="clr-namespace:FlightSimulatorApp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Grid Margin="0,0,5,3.5" RenderTransformOrigin="0.467,0.449">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="62*" />
-            <ColumnDefinition Width="74*" />
-            <ColumnDefinition Width="127*" />
-            <ColumnDefinition Width="4*"/>
-        </Grid.ColumnDefinitions>
+
+    <Window.Resources>
+
+        <Style x:Key="roundedCornersBorder" TargetType="{x:Type Border}">
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="BorderThickness" Value="6" />
+            <Setter Property="Opacity" Value="0.7" />
+            <Setter Property="Background" Value="Gray" />
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="400*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <Button
-            Width="42"
-            Height="42"
-            Margin="107,306,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="Button_Click">
-            <Image Source="Images/rocket_button.png" />
-        </Button>
-        <Button
-            Width="42"
-            Height="42"
-            Margin="67,306,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="Open_Click">
-            <Image Source="Images/empty_box_button.png" />
-        </Button>
-        <Slider
-            x:Name="Timeline"
-            Grid.ColumnSpan="3"
-            Width="641"
-            Margin="11,363,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Maximum="{Binding VM_CSVLinesNumber, Mode=OneWay}"
-            Minimum="0"
-            Value="{Binding VM_CurrentLineIndex, Mode=TwoWay}" />
-        <Label
-            x:Name="TimelineLabel"
-            Grid.Column="2"
-            Width="61"
-            Height="42"
-            Margin="314,306,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{Binding VM_CurrentLineIndex, Mode=OneWay}" />
-        <Slider
-            x:Name="rudderSlider"
-            Grid.ColumnSpan="2"
-            Width="182"
-            Margin="62,233,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Maximum="{Binding VM_RudderMaximunValue, Mode=OneWay}"
-            Minimum="{Binding VM_RudderMinimumValue, Mode=OneWay}"
-            ValueChanged="rudderSlider_ValueChanged"
-            Value="{Binding VM_RudderCurrentValue, Mode=OneWay}" />
-        <Slider
-            x:Name="throttleSlider"
-            Width="182"
-            Margin="-52,145,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Maximum="{Binding VM_ThrottleMaximunValue, Mode=OneWay}"
-            Minimum="{Binding VM_ThrottleMinimumValue, Mode=OneWay}"
-            RenderTransformOrigin="0.5,0.5"
-            Value="{Binding VM_ThrottleCurrentValue, Mode=OneWay}">
-            <Slider.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="90" />
-                    <TranslateTransform />
-                </TransformGroup>
-            </Slider.RenderTransform>
-        </Slider>
-        <Button
-            Grid.ColumnSpan="2"
-            Width="42"
-            Height="42"
-            Margin="173,306,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="Skip_To_Start">
-            <Image Source="Images/skip_to_start_64px.png" />
-        </Button>
-        <Button
-            Grid.Column="1"
-            Width="42"
-            Height="42"
-            Margin="35.6,306,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="Fast_Forward_Left">
-            <Image Source="Images/fast_forward_left.png" />
-        </Button>
-        <Button
-            Grid.Column="1"
-            Width="42"
-            Height="42"
-            Margin="84.6,306,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="Play_Button">
-            <Image Source="Images/play_64px.png" />
-        </Button>
-        <Button
-            Grid.Column="1"
-            Width="42"
-            Height="42"
-            Margin="133.6,306,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="Pause_Button">
-            <Image Source="Images/pause_64px.png" />
-        </Button>
-        <Button
-            Grid.Column="1"
-            Grid.ColumnSpan="2"
-            Width="42"
-            Height="42"
-            Margin="182.6,306,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="Stop_Button">
-            <Image Source="Images/stop_64px.png" />
-        </Button>
-        <Button
-            Grid.Column="2"
-            Width="42"
-            Height="42"
-            Margin="8,306,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="Fast_Forward_Right">
-            <Image Source="Images/fast_forward_right.png" />
-        </Button>
-        <Button
-            Grid.Column="2"
-            Width="42"
-            Height="42"
-            Margin="57,306,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="End_Button">
-            <Image Source="Images/end_64px.png" />
-        </Button>
-        <Label
-            x:Name="playSpeedLabel"
-            Grid.Column="2"
-            Width="72"
-            Height="34"
-            Margin="103,314,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Play speed"
-            RenderTransformOrigin="-0.758,0.218" />
-        <Slider
-            x:Name="playSpeedSlider"
-            Grid.Column="2"
-            Width="108"
-            Margin="180,322,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Maximum="30"
-            Minimum="0"
-            Value="{Binding VM_PlaybackSpeed, Mode=TwoWay}" />
-        <Label
-            x:Name="Altimeter"
-            Grid.Column="2"
-            Width="72"
-            Height="34"
-            Margin="227,20,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Altimeter:"
-            RenderTransformOrigin="-0.758,0.218" />
-        <Label
-            x:Name="AirSpeed"
-            Grid.Column="2"
-            Width="72"
-            Height="34"
-            Margin="227,50,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="AirSpeed:"
-            RenderTransformOrigin="-0.758,0.218" />
-        <Label
-            x:Name="Heading"
-            Grid.Column="2"
-            Width="72"
-            Height="34"
-            Margin="230,80,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Heading:"
-            RenderTransformOrigin="-0.758,0.218" />
-        <Label
-            x:Name="Pitch"
-            Grid.Column="2"
-            Width="72"
-            Height="34"
-            Margin="247,110,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Pitch:"
-            RenderTransformOrigin="-0.758,0.218" />
-        <Label
-            x:Name="Roll"
-            Grid.Column="2"
-            Width="72"
-            Height="34"
-            Margin="252,140,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Roll:"
-            RenderTransformOrigin="-0.758,0.218" />
-        <Label
-            x:Name="Yaw"
-            Grid.Column="2"
-            Width="72"
-            Height="34"
-            Margin="252,170,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Yaw:"
-            RenderTransformOrigin="-0.758,0.218" />
-        <Label
-            x:Name="CurrectAltimeterLabel"
-            Grid.Column="2"
-            Width="120"
-            Height="23"
-            Margin="286,24,-13.2,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{Binding VM_CurrentAltimeter, Mode=OneWay}" Grid.ColumnSpan="2" />
-        <Label
-            x:Name="CurrectAirSpeedLabel"
-            Grid.Column="2"
-            Width="120"
-            Height="23"
-            Margin="286,54,-13.2,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{Binding VM_CurrentAirSpeed, Mode=OneWay}" Grid.ColumnSpan="2" />
-        <Label
-            x:Name="CurrectHeadingLabel"
-            Grid.Column="2"
-            Width="120"
-            Height="23"
-            Margin="286,84,-13.2,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{Binding VM_CurrentHeading, Mode=OneWay}" Grid.ColumnSpan="2" />
-        <Label
-            x:Name="CurrectPitchLabel"
-            Grid.Column="2"
-            Width="120"
-            Height="23"
-            Margin="286,114,-13.2,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{Binding VM_CurrentPitch, Mode=OneWay}" Grid.ColumnSpan="2" />
-        <Label
-            x:Name="CurrectRollLabel"
-            Grid.Column="2"
-            Width="120"
-            Height="23"
-            Margin="286,144,-13.2,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{Binding VM_CurrentRoll, Mode=OneWay}" Grid.ColumnSpan="2" />
-        <Label
-            x:Name="CurrectYawLabel"
-            Grid.Column="2"
-            Width="120"
-            Height="23"
-            Margin="286,174,-13.2,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{Binding VM_CurrentYaw, Mode=OneWay}" Grid.ColumnSpan="2" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <!--  JoyStick  -->
+            <Grid>
+                <Border Style="{StaticResource roundedCornersBorder}" />
+                <contorls:JoystickView Margin="0,0,0,0"/>
+            </Grid>
+            <!--  Data  -->
+            <Grid Grid.Column="1">
+                <Border Style="{StaticResource roundedCornersBorder}" />
+                <contorls:DataDisplayView></contorls:DataDisplayView>
+            </Grid>
+            <!--  Graph  -->
+            <Grid Grid.Column="2">
+                <Border Style="{StaticResource roundedCornersBorder}" />
+               
+            </Grid>
+
+        </Grid>
+
+        <!--  media player&&buttons  -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="5*" />
+            </Grid.ColumnDefinitions>
+            <!--  media player  -->
+            <Grid Grid.Column="2">
+                <Border Style="{StaticResource roundedCornersBorder}" />
+                <contorls:MediaPanelView></contorls:MediaPanelView>
+            </Grid>
+            <!--  buttons  -->
+            <Grid>
+                <Border Style="{StaticResource roundedCornersBorder}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*" />
+                            <RowDefinition Height="3*" />
+                        </Grid.RowDefinitions>
+
+                        <!--  open  -->
+                        <Button Click="onOpenCSV" Content="Open" />
+                        <!--  start  -->
+                        <Button
+                            Grid.Row="1"
+                            Click="onStart"
+                            Content="Start" />
+
+
+                        <!--  open  -->
+                        <!--
+                        <Button
+                            Width="42"
+                            Height="42"
+                            Margin="107,306,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Background="#00FF"
+                            BorderThickness="0,0,0,0"
+                            Click="Button_Click">
+                            <Image  Source="Images/rocket_button.png" />
+                        </Button>
+                        -->
+
+                        <!--  start  -->
+
+                        <!--
+                        <Button
+                            Grid.Row="1"
+                            Width="42"
+                            Height="42"
+                            Margin="67,306,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Background="#00FF"
+                            BorderThickness="0,0,0,0"
+                            Click="Open_Click">
+                            <Image Source="Images/empty_box_button.png" />
+                        </Button>
+                        -->
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

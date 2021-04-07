@@ -67,7 +67,6 @@
     <Compile Include="Model\IFlightSimulatorModel.cs" />
     <Compile Include="ViewModel\DataDisplayViewModel.cs" />
     <Compile Include="ViewModel\FlightSimulatorViewModel.cs" />
-    <Compile Include="ViewModel\InitViewModel.cs" />
     <Compile Include="ViewModel\JoystickViewModel.cs" />
     <Compile Include="ViewModel\MediaViewModel.cs" />
     <Compile Include="Views\DataDisplayView.xaml.cs">
@@ -75,6 +74,9 @@
     </Compile>
     <Compile Include="Views\JoystickView.xaml.cs">
       <DependentUpon>JoystickView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MediaPanelView.xaml.cs">
+      <DependentUpon>MediaPanelView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +97,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\JoystickView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MediaPanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

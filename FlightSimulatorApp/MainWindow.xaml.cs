@@ -23,6 +23,8 @@ namespace FlightSimulatorApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region CTOR
+
         FlightSimulatorViewModel vm;
 
         public MainWindow()
@@ -32,13 +34,17 @@ namespace FlightSimulatorApp
             DataContext = vm;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        #endregion
+
+        #region Start and Open
+
+        private void onStart(object sender, RoutedEventArgs e)
         {
             vm.connect();
             vm.start();
         }
 
-        private void Open_Click(object sender, RoutedEventArgs e)
+        private void onOpenCSV(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
 
@@ -51,62 +57,6 @@ namespace FlightSimulatorApp
 
         }
 
-
-        private void Skip_To_Start(object sender, RoutedEventArgs e)
-        {
-            this.vm.VM_CurrentLineIndex = 0;
-        }
-
-        private void Fast_Forward_Left(object sender, RoutedEventArgs e)
-        {
-            if (this.vm.VM_CurrentLineIndex > 50)
-            {
-                this.vm.VM_CurrentLineIndex -= 50;
-            }
-            else
-            {
-                this.vm.VM_CurrentLineIndex = 0;
-            }
-        }
-
-        private void Play_Button(object sender, RoutedEventArgs e)
-        {
-            this.vm.onPlay();
-        }
-
-        private void Pause_Button(object sender, RoutedEventArgs e)
-        {
-            this.vm.onPause();
-        }
-        private void Stop_Button(object sender, RoutedEventArgs e)
-        {
-            this.vm.onPause();
-            this.vm.VM_CurrentLineIndex = 0;
-        }
-        private void Fast_Forward_Right(object sender, RoutedEventArgs e)
-        {
-            if (this.vm.VM_CurrentLineIndex + 50 < this.vm.VM_CSVLinesNumber)
-            {
-                this.vm.VM_CurrentLineIndex += 50;
-            }
-            else
-            {
-                this.vm.VM_CurrentLineIndex = this.vm.VM_CSVLinesNumber;
-            }
-        }
-        private void End_Button(object sender, RoutedEventArgs e)
-        {
-            this.vm.VM_CurrentLineIndex = this.vm.VM_CSVLinesNumber;
-        }
-
-        private void rudderSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+        #endregion
     }
 }
