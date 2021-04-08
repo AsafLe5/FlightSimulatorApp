@@ -24,14 +24,33 @@ namespace FlightSimulatorApp
     public partial class MainWindow : Window
     {
         #region CTOR
-       
-        FlightSimulatorViewModel vm;
+
+        MyFlightSimulatorModel flightSimulatorModel;
+        FlightSimulatorViewModel flightSimulatorViewModel;
+        DataDisplayViewModel dataDisplayViewModel;
+        GraphViewModel graphViewModel;
+        JoystickViewModel joystickViewModel;
+        MediaViewModel mediaViewModel;
 
         public MainWindow()
         {
             InitializeComponent();
-            vm = new FlightSimulatorViewModel(new MyFlightSimulatorModel(new MyTelnetClient()));
-            DataContext = vm;
+            flightSimulatorModel = new MyFlightSimulatorModel(new MyTelnetClient());
+
+            dataDisplayViewModel = new DataDisplayViewModel(flightSimulatorModel);
+            dataDisplayControl.DataDisplayVM = dataDisplayViewModel;
+
+            graphViewModel = new GraphViewModel(flightSimulatorModel);
+            graphControl.GraphVM = graphViewModel;
+
+            joystickViewModel = new JoystickViewModel(flightSimulatorModel);
+            joystickControl.JoystickVM = joystickViewModel;
+
+            mediaViewModel = new MediaViewModel(flightSimulatorModel);
+            mediaPanelControl.MediaVM = mediaViewModel;
+
+            flightSimulatorViewModel = new FlightSimulatorViewModel(flightSimulatorModel);
+            DataContext = flightSimulatorViewModel;
         }
 
         #endregion
@@ -40,8 +59,8 @@ namespace FlightSimulatorApp
 
         private void onStart(object sender, RoutedEventArgs e)
         {
-            vm.connect();
-            vm.start();
+            flightSimulatorViewModel.connect();
+            flightSimulatorViewModel.start();
         }
 
         private void onOpenCSV(object sender, RoutedEventArgs e)
@@ -52,7 +71,7 @@ namespace FlightSimulatorApp
 
             if (response == true)
             {
-                vm.updateCSVPath(openFileDialog.FileName);
+                flightSimulatorViewModel.updateCSVPath(openFileDialog.FileName);
             }
 
         }

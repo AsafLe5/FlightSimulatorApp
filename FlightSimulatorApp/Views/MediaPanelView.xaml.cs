@@ -25,13 +25,21 @@ namespace FlightSimulatorApp.Views
     {
         #region CTOR
 
-        MediaViewModel vm;
-
         public MediaPanelView()
         {
             InitializeComponent();
-            vm = new MediaViewModel(new MyFlightSimulatorModel(new MyTelnetClient()));
-            DataContext = vm;
+        }
+
+        private MediaViewModel mediaVM;
+
+        public MediaViewModel MediaVM
+        {
+            get { return mediaVM; }
+            set
+            {
+                mediaVM = value;
+                this.DataContext = value;
+            }
         }
 
         #endregion
@@ -40,49 +48,49 @@ namespace FlightSimulatorApp.Views
 
         private void Skip_To_Start(object sender, RoutedEventArgs e)
         {
-            this.vm.VM_CurrentLineIndex = 0;
+            this.MediaVM.VM_CurrentLineIndex = 0;
         }
 
         private void Fast_Forward_Left(object sender, RoutedEventArgs e)
         {
-            if (this.vm.VM_CurrentLineIndex > 50)
+            if (this.MediaVM.VM_CurrentLineIndex > 50)
             {
-                this.vm.VM_CurrentLineIndex -= 50;
+                this.MediaVM.VM_CurrentLineIndex -= 50;
             }
             else
             {
-                this.vm.VM_CurrentLineIndex = 0;
+                this.MediaVM.VM_CurrentLineIndex = 0;
             }
         }
 
         private void Play_Button(object sender, RoutedEventArgs e)
         {
-            this.vm.onPlay();
+            this.MediaVM.onPlay();
         }
 
         private void Pause_Button(object sender, RoutedEventArgs e)
         {
-            this.vm.onPause();
+            this.MediaVM.onPause();
         }
         private void Stop_Button(object sender, RoutedEventArgs e)
         {
-            this.vm.onPause();
-            this.vm.VM_CurrentLineIndex = 0;
+            this.MediaVM.onPause();
+            this.MediaVM.VM_CurrentLineIndex = 0;
         }
         private void Fast_Forward_Right(object sender, RoutedEventArgs e)
         {
-            if (this.vm.VM_CurrentLineIndex + 50 < this.vm.VM_CSVLinesNumber)
+            if (this.MediaVM.VM_CurrentLineIndex + 50 < this.MediaVM.VM_CSVLinesNumber)
             {
-                this.vm.VM_CurrentLineIndex += 50;
+                this.MediaVM.VM_CurrentLineIndex += 50;
             }
             else
             {
-                this.vm.VM_CurrentLineIndex = this.vm.VM_CSVLinesNumber;
+                this.MediaVM.VM_CurrentLineIndex = this.MediaVM.VM_CSVLinesNumber;
             }
         }
         private void End_Button(object sender, RoutedEventArgs e)
         {
-            this.vm.VM_CurrentLineIndex = this.vm.VM_CSVLinesNumber;
+            this.MediaVM.VM_CurrentLineIndex = this.MediaVM.VM_CSVLinesNumber;
         }
 
         #endregion

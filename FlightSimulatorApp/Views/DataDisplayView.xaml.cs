@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FlightSimulatorApp.ViewModel;
 
 namespace FlightSimulatorApp.Views
 {
@@ -23,6 +24,18 @@ namespace FlightSimulatorApp.Views
         public DataDisplayView()
         {
             InitializeComponent();
+        }
+
+        private DataDisplayViewModel dataDisplayVM;
+
+        public DataDisplayViewModel DataDisplayVM
+        {
+            get { return dataDisplayVM; }
+            set
+            {
+                dataDisplayVM = value;
+                this.DataContext = value;
+            }
         }
     }
 }

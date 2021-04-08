@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FlightSimulatorApp.ViewModel;
 
 namespace FlightSimulatorApp.Views
 {
@@ -23,6 +24,18 @@ namespace FlightSimulatorApp.Views
         public GraphView()
         {
             InitializeComponent();
+        }
+
+        private GraphViewModel graphVM;
+
+        public GraphViewModel GraphVM
+        {
+            get { return graphVM; }
+            set
+            {
+                graphVM = value;
+                this.DataContext = value;
+            }
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

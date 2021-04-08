@@ -9,7 +9,7 @@ using OxyPlot;
 
 namespace FlightSimulatorApp.ViewModel
 {
-    class GraphViewModel : INotifyPropertyChanged
+    public class GraphViewModel : INotifyPropertyChanged
     {
         #region CTOR and INPC
 

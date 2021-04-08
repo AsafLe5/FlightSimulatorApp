@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FlightSimulatorApp.ViewModel;
 
 namespace FlightSimulatorApp.Views
 {
@@ -20,9 +21,23 @@ namespace FlightSimulatorApp.Views
     /// </summary>
     public partial class JoystickView : UserControl
     {
+
         public JoystickView()
         {
             InitializeComponent();
         }
+
+        private JoystickViewModel joystickVM;
+
+        public JoystickViewModel JoystickVM
+        {
+            get { return joystickVM; }
+            set
+            {
+                joystickVM = value;
+                this.DataContext = value;
+            }
+        }
+
     }
 }

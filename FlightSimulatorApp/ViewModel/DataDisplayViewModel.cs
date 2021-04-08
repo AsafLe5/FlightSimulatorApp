@@ -8,7 +8,7 @@ using FlightSimulatorApp.Model;
 
 namespace FlightSimulatorApp.ViewModel
 {
-    class DataDisplayViewModel : INotifyPropertyChanged
+    public class DataDisplayViewModel : INotifyPropertyChanged
     {
         #region CTOR and INPC
 

@@ -34,17 +34,17 @@
             <!--  JoyStick  -->
             <Grid>
                 <Border Style="{StaticResource roundedCornersBorder}" />
-                <contorls:JoystickView Margin="0,0,0,0" />
+                <contorls:JoystickView x:Name="joystickControl" Margin="0,0,0,0" />
             </Grid>
             <!--  Data  -->
             <Grid Grid.Column="1">
                 <Border Style="{StaticResource roundedCornersBorder}" />
-                <contorls:DataDisplayView />
+                <contorls:DataDisplayView x:Name="dataDisplayControl"/>
             </Grid>
             <!--  Graph  -->
             <Grid Grid.Column="2">
                 <Border Style="{StaticResource roundedCornersBorder}" />
-                <contorls:GraphView />
+                <contorls:GraphView x:Name="graphControl"/>
             </Grid>
         </Grid>
         <!--  media player&&buttons  -->
@@ -56,7 +56,7 @@
             <!--  media player  -->
             <Grid Grid.Column="2">
                 <Border Style="{StaticResource roundedCornersBorder}" />
-                <contorls:MediaPanelView />
+                <contorls:MediaPanelView x:Name="mediaPanelControl"/>
             </Grid>
             <!--  buttons  -->
             <Grid>

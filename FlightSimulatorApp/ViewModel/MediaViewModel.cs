@@ -9,7 +9,7 @@ using FlightSimulatorApp.Model;
 
 namespace FlightSimulatorApp.ViewModel
 {
-    class MediaViewModel : INotifyPropertyChanged
+    public class MediaViewModel : INotifyPropertyChanged
     {
         #region CTOR and INPC
 

@@ -8,7 +8,7 @@ using FlightSimulatorApp.Model;
 
 namespace FlightSimulatorApp.ViewModel
 {
-    class JoystickViewModel : INotifyPropertyChanged
+    public class JoystickViewModel : INotifyPropertyChanged
     {
         #region CTOR and INPC
 
