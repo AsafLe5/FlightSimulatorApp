@@ -10,23 +10,37 @@ namespace FlightSimulatorApp.Model
 {
     public interface IFlightSimulatorModel : INotifyPropertyChanged
     {
+        #region Start and Connect
+
         void connect();
         void disconnect();
         void start();
 
+        #endregion
+
+        #region CSV
+
+        void updateCSVPath(string csvPath);
+
+        void csvParser();
+
+        #endregion
+
+        #region Media
+
         void onPlay();
 
-
         void onPause();
-        void updateCSVPath(string csvPath);
+
+        int PlaybackSpeed { set; get; }
 
         int CurrentLineIndex { set; get; }
 
         int CSVLinesNumber { set; get; }
 
-        void csvParser();
+        #endregion
 
-        int PlaybackSpeed { set; get; }
+        #region Joystick
 
         float AileronCurrentValue { set; get; }
         float AileronMaximunValue { set; get; }
@@ -44,6 +58,10 @@ namespace FlightSimulatorApp.Model
         float RudderMaximunValue { set; get; }
         float RudderMinimumValue { set; get; }
 
+        #endregion
+
+        #region Data Display
+
         float CurrentAltimeter { set; get; }
         float CurrentAirSpeed { set; get; }
         float CurrentHeading { set; get; }
@@ -51,11 +69,14 @@ namespace FlightSimulatorApp.Model
         float CurrentRoll { set; get; }
         float CurrentYaw { set; get; }
 
+        #endregion
+
+        #region Graph
 
         List<string> AttributesList { set; get; }
-
         string CurrentAttribute { set; get; }
-
         List<DataPoint> DataPointsList { set; get; }
+
+        #endregion
     }
 }

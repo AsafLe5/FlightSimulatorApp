@@ -22,6 +22,8 @@ namespace FlightSimulatorApp.Views
     public partial class JoystickView : UserControl
     {
 
+        #region CTOR
+
         public JoystickView()
         {
             InitializeComponent();
@@ -38,6 +40,8 @@ namespace FlightSimulatorApp.Views
                 this.DataContext = value;
             }
         }
+
+        #endregion
 
     }
 }

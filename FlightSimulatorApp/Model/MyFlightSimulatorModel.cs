@@ -34,6 +34,8 @@ namespace FlightSimulatorApp.Model
 
         #endregion
 
+        #region Connect and Start
+
         public void connect()
         {
             telnetClient.connect();
@@ -90,6 +92,8 @@ namespace FlightSimulatorApp.Model
                 }
             }).Start();
         }
+
+        #endregion
 
         #region XML
 
