@@ -22,7 +22,7 @@ namespace FlightSimulatorApp.Model
 
         void updateCSVPath(string csvPath);
 
-        void csvParser();
+        void praseCSV();
 
         #endregion
 

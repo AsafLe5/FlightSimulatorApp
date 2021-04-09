@@ -179,17 +179,17 @@ namespace FlightSimulatorApp.Model
         public void updateCSVPath(string csvPath)
         {
             this.csvPath = csvPath;
-            csvParser();
+            praseCSV();
         }
 
         private List<string> csvLines;
         private Dictionary<int, List<string>> csvDict = new Dictionary<int, List<string>>();
-        public void csvParser()
+        public void praseCSV()
         {
             initXML();
 
             // Init csvDict:
-            for (int i = 0; i < 42; i++)
+            for (int i = 0; i < xmlDict.Count; i++)
             {
                 csvDict.Add(i, new List<string>());
             }
