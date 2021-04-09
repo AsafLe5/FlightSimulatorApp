@@ -27,7 +27,9 @@ namespace FlightSimulatorApp
         #region CTOR
 
         MyFlightSimulatorModel flightSimulatorModel;
+
         FlightSimulatorViewModel flightSimulatorViewModel;
+
         DataDisplayViewModel dataDisplayViewModel;
         GraphViewModel graphViewModel;
         JoystickViewModel joystickViewModel;

@@ -14,8 +14,9 @@
             Canvas.Top="1"
             Width="100"
             Height="100"
+            Margin="51,36,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top" Margin="51,36,0,0">
+            VerticalAlignment="Top">
             <Ellipse.Fill>
                 <RadialGradientBrush>
                     <GradientStop Offset="1" Color="#FF2C2A2A" />
@@ -30,7 +31,7 @@
             Canvas.Top="14"
             Width="66"
             Height="66"
-            Margin="67,54,0,0"
+            Margin="68,53,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top">
             <Ellipse.Fill>
@@ -67,7 +68,7 @@
             Canvas.Top="2.65"
             Width="15"
             Height="6.75"
-            Margin="92,39.833,0,0"
+            Margin="92.5,40.833,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Data="M205.75,65.625 L226.875,47.25 L248.5,65.625 z"
@@ -79,7 +80,7 @@
             Canvas.Top="89.963"
             Width="15"
             Height="6.75"
-            Margin="92.5,123.833,0,0"
+            Margin="93.5,123.333,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Data="M205.75,65.625 L226.875,47.25 L248.5,65.625 z"
@@ -116,7 +117,7 @@
             Canvas.Top="50.468"
             Width="15"
             Height="6.75"
-            Margin="51,81.333,0,0"
+            Margin="52,81.333,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Data="M205.75,65.625 L226.875,47.25 L248.5,65.625 z"
@@ -139,9 +140,13 @@
             Margin="47,140,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Maximum="{Binding VM_RudderMaximunValue, Mode=OneWay}"
-            Minimum="{Binding VM_RudderMinimumValue, Mode=OneWay}"
+            Maximum="2"
+            Minimum="0"
             Value="{Binding VM_RudderCurrentValue, Mode=OneWay}" />
+        <!--
+            The minimum is -1 and the maximum is 1 adjust for better looking
+            The current value changed on the model to current + 1 to fit
+        -->
 
         <!--  Throttle Slider  -->
         <Slider
@@ -149,12 +154,13 @@
             Canvas.Left="-176"
             Canvas.Top="166"
             Width="114"
+            Margin="-20,76,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Maximum="{Binding VM_ThrottleMaximunValue, Mode=OneWay}"
-            Minimum="{Binding VM_ThrottleMinimumValue, Mode=OneWay}"
+            Maximum="1"
+            Minimum="0"
             RenderTransformOrigin="0.5,0.5"
-            Value="{Binding VM_ThrottleCurrentValue, Mode=OneWay}" Margin="-20,76,0,0">
+            Value="{Binding VM_ThrottleCurrentValue, Mode=OneWay}">
             <Slider.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />

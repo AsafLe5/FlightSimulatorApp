@@ -35,6 +35,8 @@ namespace FlightSimulatorApp.ViewModel
 
         #endregion
 
+        #region Properties
+
         public List<string> VM_AttributesList
         {
             get { return this.model.AttributesList; }
@@ -53,5 +55,7 @@ namespace FlightSimulatorApp.ViewModel
                 this.model.CurrentAttribute = value;
             }
         }
+
+        #endregion
     }
 }

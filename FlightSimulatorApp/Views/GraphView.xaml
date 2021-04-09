@@ -6,24 +6,61 @@
     xmlns:local="clr-namespace:FlightSimulatorApp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:oxy="http://oxyplot.org/wpf"
+    xmlns:viewmodel="clr-namespace:FlightSimulatorApp.ViewModel"
     d:DesignHeight="400"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <ListBox
-            Width="190"
-            Height="375"
-            Margin="10,10,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            ItemsSource="{Binding VM_AttributesList}"
-            SelectionChanged="ListBox_SelectionChanged_1" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <!--  List Box of Attributes  -->
+        <Grid Grid.Column="0">
+            <ListBox
+                x:Name="AttributesList"
+                Background="White"
+                ItemsSource="{Binding VM_AttributesList}"
+                SelectedIndex="1"
+                SelectedValue="{Binding VM_CurrentAttribute}" />
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
 
-        <oxy:Plot Title="{Binding Title}" Margin="205,10,402,245">
-            <oxy:Plot.Series>
-                <oxy:LineSeries ItemsSource="{Binding VM_DataPointsList}" />
-            </oxy:Plot.Series>
-        </oxy:Plot>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <!--  Attribute's Graph  -->
+                <Grid Grid.Column="0">
+                    <oxy:Plot
+                        x:Name="AttributesGraph"
+                        Title="{Binding VM_CurrentAttribute}"
+                        Background="Transparent">
+                        <oxy:Plot.Series>
+                            <oxy:LineSeries
+                                Background="White"
+                                DataFieldX="X"
+                                DataFieldY="Y"
+                                ItemsSource="{Binding VM_DataPointsList}" />
+                        </oxy:Plot.Series>
+                    </oxy:Plot>
+                </Grid>
+
+                <!--  Correlative to Attribute Graph  -->
+                <Grid Grid.Column="1">
+                    <!--  oxpyplot graph  -->
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <!--  Linear Graph (user story 8?)  -->
+            </Grid>
+        </Grid>
 
     </Grid>
 </UserControl>

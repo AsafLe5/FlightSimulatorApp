@@ -51,9 +51,6 @@ namespace FlightSimulatorApp.Model
         {
             this.PlaybackSpeed = 10;
 
-            // For graph
-            RenderDataPointsList();
-
             new Thread(delegate ()
             {
                 bool playbackSpeedZero = false;
@@ -77,7 +74,7 @@ namespace FlightSimulatorApp.Model
                         AileronCurrentValue = (float)Convert.ToDouble(this.csvDict[0][this.currentLineIndex]);
                         ElevatorCurrentValue = (float)Convert.ToDouble(this.csvDict[1][this.currentLineIndex]);
                         ThrottleCurrentValue = (float)Convert.ToDouble(this.csvDict[6][this.currentLineIndex]);
-                        RudderCurrentValue = (float)Convert.ToDouble(this.csvDict[2][this.currentLineIndex]);
+                        RudderCurrentValue = (float)Convert.ToDouble(this.csvDict[2][this.currentLineIndex]) + 1;
                         CurrentAltimeter = (float)Convert.ToDouble(this.csvDict[24][this.currentLineIndex]);
                         CurrentAirSpeed = (float)Convert.ToDouble(this.csvDict[20][this.currentLineIndex]);
                         CurrentHeading = (float)Convert.ToDouble(this.csvDict[18][this.currentLineIndex]);
@@ -86,6 +83,9 @@ namespace FlightSimulatorApp.Model
                         CurrentYaw = (float)Convert.ToDouble(this.csvDict[19][this.currentLineIndex]);
                         this.CurrentLineIndex += 1;
                     }
+
+                    // Render Original Attribute's Graph
+                    RenderDataPointsList();
 
                     Thread.Sleep((int)playbackSpeedRational);
 
@@ -153,7 +153,7 @@ namespace FlightSimulatorApp.Model
             List<string> xmlPropList = new List<string>();
             for (int i = 0; i < xmlDict.Count; i++)
             {
-                attributesList.Add(xmlDict[i]);
+                this.attributesList.Add(xmlDict[i]);
             }
         }
 
@@ -214,7 +214,7 @@ namespace FlightSimulatorApp.Model
             setMinAndMax(this.AileronMaximunValue, this.AileronMinimumValue, 0);
             setMinAndMax(this.ElevatorMaximunValue, this.ElevatorMinimumValue, 1);
             setMinAndMax(this.ThrottleMaximunValue, this.ThrottleMaximunValue, 6);
-            setMinAndMax(this.RudderMinimumValue, this.RudderMinimumValue, 2);
+            setMinAndMax(this.RudderMinimumValue, this.RudderMinimumValue, 2); 
         }
 
         private void setMinAndMax(float max, float min, int columnNumber)
@@ -235,6 +235,7 @@ namespace FlightSimulatorApp.Model
             }
             max = tempMaximunValue;
             min = tempMinimumValue;
+            Console.WriteLine(max.ToString());
         }
 
         #endregion
@@ -379,7 +380,7 @@ namespace FlightSimulatorApp.Model
             set
             {
                 throttle.propertyMinimumValue = value;
-                NotifyPropertyChanged("ThrottleMaximunValue");
+                NotifyPropertyChanged("ThrottleMinimumValue");
             }
         }
 
@@ -492,28 +493,24 @@ namespace FlightSimulatorApp.Model
 
         private void RenderDataPointsList()
         {
-            new Thread(delegate ()
+            List<DataPoint> currentList = new List<DataPoint>();
+            int currentAttributeIndex = 0;
+
+            for (int i = 0; i < xmlDict.Count; i++)
             {
-                // 
-                // 
-                List<DataPoint> currentList = new List<DataPoint>();
-                int a=0; 
-                for (int i = 0; i < csvDict.Count; i++)
+                if (xmlDict[i].ToString().Equals(this.currentAttribute))
                 {
-                    if (csvDict[i].Equals(currentAttribute))
-                        a = i;
+                    currentAttributeIndex = i;
+                    break;
                 }
+            }
 
-                for (int i = 0; i < this.currentLineIndex; i++)
-                {
-                    // in xxx = number of this.currentAttribute by xmlDict
-                    currentList.Add(new DataPoint(i, Convert.ToDouble(csvDict[a][i])));
-                }
+            for (int i = 0; i < this.currentLineIndex; i++)
+            {
+                currentList.Add(new DataPoint(i, Convert.ToDouble(csvDict[currentAttributeIndex][i])));
+            }
 
-                DataPointsList = currentList;
-                // 100 != by time of start
-                Thread.Sleep(100);
-            }).Start();
+            DataPointsList = currentList;
         }
 
         public List<DataPoint> DataPointsList

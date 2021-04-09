@@ -37,27 +37,5 @@ namespace FlightSimulatorApp.Views
                 this.DataContext = value;
             }
         }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
-        {
-           /*
-                if (e. == MouseButton.Right)
-                {
-                    Point p = new Point(e.X, e.Y);
-                    listBox1.SelectedIndex = listBox1.IndexFromPoint(p);
-                    contextMenuStrip1.Show();
-                }*/
-          
-        }
-
-        private void ListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

@@ -9,8 +9,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:oxy="http://oxyplot.org/wpf"
     Title="MainWindow"
-    Width="800"
-    Height="450"
+    Width="1080"
+    Height="720"
     mc:Ignorable="d">
     <Window.Resources>
         <Style x:Key="roundedCornersBorder" TargetType="{x:Type Border}">
