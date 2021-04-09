@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DllSimpleAnomalyDetector">
+      <HintPath>..\..\DllSimpleAnomalyDetector\Debug\DllSimpleAnomalyDetector.dll</HintPath>
+    </Reference>
     <Reference Include="OxyPlot, Version=2.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
       <HintPath>..\packages\OxyPlot.Core.2.0.0\lib\net45\OxyPlot.dll</HintPath>
     </Reference>
@@ -63,6 +66,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AnomalyDetector\AnomalyDetector.cs" />
+    <Compile Include="AnomalyDetector\anomaly_detection_util.cs" />
+    <Compile Include="AnomalyDetector\HybridAnomalyDetector.cs" />
+    <Compile Include="AnomalyDetector\minCircle.cs" />
+    <Compile Include="AnomalyDetector\SimpleAnomalyDetector.cs" />
+    <Compile Include="AnomalyDetector\timeseries.cs" />
     <Compile Include="Model\MyFlightSimulatorModel.cs" />
     <Compile Include="Model\IFlightSimulatorModel.cs" />
     <Compile Include="ViewModel\DataDisplayViewModel.cs" />
