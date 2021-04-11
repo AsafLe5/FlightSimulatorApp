@@ -38,7 +38,7 @@ namespace FlightSimulatorApp.ViewModel
 
         public float VM_AileronCurrentValue
         {
-            get { return model.AileronCurrentValue * 50 + 20; }
+            get { return model.AileronCurrentValue * 40 + 20; }
         }
 
         public float VM_AileronMaximunValue
@@ -55,7 +55,7 @@ namespace FlightSimulatorApp.ViewModel
 
         public float VM_ElevatorCurrentValue
         {
-            get { return model.ElevatorCurrentValue * 50 + 20; }
+            get { return model.ElevatorCurrentValue * 40 - 780; }
         }
 
 
