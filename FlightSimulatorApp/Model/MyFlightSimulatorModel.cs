@@ -326,7 +326,7 @@ namespace FlightSimulatorApp.Model
         private CSVProperty elevator = new CSVProperty();
         public float ElevatorCurrentValue
         {
-            get { return elevator.propertyCurrentValue * -1; }
+            get { return elevator.propertyCurrentValue + 20; }
             set
             {
                 elevator.propertyCurrentValue = value;
