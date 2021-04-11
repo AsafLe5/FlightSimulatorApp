@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
+using FlightSimulatorApp.AnomalyDetector;
 
 namespace FlightSimulatorApp.Model
 {
@@ -513,9 +514,10 @@ namespace FlightSimulatorApp.Model
         }
 
         // Finding the most correlative attribute by pearson to this.currentAttribute
-        private void findCorrelativeAttribute()
+        private void findCorrelativeAttribute(string attribute)
         {
-            CurrentCorrelativeAttribute = "";
+            SimpleAnomalyDetector smp = new SimpleAnomalyDetector((float)0.5);
+            CurrentCorrelativeAttribute = smp.findMostCorrelated(attribute, this.csvPath);
         }
 
         private List<DataPoint> dataPointsList = new List<DataPoint>();
@@ -536,6 +538,7 @@ namespace FlightSimulatorApp.Model
             set
             {
                 this.currentAttribute = value;
+                findCorrelativeAttribute(this.currentAttribute);
                 NotifyPropertyChanged("CurrentAttribute");
             }
         }
