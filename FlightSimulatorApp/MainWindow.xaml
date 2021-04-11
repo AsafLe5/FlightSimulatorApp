@@ -28,52 +28,109 @@
                     <RowDefinition Height="3*" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="1*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <!--  open  -->
-                        <Button Click="onOpenCSV" Content="Open" 
-                                 Style="{StaticResource roundedCornersButton}" />
-                        <!--  open  -->
-                        <!--
-                        <Button
-                            Width="42"
-                            Height="42"
-                            Margin="107,306,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Background="#00FF"
-                            BorderThickness="0,0,0,0"
-                            Click="Button_Click">
-                            <Image  Source="Images/rocket_button.png" />
-                        </Button>
-                        -->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <!--  upload train CSV button  -->
+                                <Button
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Background="#00FF"
+                                    BorderThickness="0,0,0,0"
+                                    Content="upload train CSV file" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <!--  train Text box  -->
+                                <TextBox
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center"
+                                    IsReadOnly="True"
+                                    Text=""
+                                    TextWrapping="Wrap" />
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <!--  upload text CSV button  -->
+                                <Button
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Background="#00FF"
+                                    BorderThickness="0,0,0,0"
+                                    Content="upload text CSV file" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <!--  text Text box  -->
+                                <TextBox
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center"
+                                    IsReadOnly="True"
+                                    Text=""
+                                    TextWrapping="Wrap" />
+                            </Grid>
+                        </Grid>
                     </Grid>
-                    <Grid Grid.Column="1">
-                        <!--  start  -->
-                        <Button
-                            Grid.Row="1"
-                            Click="onStart"
-                            Content="Start"
-                            Style="{StaticResource roundedCornersButton}" />
-                        <!--  start  -->
-
-                        <!--
-                        <Button
-                            Grid.Row="1"
-                            Width="42"
-                            Height="42"
-                            Margin="67,306,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Background="#00FF"
-                            BorderThickness="0,0,0,0"
-                            Click="Open_Click">
-                            <Image Source="Images/empty_box_button.png" />
-                        </Button>
-                        -->
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <!--  start online mode button  -->
+                                <Button
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Background="#00FF"
+                                    BorderThickness="0,0,0,0"
+                                    Content="start online mode" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <!--  start offline mode button  -->
+                                <Button
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Background="#00FF"
+                                    BorderThickness="0,0,0,0"
+                                    Content="start offline mode" />
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <!--  show instructions button  -->
+                                <Button
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Background="#00FF"
+                                    BorderThickness="0,0,0,0"
+                                    Content="show instructions" />
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="1">
