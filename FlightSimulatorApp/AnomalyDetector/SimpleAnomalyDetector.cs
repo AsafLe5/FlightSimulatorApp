@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FlightSimulatorApp.AnomalyDetector;
+using System.Threading;
+
 
 public class correlatedFeatures
 {
@@ -71,66 +73,6 @@ public class SimpleAnomalyDetector : TimeSeriesAnomalyDetector
             }
         }
     }
-
-    //public void learnNormal(Timeseries ts)
-    //{
-    //    correlatedFeatures temp = new correlatedFeatures();
-    //    float maxCorr = 0;
-    //    float[] sFlotIn;
-    //    int size = 0;
-    //    bool isCorrelation = false;
-    //    Point[] ps = new Point[200];//should be 200
-    //    for (dynamic outItr = ts.table.First(); outItr != ts.table.Last(); ++outItr)
-    //    { // Loop through the map.
-    //        float[] floOut = new float[outItr.second.Count()];
-    //        for (int i = 0; i < outItr.second.Count(); floOut[i] = outItr.second[i], i++) ; // Turns the strings to float.
-    //        for (dynamic inItr = ts.table.First(); inItr != ts.table.Last(); ++inItr)
-    //        { // Loop through the map.
-    //            size = outItr.second.Count();
-    //            float[] floIn = new float[outItr.second.Count()];
-    //            for (int i = 0; i < outItr.second.Count(); floIn[i] = inItr.second[i], i++) ; // Turns strings to float.
-    //            if (outItr == inItr)
-    //                continue;
-    //            int flagInCf = 0; // Flag that carry the fact if the current correlation is already in cf vector.
-    //            for (int cfI = 0; cfI < this.cf.Count(); cfI++)
-    //            {
-    //                if (outItr.first == this.cf[cfI].feature2)
-    //                    flagInCf = 1;
-    //            }
-    //            if (flagInCf == 1)
-    //                continue;
-    //            // Case the current correlation is the maximum so far.
-    //            if (adu.pearson(floOut, floIn, inItr.second.Count()) > maxCorr)
-    //            {
-    //                maxCorr = adu.pearson(floOut, floIn, inItr.second.Count());
-    //                temp.feature1 = outItr.first;
-    //                temp.feature2 = inItr.first;
-    //                temp.corrlation = maxCorr;
-    //                //Point *ps[outItr->second.size()];
-    //                float maxDev = 0;
-    //                for (int k = 0; k < outItr.second.Count(); k++)
-    //                {
-    //                    ps[k] = new Point(outItr.second[k], inItr.second[k]); // Turns each local correlation to point.
-    //                }
-    //                temp.lin_reg = adu.linear_reg(ps, outItr.second.size());
-    //                for (int k = 0; k < outItr.second.Count(); k++)
-    //                {
-    //                    if (maxDev < Math.Abs(adu.dev(ps[k], temp.lin_reg))) // case the current deviation is max deviation.
-    //                        maxDev = Math.Abs(adu.dev(ps[k], temp.lin_reg));
-    //                }
-    //                temp.threshold = (float)(maxDev * 1.1); // ten present higher for little deviation.
-    //                                                        //isCorrelation = true;
-    //                sFlotIn = floIn;
-    //            }
-    //        }
-    //        if (maxCorr > threshold)
-    //            this.cf.Add(temp);
-    //        else if (maxCorr > 0.5 && maxCorr < threshold)
-    //            cirCorr(temp, ps, size);
-    //        //isCorrelation = false;
-    //        maxCorr = 0;
-    //    }
-    //}
 
     public List<AnomalyReport> detect(Timeseries ts)
     {
@@ -225,27 +167,32 @@ public class SimpleAnomalyDetector : TimeSeriesAnomalyDetector
             }
         }
 
-        //check if header exists
-        using (var sr = new StreamReader(csvPath))
+
+        new Thread(delegate ()
         {
-            using (var temp = new StreamWriter(tempFilename, false))
+            //check if header exists
+            using (var sr = new StreamReader(csvPath))
             {
-                var line = sr.ReadLine(); // first line
-                if (line != null && line != header) // check header exists
+
+                using (var temp = new StreamWriter(tempFilename, false))
                 {
-                    toCopy = true; // need copy temp file to your original csv
-
-                    // write your header into the temp file
-                    temp.WriteLine(header);
-
-                    while (line != null)
+                    var line = sr.ReadLine(); // first line
+                    if (line != null && line != header) // check header exists
                     {
-                        temp.WriteLine(line);
-                        line = sr.ReadLine();
+                        toCopy = true; // need copy temp file to your original csv
+
+                        // write your header into the temp file
+                        temp.WriteLine(header);
+
+                        while (line != null)
+                        {
+                            temp.WriteLine(line);
+                            line = sr.ReadLine();
+                        }
                     }
                 }
             }
-        }
+        }).Start();
 
         /*      if (toCopy)
                   File.Copy(tempFilename, csvPath, true);

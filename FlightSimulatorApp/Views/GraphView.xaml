@@ -54,7 +54,10 @@
 
                 <!--  Correlative to Attribute Graph  -->
                 <Grid Grid.Column="1">
-                    <oxy:Plot Title="{Binding VM_CurrentCorrelativeAttribute}" Background="Transparent">
+                    <oxy:Plot
+                        x:Name="CorrelativeAttributesGraph"
+                        Title="{Binding VM_CurrentCorrelativeAttribute}"
+                        Background="Transparent">
                         <oxy:Plot.Series>
                             <oxy:LineSeries
                                 Background="White"
