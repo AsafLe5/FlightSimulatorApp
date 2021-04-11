@@ -25,57 +25,24 @@
             <RowDefinition Height="2*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="3*" />
-            </Grid.ColumnDefinitions>
-            <!--  JoyStick  -->
-            <Grid>
-                <Border Style="{StaticResource roundedCornersBorder}" />
-                <contorls:JoystickView x:Name="joystickControl" Margin="0,0,0,0" />
-            </Grid>
-            <!--  Data  -->
-            <Grid Grid.Column="1">
-                <Border Style="{StaticResource roundedCornersBorder}" />
-                <contorls:DataDisplayView x:Name="dataDisplayControl"/>
-            </Grid>
-            <!--  Graph  -->
-            <Grid Grid.Column="2">
-                <Border Style="{StaticResource roundedCornersBorder}" />
-                <contorls:GraphView x:Name="graphControl"/>
-            </Grid>
-        </Grid>
-        <!--  media player&&buttons  -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <!--  media player  -->
-            <Grid Grid.Column="2">
-                <Border Style="{StaticResource roundedCornersBorder}" />
-                <contorls:MediaPanelView x:Name="mediaPanelControl"/>
-            </Grid>
-            <!--  buttons  -->
-            <Grid>
-                <Border Style="{StaticResource roundedCornersBorder}">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="3*" />
-                        </Grid.RowDefinitions>
-
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="3*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
                         <!--  open  -->
                         <Button Click="onOpenCSV" Content="Open" />
-                        <!--  start  -->
-                        <Button
-                            Grid.Row="1"
-                            Click="onStart"
-                            Content="Start" />
-
-
                         <!--  open  -->
                         <!--
                         <Button
@@ -90,7 +57,13 @@
                             <Image  Source="Images/rocket_button.png" />
                         </Button>
                         -->
-
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <!--  start  -->
+                        <Button
+                            Grid.Row="1"
+                            Click="onStart"
+                            Content="Start" />
                         <!--  start  -->
 
                         <!--
@@ -107,10 +80,39 @@
                             <Image Source="Images/empty_box_button.png" />
                         </Button>
                         -->
-
                     </Grid>
-                </Border>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.3*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <!--  JoyStick  -->
+                        <Grid>
+                            <Border Style="{StaticResource roundedCornersBorder}" />
+                            <contorls:JoystickView x:Name="joystickControl" Margin="0,0,0,0" />
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <!--  Data  -->
+                        <Grid Grid.Column="1">
+                            <Border Style="{StaticResource roundedCornersBorder}" />
+                            <contorls:DataDisplayView x:Name="dataDisplayControl" />
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Grid>
+            <Grid Grid.Column="1">
+                <!-- Graph -->
+                <Border Style="{StaticResource roundedCornersBorder}" />
+                <contorls:GraphView x:Name="graphControl"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <!-- media -->
+            <Border Style="{StaticResource roundedCornersBorder}" />
+            <contorls:MediaPanelView x:Name="mediaPanelControl"/>
         </Grid>
     </Grid>
 </Window>
