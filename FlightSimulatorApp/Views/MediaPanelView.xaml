@@ -138,7 +138,7 @@
             <!--  time line slider  -->
         <Slider
             x:Name="Timeline"
-            Width="641"
+            Width="1000"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Maximum="{Binding VM_CSVLinesNumber, Mode=OneWay}"

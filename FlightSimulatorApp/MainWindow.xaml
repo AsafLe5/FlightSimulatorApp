@@ -12,14 +12,6 @@
     Width="1080"
     Height="720"
     mc:Ignorable="d">
-    <Window.Resources>
-        <Style x:Key="roundedCornersBorder" TargetType="{x:Type Border}">
-            <Setter Property="CornerRadius" Value="20" />
-            <Setter Property="BorderThickness" Value="6" />
-            <Setter Property="Opacity" Value="0.7" />
-            <Setter Property="Background" Value="Gray" />
-        </Style>
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
@@ -42,7 +34,8 @@
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
                         <!--  open  -->
-                        <Button Click="onOpenCSV" Content="Open" />
+                        <Button Click="onOpenCSV" Content="Open" 
+                                 Style="{StaticResource roundedCornersButton}" />
                         <!--  open  -->
                         <!--
                         <Button
@@ -63,7 +56,8 @@
                         <Button
                             Grid.Row="1"
                             Click="onStart"
-                            Content="Start" />
+                            Content="Start"
+                            Style="{StaticResource roundedCornersButton}" />
                         <!--  start  -->
 
                         <!--
@@ -104,15 +98,15 @@
                 </Grid>
             </Grid>
             <Grid Grid.Column="1">
-                <!-- Graph -->
+                <!--  Graph  -->
                 <Border Style="{StaticResource roundedCornersBorder}" />
-                <contorls:GraphView x:Name="graphControl"/>
+                <contorls:GraphView x:Name="graphControl" />
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
-            <!-- media -->
+            <!--  media  -->
             <Border Style="{StaticResource roundedCornersBorder}" />
-            <contorls:MediaPanelView x:Name="mediaPanelControl"/>
+            <contorls:MediaPanelView x:Name="mediaPanelControl" />
         </Grid>
     </Grid>
 </Window>
