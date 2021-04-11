@@ -54,18 +54,7 @@
 
                 <!--  Correlative to Attribute Graph  -->
                 <Grid Grid.Column="1">
-                    <oxy:Plot
-                        x:Name="AttributesCorrelativeGraph"
-                        Title="{Binding VM_CurrentCorrelativeAttribute}"
-                        Background="Transparent">
-                        <oxy:Plot.Series>
-                            <oxy:LineSeries
-                                Background="White"
-                                DataFieldX="X"
-                                DataFieldY="Y"
-                                ItemsSource="{Binding VM_DataPointsListToCorrelative}" />
-                        </oxy:Plot.Series>
-                    </oxy:Plot>
+                    <!--  oxpyplot graph  -->
                 </Grid>
             </Grid>
             <Grid Grid.Row="1">

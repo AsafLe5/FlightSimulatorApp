@@ -73,7 +73,7 @@ public class SimpleAnomalyDetector : TimeSeriesAnomalyDetector
                             maxDev = Math.Abs(adu.dev(ps[k], temp.lin_reg));
                     }
                     temp.threshold = (float)(maxDev * 1.1); // ten present higher for little deviation.
-                                                   //isCorrelation = true;
+                                                            //isCorrelation = true;
                     sFlotIn = floIn;
                 }
             }
@@ -116,7 +116,8 @@ public class SimpleAnomalyDetector : TimeSeriesAnomalyDetector
         return (vector);
     }
 
-    public float cirCorr(correlatedFeatures cf, Point[] points, int size) {
+    public float cirCorr(correlatedFeatures cf, Point[] points, int size)
+    {
         return 0;
     }
 
@@ -133,6 +134,26 @@ public class SimpleAnomalyDetector : TimeSeriesAnomalyDetector
     public List<correlatedFeatures> getNormalModel()
     {
         return cf;
+    }
+
+    public string findMostCorrelated(string original, string csvPath)
+    {
+        SimpleAnomalyDetector ad = new SimpleAnomalyDetector((float)0.5);
+        Timeseries ts = new Timeseries(csvPath);
+        ad.learnNormal(ts);
+        List<correlatedFeatures> cf = ad.getNormalModel();
+        foreach (correlatedFeatures cor in cf)
+        {
+            if (cor.feature1.Equals(original) == true)
+            {
+                return cor.feature2;
+            }
+            if (cor.feature2.Equals(original) == true)
+            {
+                return cor.feature1;
+            }
+        }
+        return "";
     }
 }
 
