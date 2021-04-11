@@ -35,12 +35,12 @@ namespace FlightSimulatorApp.ViewModel
 
         #endregion
 
-        #region Properties
-
         public List<string> VM_AttributesList
         {
             get { return this.model.AttributesList; }
         }
+
+        #region Original Graph Properties
 
         public List<DataPoint> VM_DataPointsList
         {
@@ -54,6 +54,20 @@ namespace FlightSimulatorApp.ViewModel
             {
                 this.model.CurrentAttribute = value;
             }
+        }
+
+        #endregion
+
+        #region Correlative Graph Properties
+
+        public List<DataPoint> VM_DataPointsListToCorrelative
+        {
+            get { return this.model.DataPointsListToCorrelative; }
+        }
+
+        public string VM_CurrentCorrelativeAttribute
+        {
+            get { return this.model.CurrentCorrelativeAttribute; }
         }
 
         #endregion

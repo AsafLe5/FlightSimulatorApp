@@ -84,8 +84,9 @@ namespace FlightSimulatorApp.Model
                         this.CurrentLineIndex += 1;
                     }
 
-                    // Render Original Attribute's Graph
-                    RenderDataPointsList();
+                    DataPointsList = RenderDataPointsList(this.CurrentAttribute);
+                    // What if there is no most correlative by pearson?
+                    DataPointsListToCorrelative = RenderDataPointsList(this.CurrentCorrelativeAttribute);
 
                     Thread.Sleep((int)playbackSpeedRational);
 
@@ -214,7 +215,7 @@ namespace FlightSimulatorApp.Model
             setMinAndMax(this.AileronMaximunValue, this.AileronMinimumValue, 0);
             setMinAndMax(this.ElevatorMaximunValue, this.ElevatorMinimumValue, 1);
             setMinAndMax(this.ThrottleMaximunValue, this.ThrottleMaximunValue, 6);
-            setMinAndMax(this.RudderMinimumValue, this.RudderMinimumValue, 2); 
+            setMinAndMax(this.RudderMinimumValue, this.RudderMinimumValue, 2);
         }
 
         private void setMinAndMax(float max, float min, int columnNumber)
@@ -489,16 +490,14 @@ namespace FlightSimulatorApp.Model
 
         #region Graph
 
-        private List<DataPoint> dataPointsList = new List<DataPoint>();
-
-        private void RenderDataPointsList()
+        private List<DataPoint> RenderDataPointsList(string attribute)
         {
             List<DataPoint> currentList = new List<DataPoint>();
             int currentAttributeIndex = 0;
 
             for (int i = 0; i < xmlDict.Count; i++)
             {
-                if (xmlDict[i].ToString().Equals(this.currentAttribute))
+                if (xmlDict[i].ToString().Equals(attribute))
                 {
                     currentAttributeIndex = i;
                     break;
@@ -510,9 +509,16 @@ namespace FlightSimulatorApp.Model
                 currentList.Add(new DataPoint(i, Convert.ToDouble(csvDict[currentAttributeIndex][i])));
             }
 
-            DataPointsList = currentList;
+            return currentList;
         }
 
+        // Finding the most correlative attribute by pearson to this.currentAttribute
+        private void findCorrelativeAttribute()
+        {
+            CurrentCorrelativeAttribute = "";
+        }
+
+        private List<DataPoint> dataPointsList = new List<DataPoint>();
         public List<DataPoint> DataPointsList
         {
             get { return this.dataPointsList; }
@@ -534,6 +540,27 @@ namespace FlightSimulatorApp.Model
             }
         }
 
+        private string currentCorrelativeAttribute;
+        public string CurrentCorrelativeAttribute
+        {
+            get { return currentCorrelativeAttribute; }
+            set
+            {
+                currentCorrelativeAttribute = value;
+                NotifyPropertyChanged("CurrentCorrelativeAttribute");
+            }
+        }
+
+        private List<DataPoint> dataPointsListToCorrelative = new List<DataPoint>();
+        public List<DataPoint> DataPointsListToCorrelative
+        {
+            get { return this.dataPointsListToCorrelative; }
+            set
+            {
+                dataPointsList = value;
+                NotifyPropertyChanged("DataPointsListToCorrelative");
+            }
+        }
 
         #endregion
     }

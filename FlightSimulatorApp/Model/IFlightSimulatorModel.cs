@@ -77,6 +77,9 @@ namespace FlightSimulatorApp.Model
         string CurrentAttribute { set; get; }
         List<DataPoint> DataPointsList { set; get; }
 
+        string CurrentCorrelativeAttribute { set; get; }
+        List<DataPoint> DataPointsListToCorrelative { set; get; }
+
         #endregion
     }
 }
