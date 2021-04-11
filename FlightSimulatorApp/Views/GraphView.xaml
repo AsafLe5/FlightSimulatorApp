@@ -71,7 +71,20 @@
                 </Grid>
             </Grid>
             <Grid Grid.Row="1">
-                <!--  Linear Graph (user story 8?)  -->
+                <!--  Linear Graph of regression points (user story 8?)  -->
+                <oxy:Plot
+                    x:Name="LinearRegressionGraph"
+                    Title=""
+                    Margin="10,10,0,0"
+                    Background="Transparent">
+                    <oxy:Plot.Series>
+                        <oxy:LineSeries
+                            Background="White"
+                            DataFieldX="X"
+                            DataFieldY="Y"
+                            ItemsSource="{Binding VM_RegressionDataPointsList}" />
+                    </oxy:Plot.Series>
+                </oxy:Plot>
             </Grid>
         </Grid>
 

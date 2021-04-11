@@ -52,5 +52,9 @@ namespace FlightSimulatorApp.ViewModel
         }
 
         #endregion
+
+        #region Start Menu
+
+        #endregion
     }
 }

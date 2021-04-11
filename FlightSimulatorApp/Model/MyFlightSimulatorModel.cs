@@ -100,7 +100,11 @@ namespace FlightSimulatorApp.Model
 
         #endregion
 
-        #region correlationHandler
+        #region Start Menu
+
+        #endregion
+
+        #region Correlation Handler
 
         private string addHeader(string csvPath, Dictionary<int, string> xmlDict)
         {
@@ -121,37 +125,27 @@ namespace FlightSimulatorApp.Model
                 }
             }
 
-
-
             //check if header exists
             using (var sr = new StreamReader(csvPath))
             {
-                //new Thread(delegate ()
-                //{
-                    using (var temp = new StreamWriter(tempFilename, false))
+                using (var temp = new StreamWriter(tempFilename, false))
+                {
+                    var line = sr.ReadLine(); // first line
+                    if (line != null && line != header) // check header exists
                     {
-                        var line = sr.ReadLine(); // first line
-                        if (line != null && line != header) // check header exists
+                        toCopy = true; // need copy temp file to your original csv
+
+                        // write your header into the temp file
+                        temp.WriteLine(header);
+
+                        while (line != null)
                         {
-                            toCopy = true; // need copy temp file to your original csv
-
-                            // write your header into the temp file
-                            temp.WriteLine(header);
-
-                            while (line != null)
-                            {
-                                temp.WriteLine(line);
-                                line = sr.ReadLine();
-                            }
+                            temp.WriteLine(line);
+                            line = sr.ReadLine();
                         }
                     }
-                //}).Start();
+                }
             }
-
-
-            /*      if (toCopy)
-                      File.Copy(tempFilename, csvPath, true);
-                  File.Delete(tempFilename);*/
 
             return tempFilename;
         }
@@ -169,6 +163,24 @@ namespace FlightSimulatorApp.Model
 
             this.ad.learnNormal(this.ts);
             this.cf = ad.getNormalModel();
+        }
+
+        #endregion
+
+        #region Regration
+
+        private List<DataPoint> regrationPoints = new List<DataPoint>();
+        private void getRegrationPoints()
+        {
+            int numberOfPointsInThirtySeaconds = this.playbackSpeed * 10 * 30;
+            int i = Math.Max(0, regrationPoints.Count - numberOfPointsInThirtySeaconds);
+            for (; i < regrationPoints.Count; ++i)
+            {
+                string value = this.csvDict[findIndexByAttribute(this.CurrentAttribute)][this.currentLineIndex];
+                DataPoint dp = new DataPoint(Double.Parse(value), this.currentLineIndex);
+                this.regrationPoints.Add(dp);
+            }
+            
         }
 
         #endregion
@@ -574,14 +586,7 @@ namespace FlightSimulatorApp.Model
             List<DataPoint> currentList = new List<DataPoint>();
             int currentAttributeIndex = 0;
 
-            for (int i = 0; i < xmlDict.Count; i++)
-            {
-                if (xmlDict[i].ToString().Equals(attribute))
-                {
-                    currentAttributeIndex = i;
-                    break;
-                }
-            }
+            currentAttributeIndex = findIndexByAttribute(attribute);
 
             for (int i = 0; i < this.currentLineIndex; i++)
             {
@@ -652,5 +657,16 @@ namespace FlightSimulatorApp.Model
         }
 
         #endregion
+        public int findIndexByAttribute(string attribute)
+        {
+            for (int i = 0; i < xmlDict.Count; i++)
+            {
+                if (xmlDict[i].ToString().Equals(attribute))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }

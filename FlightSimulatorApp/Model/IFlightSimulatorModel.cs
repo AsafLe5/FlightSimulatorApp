@@ -81,5 +81,9 @@ namespace FlightSimulatorApp.Model
         List<DataPoint> DataPointsListToCorrelative { set; get; }
 
         #endregion
+
+        #region Start Menu
+
+        #endregion
     }
 }
