@@ -327,7 +327,7 @@ namespace FlightSimulatorApp.Model
         private CSVProperty elevator = new CSVProperty();
         public float ElevatorCurrentValue
         {
-            get { return elevator.propertyCurrentValue; }
+            get { return elevator.propertyCurrentValue * -1; }
             set
             {
                 elevator.propertyCurrentValue = value;
@@ -337,7 +337,7 @@ namespace FlightSimulatorApp.Model
 
         public float ElevatorMaximunValue
         {
-            get { return elevator.propertyMaximunValue; }
+            get { return elevator.propertyMaximunValue * -1; }
             set
             {
                 elevator.propertyMaximunValue = value;
@@ -347,7 +347,7 @@ namespace FlightSimulatorApp.Model
 
         public float ElevatorMinimumValue
         {
-            get { return elevator.propertyMinimumValue; }
+            get { return elevator.propertyMinimumValue * -1; }
             set
             {
                 elevator.propertyMinimumValue = value;
