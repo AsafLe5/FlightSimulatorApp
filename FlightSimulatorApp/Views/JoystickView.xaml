@@ -185,7 +185,7 @@
                     </Path>
 
                     <Canvas
-                        x:Name="Knob"
+                        x:Name="JoystickLimit"
                         Canvas.Left="20"
                         Canvas.Top="20"
                         Width="80"
@@ -199,11 +199,9 @@
                             Height="40"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            d:LayoutRounding="Auto"
                             RenderTransformOrigin="0.5,0.5"
-                            UseLayoutRounding="False"
-                            Canvas.Top="{Binding VM_ElevatorCurrentValue}"
-                            Canvas.Left="{Binding VM_AileronCurrentValue}">
+                            Canvas.Left="{Binding VM_AileronCurrentValue}"
+                            Canvas.Top="{Binding VM_ElevatorCurrentValue}">
                             <Ellipse.Fill>
                                 <RadialGradientBrush>
                                     <GradientStop Offset="1" Color="#9A909090" />
@@ -211,7 +209,7 @@
                                 </RadialGradientBrush>
                             </Ellipse.Fill>
                         </Ellipse>
-                        
+
                         <Canvas.RenderTransform>
                             <TranslateTransform x:Name="knobPosition" />
                         </Canvas.RenderTransform>
