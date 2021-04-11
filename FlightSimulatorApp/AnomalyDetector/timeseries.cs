@@ -19,7 +19,7 @@ namespace FlightSimulatorApp.AnomalyDetector
             string path = CSVfileName;
             // Two dimensional vector of string, represent the whole CSV file.
 
-            List<List<string>> csvTwoD = new List<List<string>>(); 
+            List<List<string>> csvTwoD = new List<List<string>>();
             // Open the stream and read it back.
             using (FileStream fs = File.Open(path, FileMode.Open))
             {
@@ -41,16 +41,20 @@ namespace FlightSimulatorApp.AnomalyDetector
                     i++;
                 }
             }
-            
-     
+
+
             // Transpose the csvTwoD to get the correct order of lines as in the CVS file.
             List<List<string>> transVec = new List<List<string>>();
             for (int i = 0; i < csvTwoD.Count(); i++)
             {
+                List<string> curVec = new List<string>();
                 for (int j = 0; j < csvTwoD[i].Count(); j++)
-                    transVec[j].Add(csvTwoD[i][j]);
+                {
+                    curVec.Add(csvTwoD[i][j]);
+                }
+                transVec.Add(curVec);
             }
-            Dictionary< string, List< float >> itMap;
+            Dictionary<string, List<float>> itMap = new Dictionary<string, List<float>>();
             for (int i = 0; i < transVec.Count(); i++)
             { // Loop through the map.
                 List<float> col = new List<float>();
@@ -61,7 +65,7 @@ namespace FlightSimulatorApp.AnomalyDetector
                     col.Add(float.Parse(transVec[i][j]));
                 }
                 this.table.Add(transVec[i][0], col); // Adding the titles and column to the map.
+            }
         }
-    }
     }
 }

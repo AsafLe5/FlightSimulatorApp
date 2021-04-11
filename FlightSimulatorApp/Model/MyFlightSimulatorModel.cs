@@ -109,12 +109,12 @@ namespace FlightSimulatorApp.Model
             xmlDict[3] = "flaps";
             xmlDict[4] = "slats";
             xmlDict[5] = "speedbrake";
-            xmlDict[6] = "throttle";
-            xmlDict[7] = "throttle";
-            xmlDict[8] = "engine-pump";
-            xmlDict[9] = "engine-pump";
-            xmlDict[10] = "electric-pump";
-            xmlDict[11] = "electric-pump";
+            xmlDict[6] = "throttle0";
+            xmlDict[7] = "throttle1";
+            xmlDict[8] = "engine-pump0";
+            xmlDict[9] = "engine-pump1";
+            xmlDict[10] = "electric-pump0";
+            xmlDict[11] = "electric-pump1";
             xmlDict[12] = "external-power";
             xmlDict[13] = "APU-generator";
             xmlDict[14] = "latitude-deg";
@@ -217,6 +217,8 @@ namespace FlightSimulatorApp.Model
             setMinAndMax(this.ElevatorMaximunValue, this.ElevatorMinimumValue, 1);
             setMinAndMax(this.ThrottleMaximunValue, this.ThrottleMaximunValue, 6);
             setMinAndMax(this.RudderMinimumValue, this.RudderMinimumValue, 2);
+
+            file.Close();
         }
 
         private void setMinAndMax(float max, float min, int columnNumber)
