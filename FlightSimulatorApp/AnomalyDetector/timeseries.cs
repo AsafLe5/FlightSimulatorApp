@@ -11,34 +11,31 @@ namespace FlightSimulatorApp.AnomalyDetector
     public class Timeseries
     {
         private FileStream csv;
-        public Dictionary<string, List<float>> table;
+        public List<string> features = new List<string>();
+        public Dictionary<string, List<float>> table = new Dictionary<string, List<float>>();
         public Timeseries(string CSVfileName)
         {
-            string val;
-            // using (var reader = new StreamReader(CSVfileName));
-            string path = CSVfileName;
-            // Two dimensional vector of string, represent the whole CSV file.
 
             List<List<string>> csvTwoD = new List<List<string>>();
-            // Open the stream and read it back.
-            using (FileStream fs = File.Open(path, FileMode.Open))
+
+            bool notRead = true;
+            String line = String.Empty;
+            System.IO.StreamReader file = new System.IO.StreamReader(CSVfileName);
+            while ((line = file.ReadLine()) != null)
             {
-                byte[] line = new byte[1024];
-                UTF8Encoding temp = new UTF8Encoding(true);
-                int i = 0;
-                while (fs.Read(line, 0, line.Length) > 0)
+                String[] parts_of_line = line.Split(',');
+                if (notRead)
                 {
-                    List<float> vals;
-                    temp.GetString(line);
-                    string str = System.Text.Encoding.UTF8.GetString(line);
-                    List<string> row = new List<string>();
-                    string[] rowStr = str.Split(',');
-                    for (int j = 0; j < rowStr.Count(); j++)
+                    for (int i = 0; i < parts_of_line.Length; i++)
                     {
-                        row.Add(rowStr[j]);
+                        csvTwoD.Add(new List<string>());
                     }
-                    csvTwoD.Add(row);
-                    i++;
+                    notRead = false;
+                }
+                List<string> cur = new List<string>();
+                for (int j = 0; j < parts_of_line.Length; j++)
+                {
+                    csvTwoD[j].Add(parts_of_line[j].Trim());
                 }
             }
 
@@ -61,8 +58,13 @@ namespace FlightSimulatorApp.AnomalyDetector
                 for (int j = 0; j < transVec[i].Count(); ++j)
                 { // checks whether we are in the first line.
                     if (j == 0) // Case line is 0 then it means its the title of the column.
+                    {
+                        this.features.Add(transVec[i][j]);
                         continue;
-                    col.Add(float.Parse(transVec[i][j]));
+                    }
+                    string valueAsString = transVec[i][j];
+                    float valueAsFloat = float.Parse(valueAsString);
+                    col.Add(valueAsFloat);
                 }
                 this.table.Add(transVec[i][0], col); // Adding the titles and column to the map.
             }
