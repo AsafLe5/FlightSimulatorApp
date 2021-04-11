@@ -9,118 +9,141 @@
     d:DesignWidth="650"
     mc:Ignorable="d">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
 
-        <Button
-            Width="42"
-            Height="42"
-            Margin="10,12,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="Skip_To_Start">
-            <Image Source="/FlightSimulatorApp;component/Images/skip_to_start_64px.png" />
-        </Button>
-        <Button
-            Width="42"
-            Height="42"
-            Margin="56,12,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="Fast_Forward_Left">
-            <Image Source="/FlightSimulatorApp;component/Images/fast_forward_left.png" />
-        </Button>
-        <Button
-            Width="42"
-            Height="42"
-            Margin="105,12,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="Play_Button">
-            <Image Source="/FlightSimulatorApp;component/Images/play_64px.png" />
-        </Button>
-        <Button
-            Width="42"
-            Height="42"
-            Margin="154,12,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="Pause_Button">
-            <Image Source="/FlightSimulatorApp;component/Images/pause_64px.png" />
-        </Button>
-        <Button
-            Width="42"
-            Height="42"
-            Margin="203,12,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="Stop_Button">
-            <Image Source="/FlightSimulatorApp;component/Images/stop_64px.png" />
-        </Button>
-        <Button
-            Width="42"
-            Height="42"
-            Margin="246,12,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="Fast_Forward_Right">
-            <Image Source="/FlightSimulatorApp;component/Images/fast_forward_right.png" />
-        </Button>
-        <Button
-            Width="42"
-            Height="42"
-            Margin="295,12,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#00FF"
-            BorderThickness="0,0,0,0"
-            Click="End_Button">
-            <Image Source="/FlightSimulatorApp;component/Images/end_64px.png" />
-        </Button>
-        <Label
-            x:Name="playSpeedLabel"
-            Width="72"
-            Height="34"
-            Margin="341,20,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Play speed"
-            RenderTransformOrigin="-0.758,0.218" />
-        <Slider
-            x:Name="playSpeedSlider"
-            Width="108"
-            Margin="418,28,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Maximum="30"
-            Minimum="0"
-            Value="{Binding VM_PlaybackSpeed, Mode=TwoWay}" />
-        <Label
-            x:Name="TimelineLabel"
-            Width="61"
-            Height="42"
-            Margin="546,12,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{Binding VM_CurrentLineIndex, Mode=OneWay}" />
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <!--  Skip To Start Button  -->
+                <Button
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="#00FF"
+                    BorderThickness="0,0,0,0"
+                    Click="Skip_To_Start">
+                    <Image Source="/FlightSimulatorApp;component/Images/skip_to_start_64px.png" />
+                </Button>
+            </Grid>
+            <Grid Grid.Column="1">
+                <!--  fast forward left Button  -->
+                <Button
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="#00FF"
+                    BorderThickness="0,0,0,0"
+                    Click="Fast_Forward_Left">
+                    <Image Source="/FlightSimulatorApp;component/Images/fast_forward_left.png" />
+                </Button>
+            </Grid>
+            <Grid Grid.Column="2">
+                <!--  play Button  -->
+                <Button
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="#00FF"
+                    BorderThickness="0,0,0,0"
+                    Click="Play_Button">
+                    <Image Source="/FlightSimulatorApp;component/Images/play_64px.png" />
+                </Button>
+            </Grid>
+            <Grid Grid.Column="3">
+                <!--  pause Button  -->
+                <Button
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="#00FF"
+                    BorderThickness="0,0,0,0"
+                    Click="Pause_Button">
+                    <Image Source="/FlightSimulatorApp;component/Images/pause_64px.png" />
+                </Button>
+            </Grid>
+            <Grid Grid.Column="4">
+                <!--  stop Button  -->
+                <Button
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="#00FF"
+                    BorderThickness="0,0,0,0"
+                    Click="Stop_Button">
+                    <Image Source="/FlightSimulatorApp;component/Images/stop_64px.png" />
+                </Button>
+            </Grid>
+            <Grid Grid.Column="5">
+                <!--  fast forward right Button  -->
+                <Button
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="#00FF"
+                    BorderThickness="0,0,0,0"
+                    Click="Fast_Forward_Right">
+                    <Image Source="/FlightSimulatorApp;component/Images/fast_forward_right.png" />
+                </Button>
+            </Grid>
+            <Grid Grid.Column="6">
+                <!--  end Button  -->
+                <Button
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="#00FF"
+                    BorderThickness="0,0,0,0"
+                    Click="End_Button">
+                    <Image Source="/FlightSimulatorApp;component/Images/end_64px.png" />
+                </Button>
+            </Grid>
+            <Grid Grid.Column="7">
+                <!--  play speed lable  -->
+                <Label
+                    x:Name="playSpeedLabel"
+                    Width="70"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Play speed"
+                    RenderTransformOrigin="-0.758,0.218" />
+            </Grid>
+            <Grid Grid.Column="8">
+                <!--  play speed slider  -->
+                <Slider
+                    x:Name="playSpeedSlider"
+                    Width="130"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Maximum="30"
+                    Minimum="0"
+                    Value="{Binding VM_PlaybackSpeed, Mode=TwoWay}" />
+            </Grid>
+            <Grid Grid.Column="9">
+                <!--  time line lable  -->
+                <Label
+                    x:Name="TimelineLabel"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="{Binding VM_CurrentLineIndex, Mode=OneWay}" />
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" >
+            <!--  time line slider  -->
         <Slider
             x:Name="Timeline"
             Width="641"
-            Margin="10,72,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
             Maximum="{Binding VM_CSVLinesNumber, Mode=OneWay}"
             Minimum="0"
             Value="{Binding VM_CurrentLineIndex, Mode=TwoWay}" />
+    </Grid>
     </Grid>
 </UserControl>
