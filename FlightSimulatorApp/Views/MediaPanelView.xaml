@@ -130,6 +130,7 @@
                     VerticalAlignment="Center"
                     Maximum="30"
                     Minimum="0"
+                    Style="{StaticResource sliderColorDarker}"
                     Value="{Binding VM_PlaybackSpeed, Mode=TwoWay}" />
             </Grid>
             <Grid Grid.Column="9">

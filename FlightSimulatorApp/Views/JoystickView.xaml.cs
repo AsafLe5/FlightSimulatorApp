@@ -41,9 +41,9 @@ namespace FlightSimulatorApp.Views
             }
         }
 
+
+
         #endregion
-
-
 
     }
 }
