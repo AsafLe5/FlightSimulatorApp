@@ -50,6 +50,9 @@ namespace FlightSimulatorApp.Model
 
         public void start()
         {
+
+            loadAllCorrelatedFeatures();
+
             this.PlaybackSpeed = 10;
 
             new Thread(delegate ()
@@ -92,6 +95,79 @@ namespace FlightSimulatorApp.Model
 
                 }
             }).Start();
+        }
+
+        #endregion
+
+        #region correlationHandler
+
+        private string addHeader(string csvPath, Dictionary<int, string> xmlDict)
+        {
+            string tempFilename = "temp.csv";
+            bool toCopy = false;
+
+            string header = "";
+
+            for (int i = 0; i < xmlDict.Count; i++)
+            {
+                if (i == 0)
+                {
+                    header += xmlDict[i];
+                }
+                else
+                {
+                    header = header + "," + xmlDict[i];
+                }
+            }
+
+
+
+            //check if header exists
+            using (var sr = new StreamReader(csvPath))
+            {
+                //new Thread(delegate ()
+                //{
+                    using (var temp = new StreamWriter(tempFilename, false))
+                    {
+                        var line = sr.ReadLine(); // first line
+                        if (line != null && line != header) // check header exists
+                        {
+                            toCopy = true; // need copy temp file to your original csv
+
+                            // write your header into the temp file
+                            temp.WriteLine(header);
+
+                            while (line != null)
+                            {
+                                temp.WriteLine(line);
+                                line = sr.ReadLine();
+                            }
+                        }
+                    }
+                //}).Start();
+            }
+
+
+            /*      if (toCopy)
+                      File.Copy(tempFilename, csvPath, true);
+                  File.Delete(tempFilename);*/
+
+            return tempFilename;
+        }
+
+        private SimpleAnomalyDetector ad;
+        private Timeseries ts;
+        List<correlatedFeatures> cf;
+        private void loadAllCorrelatedFeatures()
+        {
+            string newPath = addHeader(this.csvPath, this.xmlDict);
+
+            this.ts = new Timeseries(newPath);
+
+            this.ad = new SimpleAnomalyDetector((float)0.5);
+
+            this.ad.learnNormal(this.ts);
+            this.cf = ad.getNormalModel();
         }
 
         #endregion
@@ -517,8 +593,16 @@ namespace FlightSimulatorApp.Model
         // Finding the most correlative attribute by pearson to this.currentAttribute
         private void findCorrelativeAttribute(string attribute)
         {
-            SimpleAnomalyDetector smp = new SimpleAnomalyDetector((float)0.5);
-            CurrentCorrelativeAttribute = smp.findMostCorrelated(attribute, this.csvPath, this.xmlDict);
+            /*            SimpleAnomalyDetector smp = new SimpleAnomalyDetector((float)0.5);
+                        CurrentCorrelativeAttribute = smp.findMostCorrelated(attribute, this.csvPath, this.xmlDict);*/
+
+            foreach (correlatedFeatures corf in this.cf)
+            {
+                if (corf.feature1.Equals(attribute))
+                    CurrentCorrelativeAttribute = corf.feature2;
+                if (corf.feature2.Equals(attribute))
+                    CurrentCorrelativeAttribute = corf.feature1;
+            }
         }
 
         private List<DataPoint> dataPointsList = new List<DataPoint>();

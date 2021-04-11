@@ -19,6 +19,7 @@ public class correlatedFeatures
     public float centerY;
     public float rad;
 };
+
 public class SimpleAnomalyDetector : TimeSeriesAnomalyDetector
 {
     anomaly_detection_util adu = new anomaly_detection_util();
@@ -124,11 +125,11 @@ public class SimpleAnomalyDetector : TimeSeriesAnomalyDetector
         return cf;
     }
 
-    public string findMostCorrelated(string original, string csvPath, Dictionary<int, string> xmlDict)
+/*    public string findMostCorrelated(string original, string csvPath, Dictionary<int, string> xmlDict)
     {
-        string newPath = AddHeader(csvPath, xmlDict);
+        //string newPath = AddHeader(csvPath, xmlDict);
 
-        Timeseries ts = new Timeseries(newPath);
+        //Timeseries ts = new Timeseries(newPath);
 
         SimpleAnomalyDetector ad = new SimpleAnomalyDetector((float)0.5);
 
@@ -146,9 +147,9 @@ public class SimpleAnomalyDetector : TimeSeriesAnomalyDetector
             }
         }
         return "";
-    }
+    }*/
 
-    private string AddHeader(string csvPath, Dictionary<int, string> xmlDict)
+    /*private string AddHeader(string csvPath, Dictionary<int, string> xmlDict)
     {
         string tempFilename = "temp.csv";
         bool toCopy = false;
@@ -168,12 +169,12 @@ public class SimpleAnomalyDetector : TimeSeriesAnomalyDetector
         }
 
 
-        new Thread(delegate ()
-        {
+
             //check if header exists
             using (var sr = new StreamReader(csvPath))
             {
-
+                new Thread(delegate ()
+                {
                 using (var temp = new StreamWriter(tempFilename, false))
                 {
                     var line = sr.ReadLine(); // first line
@@ -191,13 +192,15 @@ public class SimpleAnomalyDetector : TimeSeriesAnomalyDetector
                         }
                     }
                 }
-            }
-        }).Start();
+                }).Start();
+        }
+        
 
-        /*      if (toCopy)
+        *//*      if (toCopy)
                   File.Copy(tempFilename, csvPath, true);
-              File.Delete(tempFilename);*/
+              File.Delete(tempFilename);*//*
+        
         return tempFilename;
-    }
+    }*/
 }
 
