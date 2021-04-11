@@ -30,6 +30,7 @@
             <Grid Grid.Column="0">
                 <!--  Skip To Start Button  -->
                 <Button
+                    Height="65"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Background="#00FF"
@@ -41,6 +42,7 @@
             <Grid Grid.Column="1">
                 <!--  fast forward left Button  -->
                 <Button
+                    Height="65"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Background="#00FF"
@@ -52,6 +54,7 @@
             <Grid Grid.Column="2">
                 <!--  play Button  -->
                 <Button
+                    Height="65"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Background="#00FF"
@@ -63,6 +66,7 @@
             <Grid Grid.Column="3">
                 <!--  pause Button  -->
                 <Button
+                    Height="65"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Background="#00FF"
@@ -74,6 +78,7 @@
             <Grid Grid.Column="4">
                 <!--  stop Button  -->
                 <Button
+                    Height="65"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Background="#00FF"
@@ -85,6 +90,7 @@
             <Grid Grid.Column="5">
                 <!--  fast forward right Button  -->
                 <Button
+                    Height="65"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Background="#00FF"
@@ -96,6 +102,7 @@
             <Grid Grid.Column="6">
                 <!--  end Button  -->
                 <Button
+                    Height="65"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Background="#00FF"
@@ -123,6 +130,7 @@
                     VerticalAlignment="Center"
                     Maximum="30"
                     Minimum="0"
+                    Style="{StaticResource sliderColorDarker}"
                     Value="{Binding VM_PlaybackSpeed, Mode=TwoWay}" />
             </Grid>
             <Grid Grid.Column="9">
@@ -141,9 +149,10 @@
             Width="1000"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            Style="{StaticResource sliderColor}" 
             Maximum="{Binding VM_CSVLinesNumber, Mode=OneWay}"
             Minimum="0"
-            Value="{Binding VM_CurrentLineIndex, Mode=TwoWay}" />
+            Value="{Binding VM_CurrentLineIndex, Mode=TwoWay}" Foreground="{x:Null}" BorderBrush="{x:Null}" />
     </Grid>
     </Grid>
 </UserControl>

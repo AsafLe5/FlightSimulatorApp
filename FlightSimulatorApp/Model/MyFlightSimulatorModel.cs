@@ -89,6 +89,7 @@ namespace FlightSimulatorApp.Model
                     }
 
                     DataPointsList = RenderDataPointsList(this.CurrentAttribute);
+                    // What if there is no most correlative by pearson?
                     DataPointsListToCorrelative = RenderDataPointsList(this.CurrentCorrelativeAttribute);
 
                     Thread.Sleep((int)playbackSpeedRational);
@@ -616,28 +617,25 @@ namespace FlightSimulatorApp.Model
             }
         }
 
-        private string currentAttribute = "";
+        private string currentAttribute;
         public string CurrentAttribute
         {
             get { return this.currentAttribute; }
             set
             {
                 this.currentAttribute = value;
-                NotifyPropertyChanged("CurrentAttribute");
-                //new Thread(delegate ()
-                //{
                 findCorrelativeAttribute(this.currentAttribute);
-                //}).Start();
+                NotifyPropertyChanged("CurrentAttribute");
             }
         }
 
-        private string currentCorrelativeAttribute = "";
+        private string currentCorrelativeAttribute;
         public string CurrentCorrelativeAttribute
         {
-            get { return this.currentCorrelativeAttribute; }
+            get { return currentCorrelativeAttribute; }
             set
             {
-                this.currentCorrelativeAttribute = value;
+                currentCorrelativeAttribute = value;
                 NotifyPropertyChanged("CurrentCorrelativeAttribute");
             }
         }
@@ -648,7 +646,7 @@ namespace FlightSimulatorApp.Model
             get { return this.dataPointsListToCorrelative; }
             set
             {
-                this.dataPointsListToCorrelative = value;
+                dataPointsList = value;
                 NotifyPropertyChanged("DataPointsListToCorrelative");
             }
         }
