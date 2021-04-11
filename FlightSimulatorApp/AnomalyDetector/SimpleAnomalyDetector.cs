@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -136,24 +137,69 @@ public class SimpleAnomalyDetector : TimeSeriesAnomalyDetector
         return cf;
     }
 
-    public string findMostCorrelated(string original, string csvPath)
+    public string findMostCorrelated(string original, string csvPath, Dictionary<int, string> xmlDict)
     {
-        SimpleAnomalyDetector ad = new SimpleAnomalyDetector((float)0.5);
+        AddHeader(csvPath, xmlDict);
         Timeseries ts = new Timeseries(csvPath);
-        ad.learnNormal(ts);
-        List<correlatedFeatures> cf = ad.getNormalModel();
-        foreach (correlatedFeatures cor in cf)
+
+
+
+
+        SimpleAnomalyDetector ad = new SimpleAnomalyDetector((float)0.5);
+                
+                ad.learnNormal(ts);
+                List<correlatedFeatures> cf = ad.getNormalModel();
+                foreach (correlatedFeatures cor in cf)
+                {
+                    if (cor.feature1.Equals(original) == true)
+                    {
+                        return cor.feature2;
+                    }
+                    if (cor.feature2.Equals(original) == true)
+                    {
+                        return cor.feature1;
+                    }
+                }
+                return "";
+    }
+
+    private void AddHeader(string csvPath, Dictionary<int, string> xmlDict)
+    {
+        string tempFilename = "temp.csv";
+        bool toCopy = false;
+
+        string header = "";
+
+        for (int i = 0; i < xmlDict.Count; i++)
         {
-            if (cor.feature1.Equals(original) == true)
+            header = header + "," +xmlDict[i];
+        }
+
+        using (var sw = new StreamWriter(tempFilename, false))
+        {
+            //check if header exists
+            using (var sr = new StreamReader(csvPath))
             {
-                return cor.feature2;
-            }
-            if (cor.feature2.Equals(original) == true)
-            {
-                return cor.feature1;
+                var line = sr.ReadLine(); // first line
+                if (line != null && line != header) // check header exists
+                {
+                    toCopy = true; // need copy temp file to your original csv
+
+                    // write your header into the temp file
+                    sw.WriteLine(header);
+
+                    while (line != null)
+                    {
+                        sw.WriteLine(line);
+                        line = sr.ReadLine();
+                    }
+                }
             }
         }
-        return "";
+
+        if (toCopy)
+            File.Copy(tempFilename, csvPath, true);
+        File.Delete(tempFilename);
     }
 }
 
