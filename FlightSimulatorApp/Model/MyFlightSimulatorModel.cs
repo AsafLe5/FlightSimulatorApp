@@ -519,7 +519,7 @@ namespace FlightSimulatorApp.Model
         private void findCorrelativeAttribute(string attribute)
         {
             SimpleAnomalyDetector smp = new SimpleAnomalyDetector((float)0.5);
-            CurrentCorrelativeAttribute = smp.findMostCorrelated(attribute, this.csvPath);
+            CurrentCorrelativeAttribute = smp.findMostCorrelated(attribute, this.csvPath, this.xmlDict);
         }
 
         private List<DataPoint> dataPointsList = new List<DataPoint>();
