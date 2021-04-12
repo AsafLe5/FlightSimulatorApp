@@ -45,5 +45,9 @@ namespace FlightSimulatorApp.Views
 
         #endregion
 
+        private void rudderSlider_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
     }
 }

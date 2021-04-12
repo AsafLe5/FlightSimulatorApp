@@ -76,6 +76,7 @@
                     Maximum="1"
                     Minimum="0"
                     RenderTransformOrigin="0.5,0.5"
+                    IsEnabled="False"
                     Style="{StaticResource sliderColorDarker}"
                     Value="{Binding VM_ThrottleCurrentValue, Mode=OneWay}">
                     <Slider.RenderTransform>
@@ -261,6 +262,7 @@
                 VerticalAlignment="Top"
                 Maximum="2"
                 Minimum="0"
+                IsEnabled="False"
                 Style="{StaticResource sliderColorDarker}"
                 Value="{Binding VM_RudderCurrentValue, Mode=OneWay}" />
             <!--
