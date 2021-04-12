@@ -173,5 +173,8 @@
     <Resource Include="Images\sort_right_24px.png" />
     <Resource Include="Images\stop_24px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pause_24px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
