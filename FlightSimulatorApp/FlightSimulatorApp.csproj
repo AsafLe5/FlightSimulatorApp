@@ -162,30 +162,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\empty_box_button.png" />
-    <Resource Include="Images\end_64px.png" />
-    <Resource Include="Images\fast_forward_left.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\fast_forward_right.png" />
-    <Resource Include="open_button.png" />
-    <Resource Include="Images\pause_64px.png" />
-    <Resource Include="Images\play_64px.png" />
-    <Resource Include="Images\rocket_button.png" />
-    <Resource Include="Images\skip_to_start_64px.png" />
-    <Resource Include="Images\start_button.png" />
-    <Resource Include="Images\stop_64px.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\background1.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="end_64px.png" />
-    <Resource Include="fast_forward_64px.png" />
-    <Resource Include="pause_64px.png" />
-    <Resource Include="play_64px.png" />
-    <Resource Include="skip_to_start_64px.png" />
-    <Resource Include="stop_64px.png" />
+    <Resource Include="Images\end_64px.png" />
+    <Resource Include="Images\fast_forward_64px.png" />
+    <Resource Include="Images\open_button.png" />
+    <Resource Include="Images\pause_64px.png" />
+    <Resource Include="Images\play_64px.png" />
+    <Resource Include="Images\skip_to_start_64px.png" />
+    <Resource Include="Images\stop_64px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
