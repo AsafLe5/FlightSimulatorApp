@@ -162,7 +162,7 @@
                     Foreground="{x:Null}"
                     Maximum="{Binding VM_CSVLinesNumber, Mode=OneWay}"
                     Minimum="0"
-                    Style="{StaticResource sliderColor}"
+                    Style="{StaticResource sliderColorDarker}"
                     Value="{Binding VM_CurrentLineIndex, Mode=TwoWay}" />
             </Grid>
             <Grid Grid.Column="2">

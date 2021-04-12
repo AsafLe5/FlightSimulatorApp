@@ -36,11 +36,6 @@
         </Style.Triggers>
     </Style>-->
 
-    <!--  style the slider in lighter color  -->
-    <Style x:Key="sliderColor" TargetType="{x:Type Slider}">
-        <Setter Property="ScrollViewer.Background" Value="LightCyan" />
-    </Style>
-
     <!--  style the slider in darker color  -->
     <Style x:Key="sliderColorDarker" TargetType="{x:Type Slider}">
         <Setter Property="ScrollViewer.Background" Value="DarkGray" />
