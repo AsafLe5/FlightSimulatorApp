@@ -87,6 +87,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
+                    Style="{StaticResource TransparentTextBox}"
                     Text="{Binding VM_CurrentAltimeter, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Grid>
@@ -98,6 +99,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
+                    Style="{StaticResource TransparentTextBox}"
                     Text="{Binding VM_CurrentAirSpeed, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Grid>
@@ -109,6 +111,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
+                    Style="{StaticResource TransparentTextBox}"
                     Text="{Binding VM_CurrentHeading, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Grid>
@@ -120,6 +123,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
+                    Style="{StaticResource TransparentTextBox}"
                     Text="{Binding VM_CurrentPitch, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Grid>
@@ -131,6 +135,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
+                    Style="{StaticResource TransparentTextBox}"
                     Text="{Binding VM_CurrentRoll, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Grid>
@@ -142,6 +147,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
+                    Style="{StaticResource TransparentTextBox}"
                     Text="{Binding VM_CurrentYaw, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Grid>

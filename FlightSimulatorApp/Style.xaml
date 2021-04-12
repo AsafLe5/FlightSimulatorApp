@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <!--  style text boxes  -->
     <Style x:Key="TransparentTextBox" TargetType="TextBox">
-        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Background" Value="#9A909090" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="FontSize" Value="16" />
@@ -15,30 +16,44 @@
         <Setter Property="Background" Value="#feff" />
     </Style>
 
-    <!--  style the button in rounded shape  -->
+    <!--  style the button in rounded shape  --><!--
     <Style x:Key="roundedCornersButton" TargetType="Button">
         <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="5" />
             </Style>
         </Style.Resources>
-        <Setter Property="BorderThickness" Value="5" />
-        <Setter Property="Opacity" Value="0.8" />
-        <Setter Property="Background" Value="BlanchedAlmond" />
-    </Style>
-
-    <!--<Style x:Key="mouseOver" TargetType="{x:Type Button}">
-        <Setter Property="Button.Visibility" Value="Collapsed"></Setter>
+        <Setter Property="BorderThickness" Value="8" />
+        <Setter Property="Opacity" Value="0.7" />
+        <Setter Property="Background" Value="Black" />
+    </Style>-->
+    <!--<Style  x:Key="roundedCornersButton" TargetType="Button">
+        <Setter Property="Control.BorderBrush" Value="{x:Null}" />
         <Style.Triggers>
-            <DataTrigger Binding="{Binding ElementName=MyBorder, Path=IsMouseOver}" Value="true">
-                <Setter Property="Button.Visibility" Value="Visible"></Setter>
-            </DataTrigger>
+            <Trigger Property="Control.IsMouseOver" Value="True">
+                <Setter Property="Control.BorderBrush" Value="{x:Null}" />
+            </Trigger>
         </Style.Triggers>
     </Style>-->
 
+    <<!--Style x:Key="roundedCornersButton" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="4"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+    
     <!--  style the slider in darker color  -->
     <Style x:Key="sliderColorDarker" TargetType="{x:Type Slider}">
-        <Setter Property="ScrollViewer.Background" Value="DarkGray" />
+        <Setter Property="ScrollViewer.Background" Value="#9A909090" />
     </Style>
 
     <!--  set the font  -->
@@ -50,4 +65,14 @@
     <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type Label}" />
     <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type ListView}" />
 
+    <!--<Style x:Key="mouseOver" TargetType="{x:Type Button}">
+        <Setter Property="Button.Visibility" Value="Collapsed"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=MyBorder, Path=IsMouseOver}" Value="true">
+                <Setter Property="Button.Visibility" Value="Visible"/>
+                <Setter Property="Background" Value="Black"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>-->
+    
 </ResourceDictionary>
