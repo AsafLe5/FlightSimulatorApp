@@ -28,109 +28,10 @@
                     <RowDefinition Height="3*" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0">
-                                <!--  upload train CSV button  -->
-                                <Button
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Background="#00FF"
-                                    BorderThickness="0,0,0,0"
-                                    Content="upload train CSV file" />
-                            </Grid>
-                            <Grid Grid.Column="1">
-                                <!--  train Text box  -->
-                                <TextBox
-                                    HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Center"
-                                    IsReadOnly="True"
-                                    Text=""
-                                    TextWrapping="Wrap" />
-                            </Grid>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0">
-                                <!--  upload text CSV button  -->
-                                <Button
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Background="#00FF"
-                                    BorderThickness="0,0,0,0"
-                                    Content="upload text CSV file" />
-                            </Grid>
-                            <Grid Grid.Column="1">
-                                <!--  text Text box  -->
-                                <TextBox
-                                    Grid.Column="1"
-                                    HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Center"
-                                    IsReadOnly="True"
-                                    Text=""
-                                    TextWrapping="Wrap" />
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0">
-                                <!--  start online mode button  -->
-                                <Button
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Background="#00FF"
-                                    BorderThickness="0,0,0,0"
-                                    Content="start online mode" />
-                            </Grid>
-                            <Grid Grid.Column="1">
-                                <!--  start offline mode button  -->
-                                <Button
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Background="#00FF"
-                                    BorderThickness="0,0,0,0"
-                                    Content="start offline mode" />
-                            </Grid>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0">
-                                <!--  show instructions button  -->
-                                <Button
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Background="#00FF"
-                                    BorderThickness="0,0,0,0"
-                                    Content="show instructions" />
-                            </Grid>
-                        </Grid>
+                    <!--  Start Menu  -->
+                    <Grid>
+                        <Border Style="{StaticResource roundedCornersBorder}" />
+                        <contorls:StartMenuView x:Name="startMenuControl"/>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="1">
@@ -157,7 +58,7 @@
             <Grid Grid.Column="1">
                 <!--  Graph  -->
                 <Border Style="{StaticResource roundedCornersBorder}" />
-                <contorls:GraphView x:Name="graphControl" Loaded="graphControl_Loaded" />
+                <contorls:GraphView x:Name="graphControl"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="1">

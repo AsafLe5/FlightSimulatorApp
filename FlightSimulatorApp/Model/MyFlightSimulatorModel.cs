@@ -180,7 +180,7 @@ namespace FlightSimulatorApp.Model
                 DataPoint dp = new DataPoint(Double.Parse(value), this.currentLineIndex);
                 this.regrationPoints.Add(dp);
             }
-            
+
         }
 
         #endregion
@@ -587,7 +587,6 @@ namespace FlightSimulatorApp.Model
             int currentAttributeIndex = 0;
 
             currentAttributeIndex = findIndexByAttribute(attribute);
-
             for (int i = 0; i < this.currentLineIndex; i++)
             {
                 currentList.Add(new DataPoint(i, Convert.ToDouble(csvDict[currentAttributeIndex][i])));
@@ -666,7 +665,7 @@ namespace FlightSimulatorApp.Model
                     return i;
                 }
             }
-            return -1;
+            return 0;
         }
     }
 }

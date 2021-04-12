@@ -14,8 +14,8 @@
         <Setter Property="Background" Value="LightBlue" />
     </Style>
 
-  
-    
+
+
     <Style x:Key="roundedCornersButton" TargetType="Button">
         <Style.Resources>
             <Style TargetType="Border">
@@ -28,19 +28,23 @@
     </Style>
 
     <Style x:Key="DecreaseSliderButtonStyle" TargetType="{x:Type RepeatButton}">
-        <Setter Property="SnapsToDevicePixels" Value="true"/>
-        <Setter Property="OverridesDefaultStyle" Value="true"/>
-        <Setter Property="IsTabStop" Value="false"/>
-        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="IsTabStop" Value="false" />
+        <Setter Property="Focusable" Value="false" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Border Height="12" Background="DimGray" CornerRadius="6" Margin="0,0,-12,0" />
+                    <Border
+                        Height="12"
+                        Margin="0,0,-12,0"
+                        Background="DimGray"
+                        CornerRadius="6" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="sliderColor" TargetType="{x:Type Slider}">
         <Setter Property="ScrollViewer.Background" Value="LightCyan" />
     </Style>
@@ -50,8 +54,8 @@
     </Style>
 
 
-    <Style x:Key="biggerFont" TargetType="{x:Type FontSizeConverter">
+    <!--<Style x:Key="biggerFont" TargetType="{x:Type FontSizeConverter">
         <Setter Property="PresentationTraceSources.TraceLevel" Value="Medium" />
-    </Style>
-    
+    </Style>-->
+
 </ResourceDictionary>

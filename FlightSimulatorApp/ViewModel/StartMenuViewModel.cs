@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FlightSimulatorApp.Model;
 
-using System.ComponentModel;
-
 namespace FlightSimulatorApp.ViewModel
 {
-    public class FlightSimulatorViewModel : INotifyPropertyChanged
+    public class StartMenuViewModel : INotifyPropertyChanged
     {
         #region CTOR and INPC
 
         IFlightSimulatorModel model;
 
-        public FlightSimulatorViewModel(IFlightSimulatorModel model)
+        public StartMenuViewModel(IFlightSimulatorModel model)
         {
             this.model = model;
             this.model.PropertyChanged +=
@@ -50,10 +49,6 @@ namespace FlightSimulatorApp.ViewModel
         {
             model.start();
         }
-
-        #endregion
-
-        #region Start Menu
 
         #endregion
     }

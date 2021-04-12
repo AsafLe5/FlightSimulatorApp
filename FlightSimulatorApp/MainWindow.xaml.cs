@@ -28,12 +28,11 @@ namespace FlightSimulatorApp
 
         MyFlightSimulatorModel flightSimulatorModel;
 
-        FlightSimulatorViewModel flightSimulatorViewModel;
-
         DataDisplayViewModel dataDisplayViewModel;
         GraphViewModel graphViewModel;
         JoystickViewModel joystickViewModel;
         MediaViewModel mediaViewModel;
+        StartMenuViewModel startMenuViewModel;
 
         public MainWindow()
         {
@@ -52,38 +51,11 @@ namespace FlightSimulatorApp
             mediaViewModel = new MediaViewModel(flightSimulatorModel);
             mediaPanelControl.MediaVM = mediaViewModel;
 
-            flightSimulatorViewModel = new FlightSimulatorViewModel(flightSimulatorModel);
-            DataContext = flightSimulatorViewModel;
-        }
-
-        #endregion
-
-        #region Start and Open
-
-        private void onStart(object sender, RoutedEventArgs e)
-        {
-            flightSimulatorViewModel.connect();
-            flightSimulatorViewModel.start();
-        }
-
-        private void onOpenCSV(object sender, RoutedEventArgs e)
-        {
-            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
-
-            bool? response = openFileDialog.ShowDialog();
-
-            if (response == true)
-            {
-                flightSimulatorViewModel.updateCSVPath(openFileDialog.FileName);
-            }
+            startMenuViewModel = new StartMenuViewModel(flightSimulatorModel);
+            startMenuControl.StartMenuVM = startMenuViewModel;
 
         }
 
         #endregion
-
-        private void graphControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

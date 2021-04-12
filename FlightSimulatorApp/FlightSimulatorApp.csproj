@@ -75,10 +75,10 @@
     <Compile Include="Model\MyFlightSimulatorModel.cs" />
     <Compile Include="Model\IFlightSimulatorModel.cs" />
     <Compile Include="ViewModel\DataDisplayViewModel.cs" />
-    <Compile Include="ViewModel\FlightSimulatorViewModel.cs" />
     <Compile Include="ViewModel\GraphViewModel.cs" />
     <Compile Include="ViewModel\JoystickViewModel.cs" />
     <Compile Include="ViewModel\MediaViewModel.cs" />
+    <Compile Include="ViewModel\StartMenuViewModel.cs" />
     <Compile Include="Views\DataDisplayView.xaml.cs">
       <DependentUpon>DataDisplayView.xaml</DependentUpon>
     </Compile>
@@ -90,6 +90,9 @@
     </Compile>
     <Compile Include="Views\MediaPanelView.xaml.cs">
       <DependentUpon>MediaPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StartMenuView.xaml.cs">
+      <DependentUpon>StartMenuView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -122,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MediaPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StartMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
