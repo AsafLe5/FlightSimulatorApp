@@ -51,7 +51,7 @@
                             <!--  Attribute's Graph  -->
                             <oxy:Plot
                                 x:Name="AttributesGraph"
-                                Title="{Binding VM_CurrentAttribute}" 
+                                Title="{Binding VM_CurrentAttribute}"
                                 Background="Transparent">
                                 <oxy:Plot.Series>
                                     <oxy:LineSeries
@@ -81,10 +81,10 @@
                             <oxy:Plot Title="{Binding VM_CurrentCorrelativeAttribute}" Background="Transparent">
                                 <oxy:Plot.Series>
                                     <oxy:LineSeries
-                                Background="Transparent"
-                                DataFieldX="X"
-                                DataFieldY="Y"
-                                ItemsSource="{Binding VM_DataPointsListToCorrelative}" />
+                                        Background="Transparent"
+                                        DataFieldX="X"
+                                        DataFieldY="Y"
+                                        ItemsSource="{Binding VM_DataPointsListToCorrelative}" />
                                 </oxy:Plot.Series>
                             </oxy:Plot>
                         </Grid>
@@ -106,20 +106,27 @@
                     <Grid Grid.Column="1">
                         <!--  Linear Graph of regression points (user story 8?)  -->
                         <oxy:Plot
-                    x:Name="LinearRegressionGraph"
-                    Title=""
-                    Background="Transparent">
+                            x:Name="LinearRegressionGraph"
+                            Title="Linear Regression Graph"
+                            Background="Transparent">
+                            <oxy:Plot.Annotations>
+                                <oxy:LineAnnotation Intercept="{Binding VM_LineIntercept}" Slope="{Binding VM_LineSlope}" />
+                            </oxy:Plot.Annotations>
                             <oxy:Plot.Series>
-                                <oxy:LineSeries
-                            Background="Transparent"
-                            DataFieldX="X"
-                            DataFieldY="Y"
-                            ItemsSource="{Binding VM_RegressionDataPointsList}" />
+                                <oxy:ScatterErrorSeries
+                                    Background="Transparent"
+                                    DataFieldX="X"
+                                    DataFieldY="Y"
+                                    ItemsSource="{Binding VM_RegressionDataPointsList}"
+                                    MarkerSize="2"
+                                    Color="Black" />
                             </oxy:Plot.Series>
+
                         </oxy:Plot>
                     </Grid>
                 </Grid>
             </Grid>
         </Grid>
+
     </Grid>
 </UserControl>

@@ -80,6 +80,11 @@ namespace FlightSimulatorApp.Model
         string CurrentCorrelativeAttribute { set; get; }
         List<DataPoint> DataPointsListToCorrelative { set; get; }
 
+        List<DataPoint> RegressionDataPointsList { set; get; }
+
+        float LineIntercept { set; get; }
+        float LineSlope { set; get; }
+
         #endregion
 
         #region Start Menu

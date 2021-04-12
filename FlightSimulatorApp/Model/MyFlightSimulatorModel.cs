@@ -95,6 +95,13 @@ namespace FlightSimulatorApp.Model
                     // What if there is no most correlative by pearson?
                     DataPointsListToCorrelative = RenderDataPointsList(this.CurrentCorrelativeAttribute);
 
+                    RegressionDataPointsList = getRegressionPoints();
+
+                    calcLineOfCurrentAttribute();
+
+                    LineIntercept = getIntercept();
+                    LineSlope = getSlope();
+
                     Thread.Sleep((int)playbackSpeedRational);
 
                 }
@@ -182,19 +189,24 @@ namespace FlightSimulatorApp.Model
 
         #endregion
 
-        #region Regration
+        #region Regrassion
 
-        private List<DataPoint> regrationPoints = new List<DataPoint>();
-        private void getRegrationPoints()
+        //private List<DataPoint> regressionPoints = new List<DataPoint>();
+        private List<DataPoint> getRegressionPoints()
         {
-            int numberOfPointsInThirtySeaconds = this.playbackSpeed * 10 * 30;
-            int i = Math.Max(0, regrationPoints.Count - numberOfPointsInThirtySeaconds);
-/*            for (; i < regrationPoints.Count; ++i)
-            {
-                string value = this.csvDict[findIndexByAttribute(this.CurrentAttribute)][this.currentLineIndex];
-                DataPoint dp = new DataPoint(Double.Parse(value), this.currentLineIndex);
-                this.regrationPoints.Add(dp);
-            }*/
+            List<DataPoint> regressionList = new List<DataPoint>();
+            /*
+             int numberOfPointsInThirtySeaconds = this.playbackSpeed * 10 * 30;
+             int i = Math.Max(0, dataPointsList.Count - numberOfPointsInThirtySeaconds);
+             for (; i < dataPointsList.Count; ++i)
+             {
+                 string value = this.csvDict[findIndexByAttribute(this.CurrentAttribute)][this.currentLineIndex];
+                 DataPoint dp = new DataPoint(Double.Parse(value), this.currentLineIndex);
+                 regressionList.Add(dp);
+             }*/
+
+            regressionList = dataPointsList;
+            return regressionList;
 
         }
 
@@ -623,7 +635,6 @@ namespace FlightSimulatorApp.Model
                 if (corf.feature2.Equals(attribute))
                     CurrentCorrelativeAttribute = corf.feature1;
             }
-            //Console.WriteLine("CurrentCorrelativeAttribute: " + CurrentCorrelativeAttribute);
 
         }
 
@@ -670,6 +681,65 @@ namespace FlightSimulatorApp.Model
                 this.dataPointsListToCorrelative = value;
                 NotifyPropertyChanged("DataPointsListToCorrelative");
             }
+        }
+
+        private List<DataPoint> regressionDataPointsList = new List<DataPoint>();
+        public List<DataPoint> RegressionDataPointsList
+        {
+            get { return this.regressionDataPointsList; }
+            set
+            {
+                this.regressionDataPointsList = value;
+                NotifyPropertyChanged("RegressionDataPointsList");
+            }
+        }
+
+        private float lineIntercept;
+        public float LineIntercept
+        {
+            get { return this.lineIntercept; }
+            set
+            {
+                lineIntercept = value;
+                NotifyPropertyChanged("LineIntercept");
+            }
+        }
+
+        private float lineSlope;
+        public float LineSlope
+        {
+            get { return this.lineSlope; }
+            set
+            {
+                lineSlope = value;
+                NotifyPropertyChanged("LineSlope");
+            }
+        }
+
+        private AnomalyDetector.Line PointsLine;
+        private void calcLineOfCurrentAttribute()
+        {
+            anomaly_detection_util adu = new anomaly_detection_util();
+
+            AnomalyDetector.Point[] pointsList = new AnomalyDetector.Point[dataPointsList.Count];
+            //= dataPointsList.ToList<Point>();
+            int i;
+            for (i = 0; i < dataPointsList.Count; i++)
+            {
+                AnomalyDetector.Point point = new AnomalyDetector.Point((float)dataPointsList[i].X, (float)dataPointsList[i].Y);
+                pointsList[i] = point;
+            }
+            PointsLine = adu.linear_reg(pointsList, i);
+        }
+
+        private float getSlope()
+        {
+            return PointsLine.a;
+        }
+
+        private float getIntercept()
+        {
+            return PointsLine.a;
         }
 
         public int findIndexByAttribute(string attribute)

@@ -62,10 +62,8 @@ namespace FlightSimulatorApp.ViewModel
 
         public List<DataPoint> VM_DataPointsListToCorrelative
         {
-
             get
             {
-                //Console.WriteLine(this.model.DataPointsListToCorrelative);
                 return this.model.DataPointsListToCorrelative; }
         }
 
@@ -73,6 +71,28 @@ namespace FlightSimulatorApp.ViewModel
         {
             get { return this.model.CurrentCorrelativeAttribute; }
         }
+
+        #endregion
+
+        #region Linear Regression Graph Properties
+
+        public List<DataPoint> VM_RegressionDataPointsList
+        {
+            get
+            {
+                return this.model.RegressionDataPointsList;
+            }
+        }
+
+        public float VM_LineSlope
+        {
+            get { return this.model.LineSlope; }
+        }
+        public float VM_LineIntercept
+        {
+            get { return this.model.LineIntercept; }
+        }
+
 
         #endregion
     }
