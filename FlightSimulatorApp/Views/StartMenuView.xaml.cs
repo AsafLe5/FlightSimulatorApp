@@ -70,6 +70,16 @@ namespace FlightSimulatorApp.Views
                 startMenuVM.updateCSVPath(openFileDialog.FileName);
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = new CheckBox();
+      
+           MessageBoxResult result = MessageBox.Show("Welcome to Ilan Bitan instructions Ⓒ", "Instuctions", MessageBoxButton.OK);
+            while (cb.IsChecked == null)
+            {
+                continue;
+            }
+        }
     }
 
     #endregion
