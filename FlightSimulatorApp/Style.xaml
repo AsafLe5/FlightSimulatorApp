@@ -48,4 +48,10 @@
     <Style x:Key="sliderColorDarker" TargetType="{x:Type Slider}">
         <Setter Property="ScrollViewer.Background" Value="DarkGray" />
     </Style>
+
+
+    <Style x:Key="biggerFont" TargetType="{x:Type FontSizeConverter">
+        <Setter Property="PresentationTraceSources.TraceLevel" Value="Medium" />
+    </Style>
+    
 </ResourceDictionary>

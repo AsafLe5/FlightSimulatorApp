@@ -55,7 +55,7 @@
                 <Label
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Content="Roll:"/>
+                    Content="Roll:" />
             </Grid>
             <Grid Grid.Row="5">
                 <!--  Yaw lable  -->
@@ -75,46 +75,58 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <!--  CurrectAltimeter lable  -->
-                <Label
+                <!--  CurrectAltimeter unchangeable text box  -->
+                <TextBox
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Content="{Binding VM_CurrentAltimeter, Mode=OneWay}" />
+                    IsReadOnly="True"
+                    Text=""
+                    TextWrapping="Wrap" Margin="10,16" Width="80" />
             </Grid>
             <Grid Grid.Row="1">
-                <!--  CurrectAirSpeed lable  -->
-                <Label
+                <!--  CurrectAirSpeed unchangeable text box  -->
+                <TextBox
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Content="{Binding VM_CurrentAirSpeed, Mode=OneWay}" />
+                    IsReadOnly="True"
+                    Text=""
+                    TextWrapping="Wrap" Margin="10,16" Width="80" />
             </Grid>
             <Grid Grid.Row="2">
-                <!--  CurrectHeading lable  -->
-                <Label
+                <!--  CurrectHeading unchangeable text box  -->
+                <TextBox
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Content="{Binding VM_CurrentHeading, Mode=OneWay}" />
+                    IsReadOnly="True"
+                    Text=""
+                    TextWrapping="Wrap" Margin="10,16" Width="80" />
             </Grid>
             <Grid Grid.Row="3">
-                <!--  CurrectPitch lable  -->
-                <Label
+                <!--  CurrectPitch unchangeable text box  -->
+                <TextBox
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Content="{Binding VM_CurrentPitch, Mode=OneWay}" />
+                    IsReadOnly="True"
+                    Text=""
+                    TextWrapping="Wrap" Margin="10,16" Width="80" />
             </Grid>
             <Grid Grid.Row="4">
-                <!--  CurrectRollLabel lable  -->
-                <Label
+                <!--  CurrectRollLabel unchangeable text box  -->
+                <TextBox
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Content="{Binding VM_CurrentRoll, Mode=OneWay}" />
+                    IsReadOnly="True"
+                    Text=""
+                    TextWrapping="Wrap" Margin="10,16" Width="80" />
             </Grid>
             <Grid Grid.Row="5">
-                <!--  CurrectYaw lable  -->
-                <Label
+                <!--  CurrectYaw unchangeable text box  -->
+                <TextBox
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Content="{Binding VM_CurrentYaw, Mode=OneWay}" />
+                    IsReadOnly="True"
+                    Text=""
+                    TextWrapping="Wrap" Margin="10,16" Width="80" />
             </Grid>
         </Grid>
     </Grid>

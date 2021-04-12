@@ -80,5 +80,10 @@ namespace FlightSimulatorApp
         }
 
         #endregion
+
+        private void graphControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

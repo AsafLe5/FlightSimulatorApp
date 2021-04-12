@@ -157,7 +157,7 @@
             <Grid Grid.Column="1">
                 <!--  Graph  -->
                 <Border Style="{StaticResource roundedCornersBorder}" />
-                <contorls:GraphView x:Name="graphControl" />
+                <contorls:GraphView x:Name="graphControl" Loaded="graphControl_Loaded" />
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
