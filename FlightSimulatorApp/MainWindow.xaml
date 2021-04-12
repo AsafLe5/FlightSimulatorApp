@@ -15,6 +15,7 @@
     <Window.Background>
         <ImageBrush ImageSource="/FlightSimulatorApp;component/Images/background1.jpeg" Stretch="Fill" />
     </Window.Background>
+    
     <Grid>
 
         <Grid.RowDefinitions>
@@ -47,6 +48,7 @@
                         <!--  JoyStick  -->
                         <Grid>
                             <Border Style="{StaticResource roundedCornersBorder}" />
+                            
                             <contorls:JoystickView x:Name="joystickControl" Margin="0,0,0,0" />
                         </Grid>
                     </Grid>
