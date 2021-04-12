@@ -119,8 +119,8 @@
                     Width="97"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    FontSize="18"
                     Content="Play speed:"
+                    FontSize="18"
                     RenderTransformOrigin="-0.758,0.218" />
             </Grid>
             <Grid Grid.Column="9">
@@ -135,7 +135,7 @@
                     Value="{Binding VM_PlaybackSpeed, Mode=TwoWay}" />
             </Grid>
             <Grid Grid.Column="10">
-                <!-- text box  -->
+                <!--  text box  -->
                 <TextBox
                     Width="80"
                     Margin="10,16"
@@ -145,11 +145,11 @@
                     TextWrapping="Wrap" />
             </Grid>
         </Grid>
-        <Grid Grid.Row="1" >
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="7*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
                 <!--  time line slider  -->
@@ -157,10 +157,12 @@
                     x:Name="Timeline"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
-                    Style="{StaticResource sliderColor}" 
+                    BorderBrush="{x:Null}"
+                    Foreground="{x:Null}"
                     Maximum="{Binding VM_CSVLinesNumber, Mode=OneWay}"
                     Minimum="0"
-                    Value="{Binding VM_CurrentLineIndex, Mode=TwoWay}" Foreground="{x:Null}" BorderBrush="{x:Null}" />
+                    Style="{StaticResource sliderColor}"
+                    Value="{Binding VM_CurrentLineIndex, Mode=TwoWay}" />
             </Grid>
             <Grid Grid.Column="2">
                 <!--  time line text box  -->
@@ -169,7 +171,10 @@
                     Margin="10,16"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Stretch"
-                    Text="{Binding VM_CurrentAltimeter, Mode=OneWay}"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    FontSize="8"
+                    Text="Bind Time"
                     TextWrapping="Wrap" />
             </Grid>
         </Grid>

@@ -87,6 +87,8 @@ namespace FlightSimulatorApp.Model
 
         bool IsOnline { set; get; }
 
+        string Time { set; get; }
+
         void updateTrainCSVPath(string csvPath);
 
         void updateTestCSVPath(string csvPath);

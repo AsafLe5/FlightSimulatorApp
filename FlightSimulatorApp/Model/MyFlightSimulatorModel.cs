@@ -73,23 +73,34 @@ namespace FlightSimulatorApp.Model
                     }
 
                     // Keeping the animation running
-                    if (this.CurrentLineIndex < this.csvLinesNumber && !playbackSpeedZero && !isPaused)
+                    if (this.currentLineIndex < this.csvLinesNumber && !playbackSpeedZero && !isPaused)
                     {
                         if (this.isOnline)
                         {
                             telnetClient.write(this.csvLines[this.currentLineIndex]);
                         }
+
+                        // In Function
                         AileronCurrentValue = (float)Convert.ToDouble(this.csvDict[0][this.currentLineIndex]);
                         ElevatorCurrentValue = (float)Convert.ToDouble(this.csvDict[1][this.currentLineIndex]);
                         ThrottleCurrentValue = (float)Convert.ToDouble(this.csvDict[6][this.currentLineIndex]);
                         RudderCurrentValue = (float)Convert.ToDouble(this.csvDict[2][this.currentLineIndex]);
+                        //
+
+                        // In Function
                         CurrentAltimeter = (float)Convert.ToDouble(this.csvDict[24][this.currentLineIndex]);
                         CurrentAirSpeed = (float)Convert.ToDouble(this.csvDict[20][this.currentLineIndex]);
                         CurrentHeading = (float)Convert.ToDouble(this.csvDict[18][this.currentLineIndex]);
-                        CurrentPitch = (float)Convert.ToDouble(this.csvDict[17][this.CurrentLineIndex]);
-                        CurrentRoll = (float)Convert.ToDouble(this.csvDict[16][this.CurrentLineIndex]);
+                        CurrentPitch = (float)Convert.ToDouble(this.csvDict[17][this.currentLineIndex]);
+                        CurrentRoll = (float)Convert.ToDouble(this.csvDict[16][this.currentLineIndex]);
                         CurrentYaw = (float)Convert.ToDouble(this.csvDict[19][this.currentLineIndex]);
+                        //
+
                         this.CurrentLineIndex += 1;
+
+                        float nTime = this.currentLineIndex / 10;
+                        //Time = TimeSpan.FromSeconds(nTime).ToString();
+                        Time = "asd";
                     }
 
                     DataPointsList = RenderDataPointsList(this.CurrentAttribute);
@@ -117,6 +128,8 @@ namespace FlightSimulatorApp.Model
 
         #endregion
 
+        #region Start Menu
+
         private bool isOnline;
         public bool IsOnline
         {
@@ -128,8 +141,16 @@ namespace FlightSimulatorApp.Model
             }
         }
 
-
-        #region Start Menu
+        private string time;
+        public string Time
+        {
+            get { return time; }
+            set
+            {
+                time = value;
+                NotifyPropertyChanged("Time");
+            }
+        }
 
         #endregion
 
