@@ -111,12 +111,7 @@ namespace FlightSimulatorApp.Model
                     {
 
                         InitiallizeRegression();
-                        RegressionDataPointsList = getRegressionPoints(this.CurrentCorrelativeAttribute);
-
-                        calcLineOfCurrentAttribute();
-
-                        LineIntercept = getIntercept();
-                        LineSlope = getSlope();
+                        
                     }
 
 
@@ -761,6 +756,15 @@ namespace FlightSimulatorApp.Model
         private Dictionary<string, List<Point>> DictRegression;
         private void InitiallizeRegression()
         {
+            for (int i = 0; i < attributesList.Count(); i++)
+            {
+                RegressionDataPointsList = getRegressionPoints(this.CurrentCorrelativeAttribute);
+
+                calcLineOfCurrentAttribute();
+
+                LineIntercept = getIntercept();
+                LineSlope = getSlope();
+            }
 
         }
 
