@@ -166,16 +166,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\back_24px.png" />
-    <Resource Include="Images\collapse_arrow_24px.png" />
     <Resource Include="Images\end_24px.png" />
-    <Resource Include="Images\expand_arrow_24px.png" />
     <Resource Include="Images\forward_24px.png" />
     <Resource Include="Images\skip_to_start_24px.png" />
-    <Resource Include="Images\sort_24px.png" />
-    <Resource Include="Images\sort_down_24px.png" />
     <Resource Include="Images\sort_left_24px.png" />
     <Resource Include="Images\sort_right_24px.png" />
-    <Resource Include="Images\sort_up_24px.png" />
     <Resource Include="Images\stop_24px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -36,7 +36,7 @@
                     Background="#00FF"
                     BorderThickness="0,0,0,0"
                     Click="Skip_To_Start">
-                    <Image Source="/FlightSimulatorApp;component/Images/skip_to_start_64px.png" />
+                    <Image Source="/FlightSimulatorApp;component/Images/skip_to_start_24px.png" />
                 </Button>
             </Grid>
             <Grid Grid.Column="1">
@@ -48,7 +48,7 @@
                     Background="#00FF"
                     BorderThickness="0,0,0,0"
                     Click="Fast_Forward_Left">
-                    <Image Source="/FlightSimulatorApp;component/Images/fast_forward_left.png" />
+                    <Image Source="/FlightSimulatorApp;component/Images/back_24px.png" />
                 </Button>
             </Grid>
             <Grid Grid.Column="2">
@@ -60,7 +60,7 @@
                     Background="#00FF"
                     BorderThickness="0,0,0,0"
                     Click="Play_Button">
-                    <Image Source="/FlightSimulatorApp;component/Images/play_64px.png" />
+                    <Image Source="/FlightSimulatorApp;component/Images/sort_right_24px.png" />
                 </Button>
             </Grid>
             <Grid Grid.Column="3">
@@ -72,7 +72,7 @@
                     Background="#00FF"
                     BorderThickness="0,0,0,0"
                     Click="Pause_Button">
-                    <Image Source="/FlightSimulatorApp;component/Images/pause_64px.png" />
+                    <Image Source="/FlightSimulatorApp;component/Images/end_24px.png" />
                 </Button>
             </Grid>
             <Grid Grid.Column="4">
@@ -84,7 +84,7 @@
                     Background="#00FF"
                     BorderThickness="0,0,0,0"
                     Click="Stop_Button">
-                    <Image Source="/FlightSimulatorApp;component/Images/stop_64px.png" />
+                    <Image Source="/FlightSimulatorApp;component/Images/stop_24px.png" />
                 </Button>
             </Grid>
             <Grid Grid.Column="5">
@@ -96,7 +96,7 @@
                     Background="#00FF"
                     BorderThickness="0,0,0,0"
                     Click="Fast_Forward_Right">
-                    <Image Source="/FlightSimulatorApp;component/Images/fast_forward_right.png" />
+                    <Image Source="/FlightSimulatorApp;component/Images/forward_24px.png" />
                 </Button>
             </Grid>
             <Grid Grid.Column="6">
@@ -108,7 +108,7 @@
                     Background="#00FF"
                     BorderThickness="0,0,0,0"
                     Click="End_Button">
-                    <Image Source="/FlightSimulatorApp;component/Images/end_64px.png" />
+                    <Image Source="/FlightSimulatorApp;component/Images/end_24px.png" />
                 </Button>
             </Grid>
             <Grid Grid.Column="7">
