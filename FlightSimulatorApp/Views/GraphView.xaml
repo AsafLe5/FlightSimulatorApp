@@ -124,9 +124,9 @@
                                     Background="Transparent"
                                     DataFieldX="X"
                                     DataFieldY="Y"
+                                    ItemsSource="{Binding VM_LastRecordsPointsList}"
                                     MarkerSize="2"
-                                    Color="Purple"
-                                    ItemsSource="{Binding VM_LastRecordsPointsList}" />
+                                    Color="Purple" />
                             </oxy:Plot.Series>
 
 
