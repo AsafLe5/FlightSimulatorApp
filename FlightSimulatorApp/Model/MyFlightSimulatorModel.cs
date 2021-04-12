@@ -48,6 +48,7 @@ namespace FlightSimulatorApp.Model
             telnetClient.disconnect();
         }
 
+        bool isInitiallize = false;
         public void start()
         {
 
@@ -95,12 +96,18 @@ namespace FlightSimulatorApp.Model
                     // What if there is no most correlative by pearson?
                     DataPointsListToCorrelative = RenderDataPointsList(this.CurrentCorrelativeAttribute);
 
-                    RegressionDataPointsList = getRegressionPoints();
+                    if (!isInitiallize)
+                    {
 
-                    calcLineOfCurrentAttribute();
+                        InitiallizeRegression();
+                        RegressionDataPointsList = getRegressionPoints(this.CurrentCorrelativeAttribute);
 
-                    LineIntercept = getIntercept();
-                    LineSlope = getSlope();
+                        calcLineOfCurrentAttribute();
+
+                        LineIntercept = getIntercept();
+                        LineSlope = getSlope();
+                    }
+
 
                     Thread.Sleep((int)playbackSpeedRational);
 
@@ -192,10 +199,9 @@ namespace FlightSimulatorApp.Model
 
         #region Regrassion
 
-        //private List<DataPoint> regressionPoints = new List<DataPoint>();
-        private List<DataPoint> getRegressionPoints()
+        private List<DataPoint> regressionList = new List<DataPoint>();
+        private List<DataPoint> getRegressionPoints(string attribute)
         {
-            List<DataPoint> regressionList = new List<DataPoint>();
             /*
              int numberOfPointsInThirtySeaconds = this.playbackSpeed * 10 * 30;
              int i = Math.Max(0, dataPointsList.Count - numberOfPointsInThirtySeaconds);
@@ -205,8 +211,15 @@ namespace FlightSimulatorApp.Model
                  DataPoint dp = new DataPoint(Double.Parse(value), this.currentLineIndex);
                  regressionList.Add(dp);
              }*/
+            this.regressionList = new List<DataPoint>();
 
-            regressionList = dataPointsList;
+            int currentAttributeIndex = 0;
+
+            currentAttributeIndex = findIndexByAttribute(attribute);
+            for (int i = 0; i < this.csvLinesNumber; i++)
+            {
+                regressionList.Add(new DataPoint(i, Convert.ToDouble(csvDict[currentAttributeIndex][i])));
+            }
             return regressionList;
 
         }
@@ -724,17 +737,23 @@ namespace FlightSimulatorApp.Model
             }
         }
 
+        private Dictionary<string, List<Point>> DictRegression;
+        private void InitiallizeRegression()
+        {
+
+        }
+
         private AnomalyDetector.Line PointsLine;
         private void calcLineOfCurrentAttribute()
         {
             anomaly_detection_util adu = new anomaly_detection_util();
 
-            AnomalyDetector.Point[] pointsList = new AnomalyDetector.Point[dataPointsList.Count];
+            AnomalyDetector.Point[] pointsList = new AnomalyDetector.Point[regressionList.Count];
             //= dataPointsList.ToList<Point>();
             int i;
-            for (i = 0; i < dataPointsList.Count; i++)
+            for (i = 0; i < regressionList.Count; i++)
             {
-                AnomalyDetector.Point point = new AnomalyDetector.Point((float)dataPointsList[i].X, (float)dataPointsList[i].Y);
+                AnomalyDetector.Point point = new AnomalyDetector.Point((float)regressionList[i].X, (float)regressionList[i].Y);
                 pointsList[i] = point;
             }
             PointsLine = adu.linear_reg(pointsList, i);
