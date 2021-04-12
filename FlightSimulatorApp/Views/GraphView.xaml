@@ -51,7 +51,7 @@
                             <!--  Attribute's Graph  -->
                             <oxy:Plot
                                 x:Name="AttributesGraph"
-                                Title="{Binding VM_CurrentAttribute}"
+                                Title="{Binding VM_CurrentAttribute}" 
                                 Background="Transparent">
                                 <oxy:Plot.Series>
                                     <oxy:LineSeries

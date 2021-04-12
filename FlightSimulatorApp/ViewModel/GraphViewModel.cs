@@ -62,7 +62,11 @@ namespace FlightSimulatorApp.ViewModel
 
         public List<DataPoint> VM_DataPointsListToCorrelative
         {
-            get { return this.model.DataPointsListToCorrelative; }
+
+            get
+            {
+                //Console.WriteLine(this.model.DataPointsListToCorrelative);
+                return this.model.DataPointsListToCorrelative; }
         }
 
         public string VM_CurrentCorrelativeAttribute

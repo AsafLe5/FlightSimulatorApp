@@ -189,12 +189,12 @@ namespace FlightSimulatorApp.Model
         {
             int numberOfPointsInThirtySeaconds = this.playbackSpeed * 10 * 30;
             int i = Math.Max(0, regrationPoints.Count - numberOfPointsInThirtySeaconds);
-            for (; i < regrationPoints.Count; ++i)
+/*            for (; i < regrationPoints.Count; ++i)
             {
                 string value = this.csvDict[findIndexByAttribute(this.CurrentAttribute)][this.currentLineIndex];
                 DataPoint dp = new DataPoint(Double.Parse(value), this.currentLineIndex);
                 this.regrationPoints.Add(dp);
-            }
+            }*/
 
         }
 
@@ -342,7 +342,7 @@ namespace FlightSimulatorApp.Model
             }
             max = tempMaximunValue;
             min = tempMinimumValue;
-            Console.WriteLine(max.ToString());
+            //Console.WriteLine(max.ToString());
         }
 
         #endregion
@@ -623,6 +623,8 @@ namespace FlightSimulatorApp.Model
                 if (corf.feature2.Equals(attribute))
                     CurrentCorrelativeAttribute = corf.feature1;
             }
+            //Console.WriteLine("CurrentCorrelativeAttribute: " + CurrentCorrelativeAttribute);
+
         }
 
         private List<DataPoint> dataPointsList = new List<DataPoint>();
