@@ -23,9 +23,8 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <!--  Altimeter lable  -->
+                <!--  Altimeter lab  -->
                 <Label
-                    FontSize="18"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Content="Altimeter:" />
@@ -41,7 +40,6 @@
             <Grid Grid.Row="2">
                 <!--  Heading lable  -->
                 <Label
-                    FontSize="18"                                   
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Content="Heading:" />

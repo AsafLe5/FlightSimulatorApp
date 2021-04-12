@@ -61,4 +61,12 @@
         <Setter Property="FontStyle" Value="Normal" />
     </Style>-->
 
+    <Style x:Key="baseStyle" TargetType="{x:Type Control}">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type Button}" />
+    <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type Label}" />
+    <Style BasedOn="{StaticResource baseStyle}" TargetType="{x:Type ListView}" />
+
 </ResourceDictionary>
