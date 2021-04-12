@@ -16,6 +16,7 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -24,10 +25,10 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="5*" />
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
+            <Grid Grid.Column="1">
                 <!--  Skip To Start Button  -->
                 <Button
                     Height="65"
@@ -39,7 +40,7 @@
                     <Image Source="/FlightSimulatorApp;component/Images/skip_to_start_24px.png" />
                 </Button>
             </Grid>
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="2">
                 <!--  fast forward left Button  -->
                 <Button
                     Height="65"
@@ -51,7 +52,7 @@
                     <Image Source="/FlightSimulatorApp;component/Images/back_24px.png" />
                 </Button>
             </Grid>
-            <Grid Grid.Column="2">
+            <Grid Grid.Column="3">
                 <!--  play Button  -->
                 <Button
                     Height="65"
@@ -63,7 +64,7 @@
                     <Image Source="/FlightSimulatorApp;component/Images/sort_right_24px.png" />
                 </Button>
             </Grid>
-            <Grid Grid.Column="3">
+            <Grid Grid.Column="4">
                 <!--  pause Button  -->
                 <Button
                     Height="65"
@@ -72,10 +73,10 @@
                     Background="#00FF"
                     BorderThickness="0,0,0,0"
                     Click="Pause_Button">
-                    <Image Source="/FlightSimulatorApp;component/Images/end_24px.png" />
+                    <Image Source="/FlightSimulatorApp;component/Images/pause_24px.png" />
                 </Button>
             </Grid>
-            <Grid Grid.Column="4">
+            <Grid Grid.Column="5">
                 <!--  stop Button  -->
                 <Button
                     Height="65"
@@ -87,7 +88,7 @@
                     <Image Source="/FlightSimulatorApp;component/Images/stop_24px.png" />
                 </Button>
             </Grid>
-            <Grid Grid.Column="5">
+            <Grid Grid.Column="6">
                 <!--  fast forward right Button  -->
                 <Button
                     Height="65"
@@ -99,7 +100,7 @@
                     <Image Source="/FlightSimulatorApp;component/Images/forward_24px.png" />
                 </Button>
             </Grid>
-            <Grid Grid.Column="6">
+            <Grid Grid.Column="7">
                 <!--  end Button  -->
                 <Button
                     Height="65"
@@ -111,49 +112,66 @@
                     <Image Source="/FlightSimulatorApp;component/Images/end_24px.png" />
                 </Button>
             </Grid>
-            <Grid Grid.Column="7">
+            <Grid Grid.Column="8">
                 <!--  play speed lable  -->
                 <Label
                     x:Name="playSpeedLabel"
                     Width="97"
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     FontSize="18"
-                    Content="Play speed"
+                    Content="Play speed:"
                     RenderTransformOrigin="-0.758,0.218" />
             </Grid>
-            <Grid Grid.Column="8">
+            <Grid Grid.Column="9">
                 <!--  play speed slider  -->
                 <Slider
                     x:Name="playSpeedSlider"
-                    Width="130"
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
                     Maximum="30"
                     Minimum="0"
                     Style="{StaticResource sliderColorDarker}"
                     Value="{Binding VM_PlaybackSpeed, Mode=TwoWay}" />
             </Grid>
-            <Grid Grid.Column="9">
-                <!--  time line lable  -->
-                <Label
-                    x:Name="TimelineLabel"
+            <Grid Grid.Column="10">
+                <!-- text box  -->
+                <TextBox
+                    Width="80"
+                    Margin="10,16"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Content="{Binding VM_CurrentLineIndex, Mode=OneWay}" />
+                    VerticalAlignment="Stretch"
+                    Text="{Binding VM_CurrentAltimeter, Mode=OneWay}"
+                    TextWrapping="Wrap" />
             </Grid>
         </Grid>
         <Grid Grid.Row="1" >
-            <!--  time line slider  -->
-        <Slider
-            x:Name="Timeline"
-            Width="1000"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Style="{StaticResource sliderColor}" 
-            Maximum="{Binding VM_CSVLinesNumber, Mode=OneWay}"
-            Minimum="0"
-            Value="{Binding VM_CurrentLineIndex, Mode=TwoWay}" Foreground="{x:Null}" BorderBrush="{x:Null}" />
-    </Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <!--  time line slider  -->
+                <Slider
+                    x:Name="Timeline"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource sliderColor}" 
+                    Maximum="{Binding VM_CSVLinesNumber, Mode=OneWay}"
+                    Minimum="0"
+                    Value="{Binding VM_CurrentLineIndex, Mode=TwoWay}" Foreground="{x:Null}" BorderBrush="{x:Null}" />
+            </Grid>
+            <Grid Grid.Column="2">
+                <!--  time line text box  -->
+                <TextBox
+                    Width="80"
+                    Margin="10,16"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Stretch"
+                    Text="{Binding VM_CurrentAltimeter, Mode=OneWay}"
+                    TextWrapping="Wrap" />
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>
