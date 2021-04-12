@@ -667,12 +667,11 @@ namespace FlightSimulatorApp.Model
             get { return this.dataPointsListToCorrelative; }
             set
             {
-                dataPointsList = value;
+                this.dataPointsListToCorrelative = value;
                 NotifyPropertyChanged("DataPointsListToCorrelative");
             }
         }
 
-        #endregion
         public int findIndexByAttribute(string attribute)
         {
             for (int i = 0; i < xmlDict.Count; i++)
@@ -684,5 +683,8 @@ namespace FlightSimulatorApp.Model
             }
             return 0;
         }
+
+        #endregion
+
     }
 }
