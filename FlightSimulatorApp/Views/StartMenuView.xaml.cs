@@ -67,14 +67,30 @@ namespace FlightSimulatorApp.Views
             bool? response = openFileDialog.ShowDialog();
 
             if (response == true)
-                startMenuVM.updateCSVPath(openFileDialog.FileName);
+            {
+                trainCSVPathTextbox.Text = openFileDialog.FileName;
+                startMenuVM.updateTrainCSVPath(openFileDialog.FileName);
+            }
+        }
+
+        private void onUploadTestCSVFile(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+
+            bool? response = openFileDialog.ShowDialog();
+
+            if (response == true)
+            {
+                testCSVPathTextbox.Text = openFileDialog.FileName;
+                startMenuVM.updateTestCSVPath(openFileDialog.FileName);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             CheckBox cb = new CheckBox();
-      
-           MessageBoxResult result = MessageBox.Show("Welcome to Ilan Bitan instructions Ⓒ", "Instuctions", MessageBoxButton.OK);
+
+            MessageBoxResult result = MessageBox.Show("Welcome to Ilan Bitan instructions Ⓒ", "Instuctions", MessageBoxButton.OK);
             while (cb.IsChecked == null)
             {
                 continue;

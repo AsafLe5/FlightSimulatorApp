@@ -35,9 +35,14 @@ namespace FlightSimulatorApp.ViewModel
 
         #region Functions
 
-        public void updateCSVPath(string csvPath)
+        public void updateTrainCSVPath(string csvPath)
         {
-            model.updateCSVPath(csvPath);
+            model.updateTrainCSVPath(csvPath);
+        }
+
+        public void updateTestCSVPath(string csvPath)
+        {
+            model.updateTestCSVPath(csvPath);
         }
 
         public void connect()

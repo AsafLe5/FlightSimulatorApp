@@ -20,10 +20,6 @@ namespace FlightSimulatorApp.Model
 
         #region CSV
 
-        void updateCSVPath(string csvPath);
-
-        void praseCSV();
-
         #endregion
 
         #region Media
@@ -90,6 +86,10 @@ namespace FlightSimulatorApp.Model
         #region Start Menu
 
         bool IsOnline { set; get; }
+
+        void updateTrainCSVPath(string csvPath);
+
+        void updateTestCSVPath(string csvPath);
 
         #endregion
 

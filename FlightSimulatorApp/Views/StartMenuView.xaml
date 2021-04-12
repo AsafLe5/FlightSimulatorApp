@@ -26,23 +26,24 @@
                 <Grid Grid.Column="0">
                     <!--  upload train CSV button  -->
                     <Button
+                        Margin="0,5,0,0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Background="#00FF"
                         BorderThickness="0,0,0,0"
-                        FontSize="15"
-                        Margin="0,5,0,0"
                         Click="onUploadTrainCSVFile"
-                        Content="upload train CSV file" />
+                        Content="upload train CSV file"
+                        FontSize="15" />
                 </Grid>
                 <Grid Grid.Column="1">
                     <!--  train Text box  -->
                     <TextBox
+                        x:Name="trainCSVPathTextbox"
+                        Margin="0,0,5,0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         IsReadOnly="True"
                         Text=""
-                        Margin="0,0,5,0"
                         TextWrapping="Wrap" />
                 </Grid>
             </Grid>
@@ -58,18 +59,19 @@
                         VerticalAlignment="Center"
                         Background="#00FF"
                         BorderThickness="0,0,0,0"
-                        FontSize="15"
-                        Content="upload text CSV file" />
+                        Content="upload text CSV file"
+                        FontSize="15" />
                 </Grid>
                 <Grid Grid.Column="1">
-                    <!--  text Text box  -->
+                    <!--  test Text box  -->
                     <TextBox
+                        x:Name="testCSVPathTextbox"
                         Grid.Column="1"
+                        Margin="0,0,5,0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         IsReadOnly="True"
                         Text=""
-                        Margin="0,0,5,0"
                         TextWrapping="Wrap" />
                 </Grid>
             </Grid>
@@ -91,9 +93,9 @@
                         VerticalAlignment="Center"
                         Background="#00FF"
                         BorderThickness="0,0,0,0"
-                        FontSize="15"
                         Click="onStartOnlineMode"
-                        Content="start online mode" />
+                        Content="start online mode"
+                        FontSize="15" />
                 </Grid>
                 <Grid Grid.Column="1">
                     <!--  start offline mode button  -->
@@ -102,9 +104,9 @@
                         VerticalAlignment="Center"
                         Background="#00FF"
                         BorderThickness="0,0,0,0"
-                        FontSize="15"
                         Click="onStartOfflineMode"
-                        Content="start offline mode" />
+                        Content="start offline mode"
+                        FontSize="15" />
                 </Grid>
             </Grid>
             <Grid Grid.Row="1">
@@ -115,14 +117,15 @@
                 <Grid Grid.Column="0">
                     <!--  show instructions button  -->
                     <Button
+                        Margin="0,-5,0,0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Background="#00FF"
                         BorderThickness="0,0,0,0"
+                        Click="Button_Click"
+                        Content="show instructions"
                         FontSize="15"
-                        Foreground="Blue"
-                        Margin="0,-5,0,0"
-                        Content="show instructions" Click="Button_Click" />
+                        Foreground="Blue" />
                 </Grid>
             </Grid>
         </Grid>

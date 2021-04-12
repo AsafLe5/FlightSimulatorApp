@@ -22,12 +22,13 @@
 
             <Label
                 Width="200"
+                Margin="10,10,-10,-10"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 Content="&lt;- Aileron -&gt;"
                 FontSize="18"
-                RenderTransformOrigin="0.5,0.5" Margin="10,10,-10,-10" />
+                RenderTransformOrigin="0.5,0.5" />
         </Grid>
 
         <Grid Grid.Row="1">
@@ -73,10 +74,10 @@
                     Margin="-85,11.333,-87,36.667"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
+                    IsEnabled="False"
                     Maximum="1"
                     Minimum="0"
                     RenderTransformOrigin="0.5,0.5"
-                    IsEnabled="False"
                     Style="{StaticResource sliderColorDarker}"
                     Value="{Binding VM_ThrottleCurrentValue, Mode=OneWay}">
                     <Slider.RenderTransform>
@@ -260,9 +261,9 @@
                 Margin="60,2,-55,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Maximum="2"
-                Minimum="0"
                 IsEnabled="False"
+                Maximum="1"
+                Minimum="-1"
                 Style="{StaticResource sliderColorDarker}"
                 Value="{Binding VM_RudderCurrentValue, Mode=OneWay}" />
             <!--
@@ -274,18 +275,21 @@
         <!--  Rudder Label  -->
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="11*"/>
-                <ColumnDefinition Width="24*"/>
-                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="11*" />
+                <ColumnDefinition Width="24*" />
+                <ColumnDefinition Width="5*" />
             </Grid.ColumnDefinitions>
             <Label
+                Grid.ColumnSpan="3"
                 Width="200"
+                Height="37"
+                Margin="10,-27,-10,10"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 Content="&lt;- Rudder -&gt;"
                 FontSize="18"
-                RenderTransformOrigin="0.5,0.5" Margin="10,-27,-10,10" Height="37" Grid.ColumnSpan="3" />
+                RenderTransformOrigin="0.5,0.5" />
         </Grid>
     </Grid>
 </UserControl>

@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:FlightSimulatorApp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:FlightSimulatorApp.ViewModel"
     d:DesignHeight="300"
     d:DesignWidth="200"
     mc:Ignorable="d">
@@ -32,10 +33,10 @@
             <Grid Grid.Row="1">
                 <!--  AirSpeed lable  -->
                 <Label
-                    FontSize="18"                  
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Content="AirSpeed:" />
+                    Content="AirSpeed:"
+                    FontSize="18" />
             </Grid>
             <Grid Grid.Row="2">
                 <!--  Heading lable  -->
@@ -47,27 +48,26 @@
             <Grid Grid.Row="3">
                 <!--  Pitch lable  -->
                 <Label
-                    FontSize="18"                  
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Content="Pitch:" />
+                    Content="Pitch:"
+                    FontSize="18" />
             </Grid>
             <Grid Grid.Row="4">
                 <!--  Roll lable  -->
                 <Label
-                    FontSize="18"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Content="Roll:" />
+                    Content="Roll:"
+                    FontSize="18" />
             </Grid>
             <Grid Grid.Row="5">
                 <!--  Yaw lable  -->
                 <Label
-                    FontSize="18"
-                    
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Content="Yaw:" />
+                    Content="Yaw:"
+                    FontSize="18" />
             </Grid>
         </Grid>
         <Grid Grid.Column="1">
@@ -82,56 +82,68 @@
             <Grid Grid.Row="0">
                 <!--  CurrectAltimeter unchangeable text box  -->
                 <TextBox
+                    Width="80"
+                    Margin="10,16"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
-                    Text=""
-                    TextWrapping="Wrap" Margin="10,16" Width="80" />
+                    Text="{Binding VM_CurrentAltimeter, Mode=OneWay}"
+                    TextWrapping="Wrap" />
             </Grid>
             <Grid Grid.Row="1">
                 <!--  CurrectAirSpeed unchangeable text box  -->
                 <TextBox
+                    Width="80"
+                    Margin="10,16"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
                     Text=""
-                    TextWrapping="Wrap" Margin="10,16" Width="80" />
+                    TextWrapping="Wrap" />
             </Grid>
             <Grid Grid.Row="2">
                 <!--  CurrectHeading unchangeable text box  -->
                 <TextBox
+                    Width="80"
+                    Margin="10,16"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
                     Text=""
-                    TextWrapping="Wrap" Margin="10,16" Width="80" />
+                    TextWrapping="Wrap" />
             </Grid>
             <Grid Grid.Row="3">
                 <!--  CurrectPitch unchangeable text box  -->
                 <TextBox
+                    Width="80"
+                    Margin="10,16"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
                     Text=""
-                    TextWrapping="Wrap" Margin="10,16" Width="80" />
+                    TextWrapping="Wrap" />
             </Grid>
             <Grid Grid.Row="4">
                 <!--  CurrectRollLabel unchangeable text box  -->
                 <TextBox
+                    Width="80"
+                    Margin="10,16"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
                     Text=""
-                    TextWrapping="Wrap" Margin="10,16" Width="80" />
+                    TextWrapping="Wrap" />
             </Grid>
             <Grid Grid.Row="5">
                 <!--  CurrectYaw unchangeable text box  -->
                 <TextBox
+                    Width="80"
+                    Margin="10,16"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
                     Text=""
-                    TextWrapping="Wrap" Margin="10,16" Width="80" />
+                    TextWrapping="Wrap" />
             </Grid>
         </Grid>
     </Grid>

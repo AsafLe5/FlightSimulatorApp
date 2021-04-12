@@ -81,7 +81,7 @@ namespace FlightSimulatorApp.Model
                         AileronCurrentValue = (float)Convert.ToDouble(this.csvDict[0][this.currentLineIndex]);
                         ElevatorCurrentValue = (float)Convert.ToDouble(this.csvDict[1][this.currentLineIndex]);
                         ThrottleCurrentValue = (float)Convert.ToDouble(this.csvDict[6][this.currentLineIndex]);
-                        RudderCurrentValue = (float)Convert.ToDouble(this.csvDict[2][this.currentLineIndex]) + 1;
+                        RudderCurrentValue = (float)Convert.ToDouble(this.csvDict[2][this.currentLineIndex]);
                         CurrentAltimeter = (float)Convert.ToDouble(this.csvDict[24][this.currentLineIndex]);
                         CurrentAirSpeed = (float)Convert.ToDouble(this.csvDict[20][this.currentLineIndex]);
                         CurrentHeading = (float)Convert.ToDouble(this.csvDict[18][this.currentLineIndex]);
@@ -177,7 +177,8 @@ namespace FlightSimulatorApp.Model
         List<correlatedFeatures> cf;
         private void loadAllCorrelatedFeatures()
         {
-            string newPath = addHeader(this.csvPath, this.xmlDict);
+            // What csv?
+            string newPath = addHeader(this.trainCSVPath, this.xmlDict);
 
             this.ts = new Timeseries(newPath);
 
@@ -292,16 +293,23 @@ namespace FlightSimulatorApp.Model
 
         #region CSV
 
-        private string csvPath;
-        public void updateCSVPath(string csvPath)
+        private string trainCSVPath;
+        public void updateTrainCSVPath(string csvPath)
         {
-            this.csvPath = csvPath;
-            praseCSV();
+            this.trainCSVPath = csvPath;
+            praseCSV(this.trainCSVPath);
+        }
+
+        private string testCSVPath;
+        public void updateTestCSVPath(string csvPath)
+        {
+            this.testCSVPath = csvPath;
+            praseCSV(this.testCSVPath);
         }
 
         private List<string> csvLines;
         private Dictionary<int, List<string>> csvDict = new Dictionary<int, List<string>>();
-        public void praseCSV()
+        public void praseCSV(string csvPath)
         {
             initXML();
 
@@ -311,12 +319,12 @@ namespace FlightSimulatorApp.Model
                 csvDict.Add(i, new List<string>());
             }
 
-            this.csvLines = File.ReadLines(this.csvPath).ToList();
+            this.csvLines = File.ReadLines(csvPath).ToList();
 
             int csvLinesNumberCounter = 0;
             int j = 0;
             String line = String.Empty;
-            System.IO.StreamReader file = new System.IO.StreamReader(this.csvPath);
+            System.IO.StreamReader file = new System.IO.StreamReader(csvPath);
             while ((line = file.ReadLine()) != null)
             {
                 String[] parts_of_line = line.Split(',');
