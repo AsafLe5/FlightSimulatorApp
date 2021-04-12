@@ -120,7 +120,15 @@
                                     ItemsSource="{Binding VM_RegressionDataPointsList}"
                                     MarkerSize="2"
                                     Color="Black" />
+                                <oxy:LineSeries
+                                    Background="Transparent"
+                                    DataFieldX="X"
+                                    DataFieldY="Y"
+                                    MarkerSize="2"
+                                    Color="Purple"
+                                    ItemsSource="{Binding VM_LastRecordsPointsList}" />
                             </oxy:Plot.Series>
+
 
                         </oxy:Plot>
                     </Grid>

@@ -48,7 +48,7 @@ namespace FlightSimulatorApp.Model
             telnetClient.disconnect();
         }
 
-        bool isInitiallize = false;
+        //bool isInitiallize = false;
         public void start()
         {
 
@@ -107,13 +107,7 @@ namespace FlightSimulatorApp.Model
                     // What if there is no most correlative by pearson?
                     DataPointsListToCorrelative = RenderDataPointsList(this.CurrentCorrelativeAttribute);
 
-                    if (!isInitiallize)
-                    {
-
-                        InitiallizeRegression();
-                        
-                    }
-
+                    LastRecordsPointsList = getLastRecrods(this.DataPointsList, findNumberOfPoints());
 
                     Thread.Sleep((int)playbackSpeedRational);
 
@@ -148,100 +142,7 @@ namespace FlightSimulatorApp.Model
         }
 
         #endregion
-
-        #region Correlation Handler
-
-        private string addHeader(string csvPath, Dictionary<int, string> xmlDict)
-        {
-            string tempFilename = "temp.csv";
-            bool toCopy = false;
-
-            string header = "";
-
-            for (int i = 0; i < xmlDict.Count; i++)
-            {
-                if (i == 0)
-                {
-                    header += xmlDict[i];
-                }
-                else
-                {
-                    header = header + "," + xmlDict[i];
-                }
-            }
-
-            //check if header exists
-            using (var sr = new StreamReader(csvPath))
-            {
-                using (var temp = new StreamWriter(tempFilename, false))
-                {
-                    var line = sr.ReadLine(); // first line
-                    if (line != null && line != header) // check header exists
-                    {
-                        toCopy = true; // need copy temp file to your original csv
-
-                        // write your header into the temp file
-                        temp.WriteLine(header);
-
-                        while (line != null)
-                        {
-                            temp.WriteLine(line);
-                            line = sr.ReadLine();
-                        }
-                    }
-                }
-            }
-
-            return tempFilename;
-        }
-
-        private SimpleAnomalyDetector ad;
-        private Timeseries ts;
-        List<correlatedFeatures> cf;
-        private void loadAllCorrelatedFeatures()
-        {
-            // What csv?
-            string newPath = addHeader(this.trainCSVPath, this.xmlDict);
-
-            this.ts = new Timeseries(newPath);
-
-            this.ad = new SimpleAnomalyDetector((float)0.5);
-
-            this.ad.learnNormal(this.ts);
-            this.cf = ad.getNormalModel();
-        }
-
-        #endregion
-
-        #region Regrassion
-
-        private List<DataPoint> regressionList = new List<DataPoint>();
-        private List<DataPoint> getRegressionPoints(string attribute)
-        {
-            /*
-             int numberOfPointsInThirtySeaconds = this.playbackSpeed * 10 * 30;
-             int i = Math.Max(0, dataPointsList.Count - numberOfPointsInThirtySeaconds);
-             for (; i < dataPointsList.Count; ++i)
-             {
-                 string value = this.csvDict[findIndexByAttribute(this.CurrentAttribute)][this.currentLineIndex];
-                 DataPoint dp = new DataPoint(Double.Parse(value), this.currentLineIndex);
-                 regressionList.Add(dp);
-             }*/
-            this.regressionList = new List<DataPoint>();
-
-            int currentAttributeIndex = 0;
-
-            currentAttributeIndex = findIndexByAttribute(attribute);
-            for (int i = 0; i < this.csvLinesNumber; i++)
-            {
-                regressionList.Add(new DataPoint(i, Convert.ToDouble(csvDict[currentAttributeIndex][i])));
-            }
-            return regressionList;
-
-        }
-
-        #endregion
-
+        
         #region XML
 
         private Dictionary<int, string> xmlDict = new Dictionary<int, string>();
@@ -314,11 +215,9 @@ namespace FlightSimulatorApp.Model
             }
         }
 
-
-
         #endregion
 
-        // initXML out of csvParser
+        // TODO initXML out of csvParser
 
         #region CSV
 
@@ -645,6 +544,8 @@ namespace FlightSimulatorApp.Model
 
         #region Graph
 
+        #region Functions
+
         private List<DataPoint> RenderDataPointsList(string attribute)
         {
             List<DataPoint> currentList = new List<DataPoint>();
@@ -675,6 +576,74 @@ namespace FlightSimulatorApp.Model
 
         }
 
+        private void InitiallizeRegression()
+        {
+            RegressionDataPointsList = getRegressionPoints(this.CurrentCorrelativeAttribute);
+
+            calcLineOfCurrentAttribute();
+
+            LineIntercept = getIntercept();
+            LineSlope = getSlope();
+        }
+
+        private AnomalyDetector.Line PointsLine;
+        private void calcLineOfCurrentAttribute()
+        {
+            anomaly_detection_util adu = new anomaly_detection_util();
+            AnomalyDetector.Point[] pointsList = new AnomalyDetector.Point[csvLinesNumber];
+            //= dataPointsList.ToList<Point>();
+
+            int i;
+            for (i = 0; i < csvLinesNumber; i++)
+            {
+                AnomalyDetector.Point point = new AnomalyDetector.Point((float)regressionList[i].X, (float)regressionList[i].Y);
+                pointsList[i] = point;
+            }
+            PointsLine = adu.linear_reg(pointsList, i);
+
+        }
+
+        private float getSlope()
+        {
+            return PointsLine.a;
+        }
+
+        private float getIntercept()
+        {
+            return PointsLine.a;
+        }
+
+        private int findIndexByAttribute(string attribute)
+        {
+            for (int i = 0; i < xmlDict.Count; i++)
+            {
+                if (xmlDict[i].ToString().Equals(attribute))
+                {
+                    return i;
+                }
+            }
+            return 0;
+        }
+
+        private List<DataPoint> getLastRecrods(List<DataPoint> list, int numberOfRecords)
+        {
+            if (list.Count < numberOfRecords)
+            {
+                return list;
+            }
+            return list.GetRange(list.Count - numberOfRecords, numberOfRecords);
+        }
+
+        private int findNumberOfPoints()
+        {
+            // this.playbackSpeed = number of lines we write in a second.
+            return 30 * this.playbackSpeed;
+        }
+
+        #endregion
+
+        #region Properties
+
         private List<DataPoint> dataPointsList = new List<DataPoint>();
         public List<DataPoint> DataPointsList
         {
@@ -693,8 +662,10 @@ namespace FlightSimulatorApp.Model
             set
             {
                 this.currentAttribute = value;
-                findCorrelativeAttribute(this.currentAttribute);
                 NotifyPropertyChanged("CurrentAttribute");
+                findCorrelativeAttribute(this.currentAttribute);
+                InitiallizeRegression();
+
             }
         }
 
@@ -731,6 +702,17 @@ namespace FlightSimulatorApp.Model
             }
         }
 
+        private List<DataPoint> lastRecordsPointsList = new List<DataPoint>();
+        public List<DataPoint> LastRecordsPointsList
+        {
+            get { return this.lastRecordsPointsList; }
+            set
+            {
+                this.lastRecordsPointsList = value;
+                NotifyPropertyChanged("LastRecordsPointsList");
+            }
+        }
+
         private float lineIntercept;
         public float LineIntercept
         {
@@ -753,60 +735,94 @@ namespace FlightSimulatorApp.Model
             }
         }
 
-        private Dictionary<string, List<Point>> DictRegression;
-        private void InitiallizeRegression()
+        #endregion
+
+        #endregion
+
+        #region Correlation Handler
+
+        // Adds a header to the a new temproray csv file.
+        private string addHeader(string csvPath, Dictionary<int, string> xmlDict)
         {
-            for (int i = 0; i < attributesList.Count(); i++)
-            {
-                RegressionDataPointsList = getRegressionPoints(this.CurrentCorrelativeAttribute);
+            string tempFilename = "temp.csv";
+            bool toCopy = false;
 
-                calcLineOfCurrentAttribute();
+            string header = "";
 
-                LineIntercept = getIntercept();
-                LineSlope = getSlope();
-            }
-
-        }
-
-        private AnomalyDetector.Line PointsLine;
-        private void calcLineOfCurrentAttribute()
-        {
-            anomaly_detection_util adu = new anomaly_detection_util();
-
-            AnomalyDetector.Point[] pointsList = new AnomalyDetector.Point[regressionList.Count];
-            //= dataPointsList.ToList<Point>();
-            int i;
-            for (i = 0; i < regressionList.Count; i++)
-            {
-                AnomalyDetector.Point point = new AnomalyDetector.Point((float)regressionList[i].X, (float)regressionList[i].Y);
-                pointsList[i] = point;
-            }
-            PointsLine = adu.linear_reg(pointsList, i);
-        }
-
-        private float getSlope()
-        {
-            return PointsLine.a;
-        }
-
-        private float getIntercept()
-        {
-            return PointsLine.a;
-        }
-
-        public int findIndexByAttribute(string attribute)
-        {
             for (int i = 0; i < xmlDict.Count; i++)
             {
-                if (xmlDict[i].ToString().Equals(attribute))
+                if (i == 0)
                 {
-                    return i;
+                    header += xmlDict[i];
+                }
+                else
+                {
+                    header = header + "," + xmlDict[i];
                 }
             }
-            return 0;
+
+            //check if header exists
+            using (var sr = new StreamReader(csvPath))
+            {
+                using (var temp = new StreamWriter(tempFilename, false))
+                {
+                    var line = sr.ReadLine(); // first line
+                    if (line != null && line != header) // check header exists
+                    {
+                        toCopy = true; // need copy temp file to your original csv
+
+                        // write your header into the temp file
+                        temp.WriteLine(header);
+
+                        while (line != null)
+                        {
+                            temp.WriteLine(line);
+                            line = sr.ReadLine();
+                        }
+                    }
+                }
+            }
+
+            return tempFilename;
+        }
+
+        private SimpleAnomalyDetector ad;
+        private Timeseries ts;
+        List<correlatedFeatures> cf;
+        private void loadAllCorrelatedFeatures()
+        {
+            // What csv?
+            string newPath = addHeader(this.trainCSVPath, this.xmlDict);
+
+            this.ts = new Timeseries(newPath);
+
+            this.ad = new SimpleAnomalyDetector((float)0.5);
+
+            this.ad.learnNormal(this.ts);
+            this.cf = ad.getNormalModel();
         }
 
         #endregion
 
+        #region Regrassion
+
+        private List<DataPoint> regressionList = new List<DataPoint>();
+        private List<DataPoint> getRegressionPoints(string attribute)
+        {
+            this.regressionList = new List<DataPoint>();
+
+            int currentAttributeIndex = 0;
+
+            currentAttributeIndex = findIndexByAttribute(attribute);
+
+            for (int i = 0; i < this.csvLinesNumber; i++)
+            {
+                regressionList.Add(new DataPoint(i, Convert.ToDouble(csvDict[currentAttributeIndex][i])));
+            }
+
+            return regressionList;
+        }
+
+        #endregion
     }
 }

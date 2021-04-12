@@ -93,6 +93,13 @@ namespace FlightSimulatorApp.ViewModel
             get { return this.model.LineIntercept; }
         }
 
+        public List<DataPoint> VM_LastRecordsPointsList
+        {
+            get
+            {
+                return this.model.LastRecordsPointsList;
+            }
+        }
 
         #endregion
     }
