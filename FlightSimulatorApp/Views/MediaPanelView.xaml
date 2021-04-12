@@ -141,6 +141,7 @@
                     Margin="10,16"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Stretch"
+                    FontSize="15"
                     Text="{Binding VM_PlaybackSpeed, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Grid>
