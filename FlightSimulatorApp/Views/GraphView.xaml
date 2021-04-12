@@ -15,8 +15,8 @@
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
-        <!--  List Box of Attributes  -->
         <Grid Grid.Column="0">
+            <!--  List Box of Attributes  -->
             <ListBox
                 x:Name="AttributesList"
                 Background="Transparent"
@@ -30,63 +30,96 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
-
-                <!--  Attribute's Graph  -->
                 <Grid Grid.Column="0">
-                    <oxy:Plot
-                        x:Name="AttributesGraph"
-                        Title="{Binding VM_CurrentAttribute}"
-                        Margin="10,10,0,0"
-                        Background="Transparent">
-                        <oxy:Plot.Series>
-                            <oxy:LineSeries
-                                Background="White"
-                                DataFieldX="X"
-                                DataFieldY="Y"
-                                ItemsSource="{Binding VM_DataPointsList}" />
-                        </oxy:Plot.Series>
-                    </oxy:Plot>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0*" />
+                            <ColumnDefinition Width="30*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1">
+                            <!--  Attribute's Graph  -->
+                            <oxy:Plot
+                                x:Name="AttributesGraph"
+                                Title="{Binding VM_CurrentAttribute}"
+                                Background="Transparent">
+                                <oxy:Plot.Series>
+                                    <oxy:LineSeries
+                                        Background="Transparent"
+                                        DataFieldX="X"
+                                        DataFieldY="Y"
+                                        ItemsSource="{Binding VM_DataPointsList}" />
+                                </oxy:Plot.Series>
+                            </oxy:Plot>
+                        </Grid>
+                    </Grid>
                 </Grid>
-
-                <!--  Correlative to Attribute Graph  -->
                 <Grid Grid.Column="1">
-                    <oxy:Plot
-                        Title="{Binding VM_CurrentCorrelativeAttribute}"
-                        Margin="0,10,10,0"
-                        Background="Transparent">
-                        <oxy:Plot.Series>
-                            <oxy:LineSeries
-                                Background="White"
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1">
+                            <!--  Correlative to Attribute Graph  -->
+                            <oxy:Plot Title="{Binding VM_CurrentCorrelativeAttribute}" Background="Transparent">
+                                <oxy:Plot.Series>
+                                    <oxy:LineSeries
+                                Background="Transparent"
                                 DataFieldX="X"
                                 DataFieldY="Y"
                                 ItemsSource="{Binding VM_DataPointsListToCorrelative}" />
-                        </oxy:Plot.Series>
-                    </oxy:Plot>
+                                </oxy:Plot.Series>
+                            </oxy:Plot>
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1">
-                <!--  Linear Graph of regression points (user story 8?)  -->
-                <oxy:Plot
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0*" />
+                        <ColumnDefinition Width="30*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <!--  Linear Graph of regression points (user story 8?)  -->
+                        <oxy:Plot
                     x:Name="LinearRegressionGraph"
                     Title=""
-                    Margin="10,10,0,0"
                     Background="Transparent">
-                    <oxy:Plot.Series>
-                        <oxy:LineSeries
-                            Background="White"
+                            <oxy:Plot.Series>
+                                <oxy:LineSeries
+                            Background="Transparent"
                             DataFieldX="X"
                             DataFieldY="Y"
                             ItemsSource="{Binding VM_RegressionDataPointsList}" />
-                    </oxy:Plot.Series>
-                </oxy:Plot>
+                            </oxy:Plot.Series>
+                        </oxy:Plot>
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
-
     </Grid>
 </UserControl>

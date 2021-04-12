@@ -12,7 +12,11 @@
     Width="1080"
     Height="720"
     mc:Ignorable="d">
+    <Window.Background>
+        <ImageBrush ImageSource="/FlightSimulatorApp;component/Images/background1.jpeg" Stretch="Fill" />
+    </Window.Background>
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
             <RowDefinition Height="1*" />

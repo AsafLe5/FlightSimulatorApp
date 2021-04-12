@@ -25,6 +25,7 @@
             <Grid Grid.Row="0">
                 <!--  Altimeter lable  -->
                 <Label
+                    FontSize="18"                  
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Content="Altimeter:" />
@@ -32,6 +33,7 @@
             <Grid Grid.Row="1">
                 <!--  AirSpeed lable  -->
                 <Label
+                    FontSize="18"                  
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Content="AirSpeed:" />
@@ -39,6 +41,7 @@
             <Grid Grid.Row="2">
                 <!--  Heading lable  -->
                 <Label
+                    FontSize="18"                                   
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Content="Heading:" />
@@ -46,6 +49,7 @@
             <Grid Grid.Row="3">
                 <!--  Pitch lable  -->
                 <Label
+                    FontSize="18"                  
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Content="Pitch:" />
@@ -53,6 +57,7 @@
             <Grid Grid.Row="4">
                 <!--  Roll lable  -->
                 <Label
+                    FontSize="18"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Content="Roll:" />
@@ -60,6 +65,8 @@
             <Grid Grid.Row="5">
                 <!--  Yaw lable  -->
                 <Label
+                    FontSize="18"
+                    
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Content="Yaw:" />

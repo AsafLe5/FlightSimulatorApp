@@ -11,7 +11,7 @@
         <Setter Property="CornerRadius" Value="20" />
         <Setter Property="BorderThickness" Value="6" />
         <Setter Property="Opacity" Value="0.7" />
-        <Setter Property="Background" Value="LightBlue" />
+        <Setter Property="Background" Value="#feff" />
     </Style>
 
 
