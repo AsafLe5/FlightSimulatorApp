@@ -98,7 +98,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
-                    Text=""
+                    Text="{Binding VM_CurrentAirSpeed, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Grid>
             <Grid Grid.Row="2">
@@ -109,7 +109,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
-                    Text=""
+                    Text="{Binding VM_CurrentHeading, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Grid>
             <Grid Grid.Row="3">
@@ -120,7 +120,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
-                    Text=""
+                    Text="{Binding VM_CurrentPitch, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Grid>
             <Grid Grid.Row="4">
@@ -131,7 +131,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
-                    Text=""
+                    Text="{Binding VM_CurrentRoll, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Grid>
             <Grid Grid.Row="5">
@@ -142,7 +142,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     IsReadOnly="True"
-                    Text=""
+                    Text="{Binding VM_CurrentYaw, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Grid>
         </Grid>

@@ -86,7 +86,7 @@ namespace FlightSimulatorApp.Views
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ShowInstructionsPopUp(object sender, RoutedEventArgs e)
         {
             CheckBox cb = new CheckBox();
 

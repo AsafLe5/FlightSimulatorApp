@@ -122,7 +122,7 @@
                         VerticalAlignment="Center"
                         Background="#00FF"
                         BorderThickness="0,0,0,0"
-                        Click="Button_Click"
+                        Click="ShowInstructionsPopUp"
                         Content="show instructions"
                         FontSize="15"
                         Foreground="Blue" />

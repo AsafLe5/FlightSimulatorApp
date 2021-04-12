@@ -141,7 +141,7 @@
                     Margin="10,16"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Stretch"
-                    Text="{Binding VM_CurrentAltimeter, Mode=OneWay}"
+                    Text="{Binding VM_PlaybackSpeed, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Grid>
         </Grid>
