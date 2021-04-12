@@ -96,6 +96,7 @@
                         VerticalAlignment="Center"
                         Background="#00FF"
                         BorderThickness="0,0,0,0"
+                        Click="onStartOfflineMode"
                         Content="start offline mode" />
                 </Grid>
             </Grid>

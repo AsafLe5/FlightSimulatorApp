@@ -51,5 +51,15 @@ namespace FlightSimulatorApp.ViewModel
         }
 
         #endregion
+
+        public bool VM_IsOnline
+        {
+            get { return this.model.IsOnline; }
+            set
+            {
+                this.model.IsOnline = value;
+            }
+        }
+
     }
 }

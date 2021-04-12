@@ -49,7 +49,14 @@ namespace FlightSimulatorApp.Views
 
         private void onStartOnlineMode(object sender, RoutedEventArgs e)
         {
+            this.startMenuVM.VM_IsOnline = true;
             startMenuVM.connect();
+            startMenuVM.start();
+        }
+
+        private void onStartOfflineMode(object sender, RoutedEventArgs e)
+        {
+            this.startMenuVM.VM_IsOnline = false;
             startMenuVM.start();
         }
 

@@ -74,7 +74,10 @@ namespace FlightSimulatorApp.Model
                     // Keeping the animation running
                     if (this.CurrentLineIndex < this.csvLinesNumber && !playbackSpeedZero && !isPaused)
                     {
-                        telnetClient.write(this.csvLines[this.currentLineIndex]);
+                        if (this.isOnline)
+                        {
+                            telnetClient.write(this.csvLines[this.currentLineIndex]);
+                        }
                         AileronCurrentValue = (float)Convert.ToDouble(this.csvDict[0][this.currentLineIndex]);
                         ElevatorCurrentValue = (float)Convert.ToDouble(this.csvDict[1][this.currentLineIndex]);
                         ThrottleCurrentValue = (float)Convert.ToDouble(this.csvDict[6][this.currentLineIndex]);
@@ -99,6 +102,18 @@ namespace FlightSimulatorApp.Model
         }
 
         #endregion
+
+        private bool isOnline;
+        public bool IsOnline
+        {
+            get { return isOnline; }
+            set
+            {
+                isOnline = value;
+                NotifyPropertyChanged("IsOnline");
+            }
+        }
+
 
         #region Start Menu
 

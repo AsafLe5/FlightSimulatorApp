@@ -84,6 +84,9 @@ namespace FlightSimulatorApp.Model
 
         #region Start Menu
 
+        bool IsOnline { set; get; }
+
         #endregion
+
     }
 }
