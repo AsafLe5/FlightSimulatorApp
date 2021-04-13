@@ -109,17 +109,24 @@
                             x:Name="LinearRegressionGraph"
                             Title="Linear Regression Graph"
                             Background="Transparent">
-                            <oxy:Plot.Annotations>
+                            <!-- <oxy:Plot.Annotations>
                                 <oxy:LineAnnotation Intercept="{Binding VM_LineIntercept}" Slope="{Binding VM_LineSlope}" />
-                            </oxy:Plot.Annotations>
+                            </oxy:Plot.Annotations> -->
                             <oxy:Plot.Series>
                                 <oxy:LineSeries
                                     Background="Transparent"
                                     DataFieldX="X"
                                     DataFieldY="Y"
-                                    ItemsSource="{Binding VM_LastRecordsPointsList}"
+                                    ItemsSource="{Binding VM_LinearRegressionGraphPoints}"
                                     MarkerSize="2"
                                     Color="Purple" />
+                                <oxy:LineSeries
+                                    Background="Transparent"
+                                    DataFieldX="X"
+                                    DataFieldY="Y"
+                                    ItemsSource="{Binding VM_LastRecordsPointsList}"
+                                    MarkerSize="4"
+                                    Color="Green" />
                             </oxy:Plot.Series>
 
 

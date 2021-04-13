@@ -18,6 +18,7 @@ namespace FlightSimulatorApp.Model
 
         ITelnetClient telnetClient;
         volatile Boolean stop;
+        bool attributePress = false;
 
         public MyFlightSimulatorModel(ITelnetClient telnetClient)
         {
@@ -106,8 +107,8 @@ namespace FlightSimulatorApp.Model
                     DataPointsList = RenderDataPointsList(this.CurrentAttribute);
                     // What if there is no most correlative by pearson?
                     DataPointsListToCorrelative = RenderDataPointsList(this.CurrentCorrelativeAttribute);
-
-                    LastRecordsPointsList = getLastRecrods(this.DataPointsList, findNumberOfPoints());
+                    if (attributePress)
+                        LastRecordsPointsList = getLastRecrods(linearRegPoints, findNumberOfPoints());
 
                     Thread.Sleep((int)playbackSpeedRational);
 
@@ -584,7 +585,9 @@ namespace FlightSimulatorApp.Model
 
             LineIntercept = getIntercept();
             LineSlope = getSlope();
+
         }
+        private List<DataPoint> linearRegPoints = new List<DataPoint>();
 
         private AnomalyDetector.Line PointsLine;
         private void calcLineOfCurrentAttribute()
@@ -600,6 +603,19 @@ namespace FlightSimulatorApp.Model
                 pointsList[i] = point;
             }
             PointsLine = adu.linear_reg(pointsList, i);
+            List<DataPoint> linearRegressionGraph = new List<DataPoint>();
+            linearRegressionGraph.Add(new DataPoint(0, getIntercept()));
+            double y = CSVLinesNumber * getSlope() + getIntercept();
+            linearRegressionGraph.Add(new DataPoint(CSVLinesNumber, y));
+            LinearRegressionGraphPoints = linearRegressionGraph;
+            attributePress = true;
+
+            for (int k = 0; k < csvLinesNumber; k++)
+            {
+                
+                linearRegPoints.Add(new DataPoint(Double.Parse(csvDict[findIndexByAttribute(currentAttribute)][currentLineIndex]),
+                    Double.Parse(csvDict[findIndexByAttribute(CurrentCorrelativeAttribute)][currentLineIndex])));
+            }
 
         }
 
@@ -735,6 +751,16 @@ namespace FlightSimulatorApp.Model
             }
         }
 
+        private List<DataPoint> linearRegressionGraphPoints;
+        public List<DataPoint> LinearRegressionGraphPoints
+        {
+            get { return this.linearRegressionGraphPoints; }
+            set
+            {
+                linearRegressionGraphPoints = value;
+                NotifyPropertyChanged("LinearRegressionGraphPoints");
+            }
+        }
         #endregion
 
         #endregion

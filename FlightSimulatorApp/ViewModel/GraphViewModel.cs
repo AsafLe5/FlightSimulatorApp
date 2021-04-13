@@ -101,6 +101,15 @@ namespace FlightSimulatorApp.ViewModel
             }
         }
 
+        public List<DataPoint> VM_LinearRegressionGraphPoints
+        {
+            get
+            {
+                return this.model.LinearRegressionGraphPoints;
+            }
+        }
+
+        
         #endregion
     }
 }

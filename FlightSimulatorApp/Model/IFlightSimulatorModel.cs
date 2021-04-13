@@ -80,6 +80,7 @@ namespace FlightSimulatorApp.Model
 
         List<DataPoint> LastRecordsPointsList { set; get; }
 
+        List<DataPoint> LinearRegressionGraphPoints { set; get; }
         float LineIntercept { set; get; }
         float LineSlope { set; get; }
 
