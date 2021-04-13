@@ -12,11 +12,10 @@ namespace FlightSimulatorApp.AnomalyDetector
     {
         public HybridAnomalyDetector(float threshold) : base(threshold)
         {
-            
-            // TODO Auto-generated constructor stub
+
         }
 
-        public void cirCorr(correlatedFeatures cf, Point[] points, int size)
+        new public void cirCorr(correlatedFeatures cf, Point[] points, int size)
         {
             Circle minCircle = new Circle(new Point(0, 0), 0);
             Circle circle = minCircle.findMinCircle(points, size);
@@ -28,12 +27,12 @@ namespace FlightSimulatorApp.AnomalyDetector
             this.cf.Add(cf);
         }
 
-        public bool isAnomal(correlatedFeatures cf, Point point)
+        new public bool isAnomalous(correlatedFeatures cf, Point point)
         {
 
             if (!cf.isCircle)
             {
-                return isAnomal(cf, point);
+                return isAnomalous(cf, point);
             }
 
             else
