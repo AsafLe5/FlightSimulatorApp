@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FlightSimulatorApp.AnomalyDetector.Line">
+    <Position X="18.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAQAAAAAAAAA=</HashCode>
+      <FileName>AnomalyDetector\anomaly_detection_util.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSimulatorApp.AnomalyDetector.Point">
+    <Position X="18.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>AnomalyDetector\anomaly_detection_util.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSimulatorApp.AnomalyDetector.anomaly_detection_util" Collapsed="true">
+    <Position X="2.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAICBAAAAAAAAAAAAgQAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>AnomalyDetector\anomaly_detection_util.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSimulatorApp.AnomalyDetector.AnomalyReport" Collapsed="true">
+    <Position X="9.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>AnomalyDetector\AnomalyDetector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSimulatorApp.AnomalyDetector.TimeSeriesAnomalyDetector" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AnomalyDetector\AnomalyDetector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSimulatorApp.AnomalyDetector.AnomalyDetector" Collapsed="true">
+    <Position X="2.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AnomalyDetector\AnomalyDetector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSimulatorApp.AnomalyDetector.HybridAnomalyDetector" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AnomalyDetector\HybridAnomalyDetector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSimulatorApp.AnomalyDetector.Timeseries" Collapsed="true">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>AnomalyDetector\timeseries.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Circle">
+    <Position X="18.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAECAAIAAAQACAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>AnomalyDetector\minCircle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="correlatedFeatures" Collapsed="true">
+    <Position X="2.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEgAAAAIAAQAAAAAgAAAAhgAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>AnomalyDetector\SimpleAnomalyDetector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleAnomalyDetector" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAwAAAACAAAAAAAAAAAAAAAACAAAAAACAACAAA=</HashCode>
+      <FileName>AnomalyDetector\SimpleAnomalyDetector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSimulatorApp.App" Collapsed="true">
+    <Position X="8.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSimulatorApp.CSVProperty" Collapsed="true">
+    <Position X="14.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>CSVProperty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSimulatorApp.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAgCABAAAAAAAAEAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlightSimulatorApp.MyTelnetClient" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAgAAQEgAAAEAAA=</HashCode>
+      <FileName>MyTelnetClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.724" />
+  </Class>
+  <Class Name="FlightSimulatorApp.Model.MyFlightSimulatorModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>4AMDCIjhhUCgGZIspAmUiIRiiUiiQkUAEmyJEARnKUA=</HashCode>
+      <FileName>Model\MyFlightSimulatorModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlightSimulatorApp.Properties.Resources" Collapsed="true">
+    <Position X="8.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSimulatorApp.ViewModel.DataDisplayViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAABAAZAAAACAAAAAgAAAAAAAAAAAAIAIAAA=</HashCode>
+      <FileName>ViewModel\DataDisplayViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.1" />
+  </Class>
+  <Class Name="FlightSimulatorApp.ViewModel.GraphViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAACAIAAAABAAFAAgAAAAAAIAAIAAAAYAAA=</HashCode>
+      <FileName>ViewModel\GraphViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlightSimulatorApp.ViewModel.JoystickViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABACAAAAAAAoAQgAAAAAAAkAAIBAAAAABAAAAIACI=</HashCode>
+      <FileName>ViewModel\JoystickViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlightSimulatorApp.ViewModel.MediaViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAIAAAAAIAAAAEAAAAAgAAAAAAAEAAAAAAIAAA=</HashCode>
+      <FileName>ViewModel\MediaViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FlightSimulatorApp.ViewModel.StartMenuViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAIAggAAEAAAAgAIAAAAAAAAAAAAIEAA=</HashCode>
+      <FileName>ViewModel\StartMenuViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlightSimulatorApp.Views.DataDisplayView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAA=</HashCode>
+      <FileName>Views\DataDisplayView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlightSimulatorApp.Views.GraphView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\GraphView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.16" />
+  </Class>
+  <Class Name="FlightSimulatorApp.Views.JoystickView" BaseTypeListCollapsed="true">
+    <Position X="15" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAABAg=</HashCode>
+      <FileName>Views\JoystickView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FlightSimulatorApp.Views.MediaPanelView" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACABACAAAAAEAQAAQAAAACAQAA=</HashCode>
+      <FileName>Views\MediaPanelView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.1" />
+  </Class>
+  <Class Name="FlightSimulatorApp.Views.StartMenuView" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAIAAAAAAIAAAgAAAAAAIAAAAAAAQgAAAAAAA=</HashCode>
+      <FileName>Views\StartMenuView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Right" Position="0.384" />
+  </Class>
+  <Interface Name="FlightSimulatorApp.ITelnetClient">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQAAAAAEAAA=</HashCode>
+      <FileName>ITelnetClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FlightSimulatorApp.Model.IFlightSimulatorModel" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAMAAIgAgECAEQAggAEUiARACQiAQgEAEAiAEARkKQA=</HashCode>
+      <FileName>Model\IFlightSimulatorModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="System.Windows.Markup.IComponentConnector" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.ComponentModel.INotifyPropertyChanged" Collapsed="true">
+    <Position X="1.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
