@@ -255,17 +255,22 @@
 
         <!--  Rudder Slider  -->
         <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="66*"/>
+                <ColumnDefinition Width="11*"/>
+                <ColumnDefinition Width="23*"/>
+            </Grid.ColumnDefinitions>
             <Slider
                 x:Name="rudderSlider"
                 Width="195"
-                Margin="60,2,-55,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
+                Margin="19,-15,-13.6,17"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
                 IsEnabled="False"
                 Maximum="1"
                 Minimum="-1"
                 Style="{StaticResource sliderColorDarker}"
-                Value="{Binding VM_RudderCurrentValue, Mode=OneWay}" />
+                Value="{Binding VM_RudderCurrentValue, Mode=OneWay}" Grid.ColumnSpan="3" />
             <!--
                 The minimum is -1 and the maximum is 1 adjust for better looking
                 The current value changed on the model to current + 1 to fit
