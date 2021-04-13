@@ -578,7 +578,7 @@ namespace FlightSimulatorApp.Model
 
         private void InitiallizeRegression()
         {
-            RegressionDataPointsList = getRegressionPoints(this.CurrentCorrelativeAttribute);
+            RegressionDataPointsList = getRegressionPoints(this.currentAttribute,this.CurrentCorrelativeAttribute);
 
             calcLineOfCurrentAttribute();
 
@@ -807,17 +807,19 @@ namespace FlightSimulatorApp.Model
         #region Regrassion
 
         private List<DataPoint> regressionList = new List<DataPoint>();
-        private List<DataPoint> getRegressionPoints(string attribute)
+        private List<DataPoint> getRegressionPoints(string attributeOne, string attributeTwo)
         {
             this.regressionList = new List<DataPoint>();
 
-            int currentAttributeIndex = 0;
+            int attributeOneIndex = findIndexByAttribute(attributeOne);
 
-            currentAttributeIndex = findIndexByAttribute(attribute);
-
+            int attributeTwoIndex = findIndexByAttribute(attributeTwo);
             for (int i = 0; i < this.csvLinesNumber; i++)
             {
-                regressionList.Add(new DataPoint(i, Convert.ToDouble(csvDict[currentAttributeIndex][i])));
+                double x = Convert.ToDouble(csvDict[attributeOneIndex][i]);
+                double y = Convert.ToDouble(csvDict[attributeTwoIndex][i]);
+
+                regressionList.Add(new DataPoint(x,y));
             }
 
             return regressionList;

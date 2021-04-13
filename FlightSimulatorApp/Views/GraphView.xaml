@@ -113,13 +113,6 @@
                                 <oxy:LineAnnotation Intercept="{Binding VM_LineIntercept}" Slope="{Binding VM_LineSlope}" />
                             </oxy:Plot.Annotations>
                             <oxy:Plot.Series>
-                                <oxy:ScatterErrorSeries
-                                    Background="Transparent"
-                                    DataFieldX="X"
-                                    DataFieldY="Y"
-                                    ItemsSource="{Binding VM_RegressionDataPointsList}"
-                                    MarkerSize="2"
-                                    Color="Black" />
                                 <oxy:LineSeries
                                     Background="Transparent"
                                     DataFieldX="X"
