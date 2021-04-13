@@ -52,8 +52,9 @@ namespace FlightSimulatorApp.Model
         //bool isInitiallize = false;
         public void start()
         {
-
             loadAllCorrelatedFeatures();
+            initRegressionLinesPointsList();
+            initRegressionLinesList();
 
             this.PlaybackSpeed = 10;
 
@@ -105,16 +106,40 @@ namespace FlightSimulatorApp.Model
                     }
 
                     DataPointsList = RenderDataPointsList(this.CurrentAttribute);
-                    // What if there is no most correlative by pearson?
-                    DataPointsListToCorrelative = RenderDataPointsList(this.CurrentCorrelativeAttribute);
-                    if (attributePress)
-                        LastRecordsPointsList = getLastRecrods(linearRegPoints, findNumberOfPoints());
+
+                    if (findCorrelativeAttribute(this.currentAttribute) == "")
+                    {
+                        DataPointsListToCorrelative = this.regressionDataPointsList.GetRange(0, 0);
+                    }
+                    else
+                    {
+                        DataPointsListToCorrelative = RenderDataPointsList(this.CurrentCorrelativeAttribute);
+                    }
+
+                    // Last 30 seconds.
+                    if (this.isPressed)
+                    {
+                        if (findCorrelativeAttribute(this.currentAttribute) != "")
+                        {
+                            LastRecordsPointsList = this.regressionDataPointsList.GetRange(0, 0);
+                        }
+                        else if (this.currentLineIndex < 300)
+                        {
+                            LastRecordsPointsList = this.regressionDataPointsList.GetRange(0, this.currentLineIndex);
+                        }
+                        else
+                        {
+                            LastRecordsPointsList = this.regressionDataPointsList.GetRange(
+                                this.currentLineIndex - 300, 300);
+                        }
+                    }
 
                     Thread.Sleep((int)playbackSpeedRational);
 
                 }
             }).Start();
         }
+
 
         #endregion
 
@@ -143,7 +168,7 @@ namespace FlightSimulatorApp.Model
         }
 
         #endregion
-        
+
         #region XML
 
         private Dictionary<int, string> xmlDict = new Dictionary<int, string>();
@@ -562,7 +587,7 @@ namespace FlightSimulatorApp.Model
         }
 
         // Finding the most correlative attribute by pearson to this.currentAttribute
-        private void findCorrelativeAttribute(string attribute)
+        private string findCorrelativeAttribute(string attribute)
         {
             /*            SimpleAnomalyDetector smp = new SimpleAnomalyDetector((float)0.5);
                         CurrentCorrelativeAttribute = smp.findMostCorrelated(attribute, this.csvPath, this.xmlDict);*/
@@ -570,63 +595,113 @@ namespace FlightSimulatorApp.Model
             foreach (correlatedFeatures corf in this.cf)
             {
                 if (corf.feature1.Equals(attribute))
+                {
                     CurrentCorrelativeAttribute = corf.feature2;
+                    return corf.feature2;
+                }
                 if (corf.feature2.Equals(attribute))
+                {
                     CurrentCorrelativeAttribute = corf.feature1;
+                    return corf.feature2;
+                }
             }
+            return "";
 
         }
 
-        private void InitiallizeRegression()
+        // Initillizing all the correlated features regression lines lists
+        private Dictionary<int, List<DataPoint>> regressionLinesPointsDict = new Dictionary<int, List<DataPoint>>();
+        private void initRegressionLinesPointsList()
         {
-            RegressionDataPointsList = getRegressionPoints(this.currentAttribute,this.CurrentCorrelativeAttribute);
-
-            calcLineOfCurrentAttribute();
-
-            LineIntercept = getIntercept();
-            LineSlope = getSlope();
-
-        }
-        private List<DataPoint> linearRegPoints = new List<DataPoint>();
-
-        private AnomalyDetector.Line PointsLine;
-        private void calcLineOfCurrentAttribute()
-        {
-            anomaly_detection_util adu = new anomaly_detection_util();
-            AnomalyDetector.Point[] pointsList = new AnomalyDetector.Point[csvLinesNumber];
-            //= dataPointsList.ToList<Point>();
-
-            int i;
-            for (i = 0; i < csvLinesNumber; i++)
+            for (int i = 0; i < xmlDict.Count; i++)
             {
-                AnomalyDetector.Point point = new AnomalyDetector.Point((float)regressionList[i].X, (float)regressionList[i].Y);
-                pointsList[i] = point;
+                regressionLinesPointsDict[i] = new List<DataPoint>();
             }
-            PointsLine = adu.linear_reg(pointsList, i);
-            List<DataPoint> linearRegressionGraph = new List<DataPoint>();
-            linearRegressionGraph.Add(new DataPoint(0, getIntercept()));
-            double y = CSVLinesNumber * getSlope() + getIntercept();
-            linearRegressionGraph.Add(new DataPoint(CSVLinesNumber, y));
-            LinearRegressionGraphPoints = linearRegressionGraph;
-            attributePress = true;
 
-            for (int k = 0; k < csvLinesNumber; k++)
+            List<DataPoint> tempList = new List<DataPoint>();
+            for (int i = 0; i < this.csvLinesNumber; i++)
             {
-                
-                linearRegPoints.Add(new DataPoint(Double.Parse(csvDict[findIndexByAttribute(currentAttribute)][currentLineIndex]),
-                    Double.Parse(csvDict[findIndexByAttribute(CurrentCorrelativeAttribute)][currentLineIndex])));
+                tempList.Add(new DataPoint(0, 0));
             }
 
+            for (int i = 0; i < xmlDict.Count; i++)
+            {
+                string currentAttibute = xmlDict[i];
+                string currentCorrelatedAttribute = findCorrelativeAttribute(xmlDict[i]);
+
+                if(currentCorrelatedAttribute == "")
+                {
+                    regressionLinesPointsDict[i] = tempList;
+                    continue;
+                }
+
+                int attributeOneIndex = findIndexByAttribute(currentAttibute);
+                int attributeTwoIndex = findIndexByAttribute(currentCorrelatedAttribute);
+
+                List<DataPoint> currentList = new List<DataPoint>();
+
+                for (int j = 0; j < this.csvLinesNumber; j++)
+                {
+                    double x = Convert.ToDouble(csvDict[attributeOneIndex][j]);
+                    double y = Convert.ToDouble(csvDict[attributeTwoIndex][j]);
+
+                    currentList.Add(new DataPoint(x, y));
+                }
+
+                regressionLinesPointsDict[i] = currentList;
+
+            }
         }
 
-        private float getSlope()
+        private Dictionary<int, List<DataPoint>> regressionLinesDict = new Dictionary<int, List<DataPoint>>();
+        // FIX NOW
+        private void initRegressionLinesList()
         {
-            return PointsLine.a;
-        }
+            for (int i = 0; i < xmlDict.Count; i++)
+            {
+                regressionLinesDict[i] = new List<DataPoint>();
+            }
 
-        private float getIntercept()
-        {
-            return PointsLine.a;
+            List<DataPoint> tempList = new List<DataPoint>();
+            for (int i = 0; i < this.csvLinesNumber; i++)
+            {
+                tempList.Add(new DataPoint(0, 0));
+            }
+
+            for (int i = 0; i < xmlDict.Count; i++)
+            {
+                if (findCorrelativeAttribute(xmlDict[i]) == "")
+                {
+                    regressionLinesPointsDict[i] = tempList;
+                    continue;
+                }
+
+                // for each attribute we need to find two points of the line.
+                List<DataPoint> currentList = new List<DataPoint>();
+
+                List<DataPoint> currentRegressionLinesPointsList =
+                    regressionLinesPointsDict[findIndexByAttribute(this.currentAttribute)];
+
+                AnomalyDetector.Line pointsLine;
+                anomaly_detection_util adu = new anomaly_detection_util();
+                AnomalyDetector.Point[] pointsList = new AnomalyDetector.Point[csvLinesNumber];
+
+                for (int j = 0; j < csvLinesNumber; j++)
+                {
+                    AnomalyDetector.Point point
+                        = new AnomalyDetector.Point(
+                            (float)currentRegressionLinesPointsList[j].X, (float)currentRegressionLinesPointsList[j].Y);
+                    pointsList[j] = point;
+                }
+
+                pointsLine = adu.linear_reg(pointsList, csvLinesNumber);
+
+                currentList.Add(new DataPoint(0, pointsLine.b));
+
+                currentList.Add(new DataPoint(this.csvLinesNumber, this.csvLinesNumber * pointsLine.a + pointsLine.b));
+
+                regressionLinesDict[i] = currentList;
+            }
         }
 
         private int findIndexByAttribute(string attribute)
@@ -639,21 +714,6 @@ namespace FlightSimulatorApp.Model
                 }
             }
             return 0;
-        }
-
-        private List<DataPoint> getLastRecrods(List<DataPoint> list, int numberOfRecords)
-        {
-            if (list.Count < numberOfRecords)
-            {
-                return list;
-            }
-            return list.GetRange(list.Count - numberOfRecords, numberOfRecords);
-        }
-
-        private int findNumberOfPoints()
-        {
-            // this.playbackSpeed = number of lines we write in a second.
-            return 30 * this.playbackSpeed;
         }
 
         #endregion
@@ -671,6 +731,7 @@ namespace FlightSimulatorApp.Model
             }
         }
 
+        private bool isPressed = false;
         private string currentAttribute;
         public string CurrentAttribute
         {
@@ -680,8 +741,9 @@ namespace FlightSimulatorApp.Model
                 this.currentAttribute = value;
                 NotifyPropertyChanged("CurrentAttribute");
                 findCorrelativeAttribute(this.currentAttribute);
-                InitiallizeRegression();
-
+                RegressionDataPointsList = this.regressionLinesPointsDict[findIndexByAttribute(this.currentAttribute)];
+                LinearRegressionGraphPoints = this.regressionLinesDict[findIndexByAttribute(this.currentAttribute)];
+                this.isPressed = true;
             }
         }
 
@@ -726,28 +788,6 @@ namespace FlightSimulatorApp.Model
             {
                 this.lastRecordsPointsList = value;
                 NotifyPropertyChanged("LastRecordsPointsList");
-            }
-        }
-
-        private float lineIntercept;
-        public float LineIntercept
-        {
-            get { return this.lineIntercept; }
-            set
-            {
-                lineIntercept = value;
-                NotifyPropertyChanged("LineIntercept");
-            }
-        }
-
-        private float lineSlope;
-        public float LineSlope
-        {
-            get { return this.lineSlope; }
-            set
-            {
-                lineSlope = value;
-                NotifyPropertyChanged("LineSlope");
             }
         }
 
@@ -828,27 +868,5 @@ namespace FlightSimulatorApp.Model
 
         #endregion
 
-        #region Regrassion
-
-        private List<DataPoint> regressionList = new List<DataPoint>();
-        private List<DataPoint> getRegressionPoints(string attributeOne, string attributeTwo)
-        {
-            this.regressionList = new List<DataPoint>();
-
-            int attributeOneIndex = findIndexByAttribute(attributeOne);
-
-            int attributeTwoIndex = findIndexByAttribute(attributeTwo);
-            for (int i = 0; i < this.csvLinesNumber; i++)
-            {
-                double x = Convert.ToDouble(csvDict[attributeOneIndex][i]);
-                double y = Convert.ToDouble(csvDict[attributeTwoIndex][i]);
-
-                regressionList.Add(new DataPoint(x,y));
-            }
-
-            return regressionList;
-        }
-
-        #endregion
     }
 }

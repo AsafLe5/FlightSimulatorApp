@@ -177,7 +177,7 @@
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     FontSize="8"
-                    Text="Bind Time"
+                    Text="{Binding VM_CurrentLineIndex}"
                     TextWrapping="Wrap" />
             </Grid>
         </Grid>

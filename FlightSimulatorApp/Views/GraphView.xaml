@@ -111,7 +111,7 @@
                             Background="Transparent">
                             <!-- <oxy:Plot.Annotations>
                                 <oxy:LineAnnotation Intercept="{Binding VM_LineIntercept}" Slope="{Binding VM_LineSlope}" />
-                            </oxy:Plot.Annotations> -->
+                            </oxy:Plot.Annotations>-->
                             <oxy:Plot.Series>
                                 <oxy:LineSeries
                                     Background="Transparent"
@@ -119,16 +119,22 @@
                                     DataFieldY="Y"
                                     ItemsSource="{Binding VM_LinearRegressionGraphPoints}"
                                     MarkerSize="2"
-                                    Color="Purple" />
+                                    Color="Black" />
+                                <oxy:LineSeries
+                                    Background="Transparent"
+                                    DataFieldX="X"
+                                    DataFieldY="Y"
+                                    ItemsSource="{Binding VM_RegressionDataPointsList}"
+                                    MarkerSize="2"
+                                    Color="Green" />
                                 <oxy:LineSeries
                                     Background="Transparent"
                                     DataFieldX="X"
                                     DataFieldY="Y"
                                     ItemsSource="{Binding VM_LastRecordsPointsList}"
-                                    MarkerSize="4"
-                                    Color="Green" />
+                                    MarkerSize="2"
+                                    Color="Purple" />
                             </oxy:Plot.Series>
-
 
                         </oxy:Plot>
                     </Grid>

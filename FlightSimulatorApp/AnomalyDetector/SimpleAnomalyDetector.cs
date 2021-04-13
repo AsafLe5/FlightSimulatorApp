@@ -53,7 +53,7 @@ public class SimpleAnomalyDetector : TimeSeriesAnomalyDetector
                     currentCF.feature2 = fjName;
                 }
             }
-            if (maxPearson > 0.9)
+            if (maxPearson > this.threshold)
             {
                 currentCF.corrlation = maxPearson;
                 Point[] points = new Point[valueVectorSize];

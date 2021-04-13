@@ -84,15 +84,6 @@ namespace FlightSimulatorApp.ViewModel
             }
         }
 
-        public float VM_LineSlope
-        {
-            get { return this.model.LineSlope; }
-        }
-        public float VM_LineIntercept
-        {
-            get { return this.model.LineIntercept; }
-        }
-
         public List<DataPoint> VM_LastRecordsPointsList
         {
             get
@@ -101,6 +92,7 @@ namespace FlightSimulatorApp.ViewModel
             }
         }
 
+        // Two Points
         public List<DataPoint> VM_LinearRegressionGraphPoints
         {
             get
