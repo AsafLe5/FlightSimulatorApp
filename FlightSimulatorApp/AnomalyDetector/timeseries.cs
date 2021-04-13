@@ -10,7 +10,6 @@ namespace FlightSimulatorApp.AnomalyDetector
 {
     public class Timeseries
     {
-        private FileStream csv;
         public List<string> features = new List<string>();
         public Dictionary<string, List<float>> table = new Dictionary<string, List<float>>();
         public Timeseries(string CSVfileName)
@@ -38,7 +37,6 @@ namespace FlightSimulatorApp.AnomalyDetector
                     csvTwoD[j].Add(parts_of_line[j].Trim());
                 }
             }
-
 
             // Transpose the csvTwoD to get the correct order of lines as in the CVS file.
             List<List<string>> transVec = new List<List<string>>();

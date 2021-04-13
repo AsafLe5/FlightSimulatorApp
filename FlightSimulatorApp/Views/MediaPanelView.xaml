@@ -137,6 +137,7 @@
             <Grid Grid.Column="10">
                 <!--  text box  -->
                 <TextBox
+                    Style="{StaticResource TransparentTextBox}"
                     Width="80"
                     Margin="10,16"
                     HorizontalAlignment="Center"
@@ -168,6 +169,7 @@
             <Grid Grid.Column="2">
                 <!--  time line text box  -->
                 <TextBox
+                    Style="{StaticResource TransparentTextBox}"
                     Width="80"
                     Margin="10,16"
                     HorizontalAlignment="Center"

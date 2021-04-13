@@ -745,7 +745,6 @@ namespace FlightSimulatorApp.Model
         private string addHeader(string csvPath, Dictionary<int, string> xmlDict)
         {
             string tempFilename = "temp.csv";
-            bool toCopy = false;
 
             string header = "";
 
@@ -769,7 +768,6 @@ namespace FlightSimulatorApp.Model
                     var line = sr.ReadLine(); // first line
                     if (line != null && line != header) // check header exists
                     {
-                        toCopy = true; // need copy temp file to your original csv
 
                         // write your header into the temp file
                         temp.WriteLine(header);
