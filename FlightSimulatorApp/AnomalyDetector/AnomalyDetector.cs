@@ -8,6 +8,7 @@ using FlightSimulatorApp.AnomalyDetector;
 namespace FlightSimulatorApp.AnomalyDetector
 {
 
+    // Checked
     public class AnomalyReport
     {
         public string description;
@@ -16,18 +17,13 @@ namespace FlightSimulatorApp.AnomalyDetector
         {
             this.description = description;
             this.timeStep = timeStep;
-            }
+        }
     }
 
-    public class TimeSeriesAnomalyDetector
+    // Checked
+    public interface TimeSeriesAnomalyDetector
     {
-        
-        //public void learnNormal(TimeSeries ts);
-        //public vector<AnomalyReport> detect(TimeSeries& ts);
+        void learnNormal(Timeseries ts);
+        List<AnomalyReport> detect(Timeseries ts);
     };
-
-    public class AnomalyDetector
-    {
-
-    }
 }
