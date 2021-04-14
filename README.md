@@ -9,8 +9,8 @@ Our App (FlightSimulatorApp) is made especially for pilots and flight researcher
 The app is recieving a CSV file with flight data, and according to it the flight will be projected on the FG.
 Our app (will display on a separate window from the FG app) provides the following features -
 
-* **Time Control** - Mainwindow contain time control buttons and a slider that will allow the user to control flight time.
-* **Data Display** - From the main window user can open the steers window which shows you steer picture for the current time in the flight. Among steers features you can find - joystick, aileron, elevator, yaw, pitch, and etc.
+* **Time Control** - Mainwindow contains the time control buttons and a slider that will allow the user to control the flight time.
+* **Data Display** - From the main window user can open the steers window, which shows you steer picture for the current time in the flight. Among steers there are other features you can find - joystick, aileron, elevator, yaw, pitch, and etc.
 * **Graph Display** - From the main window user can open the data display window which allows him to choose one of the attributes of the flight. According to the chosen attribute, the user will see a graph that displays the value of this attribute during the flight. Users will also see the most correlative attributes display on a separate graph. The third graph will display a correlation graph for the attributes above. All of the graphs display real-time data (meaning live data is streaming into the graphs as the flight is playing).
 
 * **MVVM** - The project implements the MVVM design pattern. MyFlightSimulatorModel implements the IFlightSimulatorModel, the ViewModel's hold an IFlightSimulatorModel and the View's hold their corresponding ViewModel's - so that the model can be changed without changing the View's and the View's can be changed without changing the model. 
@@ -19,25 +19,25 @@ Our app (will display on a separate window from the FG app) provides the followi
 **Model:**
 
 * **IFlightSimulatorModel** - an interface of the model.
-* **MyFlightSimulatorModel** - open a TCP connection and sending data using this connection. In our case, the server is the FG app. Every data that send properties that change notifies the observers (View Model).
-* **CSVPropery** - holds a float numbers from the CSV file and send them to the View Model's implementations.
+* **MyFlightSimulatorModel** - open a TCP connection and sending data using this connection. In our case, the server is the FG app. Every data that sends properties,that changed, notifies the observers (View Model).
+* **CSVPropery** - holds a float numbers from the CSV file and sends them to the View Model's implementations.
 
 **View Model:**
 
 * **MediaViewModel** - controls the play speed, and sending notifies to the ViewController (MainWindow) of changes.
-* **JoystickViewModel** - calculates the position of the flight variables and notify the JoystickView.
-* **GraphViewModel** - user choose an attribute from a list. ViewModel finds taking the chosen feature and finds the most correlated attributes in data. Display different graph for every attributes and also their regression line. Data is updated in real-time.
-* **DataDisplayViewModel** - get data attributes from the CSV file.
-* **startMenuViewModel** - controls the start menu. have a 'Show Instructions' button that explain how to play the program. A 'upload train csv file' button that will upload a CSV file from the user and has a 'Start Online Mode' button that start the program.
+* **JoystickViewModel** - calculates the position of the flight variables and notifies the JoystickView.
+* **GraphViewModel** - user chooses an attribute from a list. The ViewModel finds the chosen feature and it's most correlated attribute. Displays different graph for every attribute and also their regression line.The data is updated in real-time.
+* **DataDisplayViewModel** - get data attribute from the CSV file.
+* **startMenuViewModel** - controls the start menu. have a 'Show Instructions' button that explain how to play the program. An 'upload train csv file' button that will upload a CSV file from the user and has a 'Start Online Mode' button that start the program.
 
 **View:**
 
-* **MainWindow** - display the time management. From this window, the user can see all of the other views.
-* **MediaPanelView** - display the play speed and other controls like Stop Pause and etc.
-* **JoystickView** - display the position of the joystick and steers variables.
-* **GraphView** - display the different graphs as described above.
-* **DataDisplayView** - display the values from the CSV file.
-* **StartMenuView** - display the main menu of the program.
+* **MainWindow** - displays the time management. From this window, the user can see all of the other views.
+* **MediaPanelView** - displays the play speed and other controls like Stop Pause and etc.
+* **JoystickView** - displays the position of the joystick and steers variables.
+* **GraphView** - displays the different graphs as described above.
+* **DataDisplayView** - displays the values from the CSV file.
+* **StartMenuView** - displays the main menu of the program.
 
 
 **Plugins:**
