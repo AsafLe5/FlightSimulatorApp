@@ -12,105 +12,89 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Label
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Content="Flight Simulator Application"
-                    FontSize="18"
-                    FontStyle="Italic"
-                    FontWeight="Medium" />
-
-            </Grid>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <!--  upload train CSV button  -->
-                    <Button
-                        x:Name="uploadTrainCSVButton"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Background="#00FF"
-                        BorderThickness="0,0,0,0"
-                        Click="onUploadTrainCSVFile"
-                        Content="upload train CSV file"
-                        FontSize="15" />
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="30*" />
-                        <ColumnDefinition Width="1*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="1">
-                        <!--  train Text box  -->
-                        <TextBox
-                            x:Name="trainCSVPathTextbox"
-                            Margin="0,0,5,0"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Center"
-                            IsReadOnly="True"
-                            Text=""
-                            TextWrapping="Wrap" />
-                    </Grid>
-                </Grid>
-            </Grid>
+            <!--  Title  -->
+            <Label
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Content="Flight Simulator Application"
+                FontSize="18"
+                FontStyle="Italic"
+                FontWeight="Medium" />
         </Grid>
         <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <!--  start online mode button  -->
-                    <Button
-                        x:Name="startButton"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Background="#00FF"
-                        BorderThickness="0,0,0,0"
-                        Click="onStartOnlineMode"
-                        Content="Start Online Mode"
-                        FontSize="15"
-                        IsEnabled="False" />
-                </Grid>
-                <Grid Grid.Column="1" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <!--  upload train CSV button  -->
+                <Button
+                    x:Name="uploadTrainCSVButton"
+                    Margin="0,5,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="#00FF"
+                    BorderThickness="0,0,0,0"
+                    Click="onUploadTrainCSVFile"
+                    Content="upload train CSV file"
+                    FontSize="15" />
             </Grid>
-            <Grid Grid.Row="1">
+            <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <!--  show instructions button  -->
-                    <Button
-                        Margin="0,-5,0,0"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Background="#00FF"
-                        BorderThickness="0,0,0,0"
-                        Click="ShowInstructionsPopUp"
-                        Content="Show Instructions"
-                        FontSize="15"
-                        Foreground="Blue" />
+                <Grid Grid.Column="1">
+                    <!--  train Text box  -->
+                    <TextBox
+                    x:Name="trainCSVPathTextbox"
+                    Margin="0,0,5,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    IsReadOnly="True"
+                    Text=""
+                    TextWrapping="Wrap" />
                 </Grid>
+                
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <!--  start online mode button  -->
+                <Button
+                    x:Name="startButton"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="#00FF"
+                    BorderThickness="0,0,0,0"
+                    Click="onStartOnlineMode"
+                    Content="Start Online Mode"
+                    FontSize="15"
+                    IsEnabled="False" />
+            </Grid>
+            <Grid Grid.Column="1">
+                <!--  show instructions button  -->
+                <Button
+                    Margin="0,-5,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="#00FF"
+                    BorderThickness="0,0,0,0"
+                    Click="ShowInstructionsPopUp"
+                    Content="Show Instructions"
+                    FontSize="15"
+                    Foreground="Blue" />
             </Grid>
         </Grid>
     </Grid>

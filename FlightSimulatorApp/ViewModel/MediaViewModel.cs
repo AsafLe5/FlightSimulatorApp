@@ -57,6 +57,7 @@ namespace FlightSimulatorApp.ViewModel
         public string VM_Time
         {
             get { return this.model.Time; }
+            set { this.model.Time = value; }
         }
 
         #endregion

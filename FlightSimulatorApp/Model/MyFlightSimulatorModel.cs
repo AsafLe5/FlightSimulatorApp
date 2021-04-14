@@ -24,6 +24,7 @@ namespace FlightSimulatorApp.Model
         {
             this.telnetClient = telnetClient;
             stop = false;
+            initXML();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -49,9 +50,10 @@ namespace FlightSimulatorApp.Model
             telnetClient.disconnect();
         }
 
-        //bool isInitiallize = false;
+        private bool isStarted = false;
         public void start()
         {
+            isStarted = true;
             loadAllCorrelatedFeatures();
             initRegressionLinesPointsList();
             initRegressionLinesList();
@@ -216,7 +218,7 @@ namespace FlightSimulatorApp.Model
 
         #region CSV
 
-        private string trainCSVPath;
+        private string trainCSVPath = "";
         public void updateTrainCSVPath(string csvPath)
         {
             this.trainCSVPath = csvPath;
@@ -234,8 +236,6 @@ namespace FlightSimulatorApp.Model
         private Dictionary<int, List<string>> csvDict = new Dictionary<int, List<string>>();
         public void praseCSV(string csvPath)
         {
-            initXML();
-
             // Init csvDict:
             for (int i = 0; i < xmlDict.Count; i++)
             {
@@ -684,17 +684,17 @@ namespace FlightSimulatorApp.Model
                         minX = x;
                     }
 
-                    if(x > maxX)
+                    if (x > maxX)
                     {
                         maxX = x;
                     }
                 }
 
-               
+
                 pointsLine = adu.linear_reg(pointsList, csvLinesNumber);
 
                 currentList.Add(new DataPoint(minX, minX * pointsLine.a + pointsLine.b));
-                
+
                 currentList.Add(new DataPoint(maxX, maxX * pointsLine.a + pointsLine.b));
 
                 regressionLinesDict[i] = currentList;
@@ -735,12 +735,16 @@ namespace FlightSimulatorApp.Model
             get { return this.currentAttribute; }
             set
             {
-                this.currentAttribute = value;
-                NotifyPropertyChanged("CurrentAttribute");
-                findCorrelativeAttribute(this.currentAttribute);
-                RegressionDataPointsList = this.regressionLinesPointsDict[findIndexByAttribute(this.currentAttribute)];
-                LinearRegressionGraphPoints = this.regressionLinesDict[findIndexByAttribute(this.currentAttribute)];
-                this.isPressed = true;
+                if (this.trainCSVPath != "" && isStarted == true)
+                {
+                    this.currentAttribute = value;
+                    NotifyPropertyChanged("CurrentAttribute");
+                    findCorrelativeAttribute(this.currentAttribute);
+                    RegressionDataPointsList = this.regressionLinesPointsDict[findIndexByAttribute(this.currentAttribute)];
+                    LinearRegressionGraphPoints = this.regressionLinesDict[findIndexByAttribute(this.currentAttribute)];
+                    this.isPressed = true;
+                }
+
             }
         }
 
@@ -849,7 +853,7 @@ namespace FlightSimulatorApp.Model
 
         private SimpleAnomalyDetector ad;
         private Timeseries ts;
-        List<correlatedFeatures> cf;
+        List<correlatedFeatures> cf = new List<correlatedFeatures>();
         private void loadAllCorrelatedFeatures()
         {
             string newPath = addHeader(this.trainCSVPath, this.xmlDict);

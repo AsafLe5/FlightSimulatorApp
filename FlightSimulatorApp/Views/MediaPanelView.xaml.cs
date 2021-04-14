@@ -49,6 +49,7 @@ namespace FlightSimulatorApp.Views
         private void Skip_To_Start(object sender, RoutedEventArgs e)
         {
             this.MediaVM.VM_CurrentLineIndex = 0;
+            this.MediaVM.VM_Time = "00:00:00";
         }
 
         private void Fast_Forward_Left(object sender, RoutedEventArgs e)
@@ -76,6 +77,8 @@ namespace FlightSimulatorApp.Views
         {
             this.MediaVM.onPause();
             this.MediaVM.VM_CurrentLineIndex = 0;
+            this.MediaVM.VM_Time = "00:00:00";
+
         }
         private void Fast_Forward_Right(object sender, RoutedEventArgs e)
         {
