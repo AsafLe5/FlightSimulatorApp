@@ -16,9 +16,9 @@ according to CSV and XML data FG will project flight on its window. Our app (wil
 # Directory hierarchy
 **Model:**
 
-**IFlightSimulatorModel** - an interface of the model.
-**MyFlightSimulatorModel** - open a TCP connection and sending data using this connection. In our case, the server is the FG app. Every data that send properties that change notifies the observers (View Model).
-**CSVPropery** - holds a float numbers from the CSV file and send them to the View Model's implementations.
+* **IFlightSimulatorModel** - an interface of the model.
+* **MyFlightSimulatorModel** - open a TCP connection and sending data using this connection. In our case, the server is the FG app. Every data that send properties that change notifies the observers (View Model).
+* **CSVPropery** - holds a float numbers from the CSV file and send them to the View Model's implementations.
 
 **View Model:**
 
