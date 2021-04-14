@@ -69,8 +69,11 @@
     <Compile Include="AnomalyDetector\minCircle.cs" />
     <Compile Include="AnomalyDetector\SimpleAnomalyDetector.cs" />
     <Compile Include="AnomalyDetector\timeseries.cs" />
+    <Compile Include="Model\CSVProperty.cs" />
     <Compile Include="Model\MyFlightSimulatorModel.cs" />
     <Compile Include="Model\IFlightSimulatorModel.cs" />
+    <Compile Include="Telnet\ITelnetClient.cs" />
+    <Compile Include="Telnet\MyTelnetClient.cs" />
     <Compile Include="ViewModel\DataDisplayViewModel.cs" />
     <Compile Include="ViewModel\GraphViewModel.cs" />
     <Compile Include="ViewModel\JoystickViewModel.cs" />
@@ -96,8 +99,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CSVProperty.cs" />
-    <Compile Include="ITelnetClient.cs" />
     <Page Include="Style.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -128,7 +129,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyTelnetClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

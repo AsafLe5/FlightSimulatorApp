@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 using System.Net;
 using System.Net.Sockets;
-
-namespace FlightSimulatorApp
+namespace FlightSimulatorApp.Telnet
 {
-    class MyTelnetClient : ITelnetClient
+    public class MyTelnetClient : ITelnetClient
     {
         private string ip;
         private int port;

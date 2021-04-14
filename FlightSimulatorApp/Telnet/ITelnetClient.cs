@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlightSimulatorApp
+namespace FlightSimulatorApp.Telnet
 {
-    interface ITelnetClient
+    public interface ITelnetClient
     {
         bool connect();
         void write(string command);

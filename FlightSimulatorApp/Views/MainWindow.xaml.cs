@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using FlightSimulatorApp.Model;
 using FlightSimulatorApp.ViewModel;
 using System.Runtime.InteropServices;
+using FlightSimulatorApp.Telnet;
 
 
 namespace FlightSimulatorApp
