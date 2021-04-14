@@ -79,7 +79,8 @@ namespace FlightSimulatorApp.Views
                 "1) Insert the following instructions under the 'Additional Settings' in the Flight Gear's Setting:\n" +
                 "--generic=socket,in,10,127.0.0.1,6400,tcp,playback_small\n" +
                 "--fdm = null\n" +
-                "2) Insert the 'playback_small.xml' under the Flight Gear's \\data\\Protocol folder."
+                "2) Insert the 'playback_small.xml' under the Flight Gear's \\data\\Protocol folder.\n\n" +
+                "For Your Information: The threshold is 0.5"
                 , "Instuctions", MessageBoxButton.OK);
         }
     }
