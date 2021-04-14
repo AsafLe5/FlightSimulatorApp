@@ -49,14 +49,20 @@ namespace FlightSimulatorApp.Views
 
         private void onStartOnlineMode(object sender, RoutedEventArgs e)
         {
-            startButton.IsEnabled = false;
-            startMenuVM.connect();
-            startMenuVM.start();
+            if (startMenuVM.connect() == true)
+            {
+                startButton.IsEnabled = false;
+                startMenuVM.start();
+            }
         }
 
         private void onUploadTrainCSVFile(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+
+            openFileDialog.Multiselect = false;
+
+            openFileDialog.Filter = "CSV Files|*.csv|Excel Files|*.xlsx";
 
             bool? response = openFileDialog.ShowDialog();
 
@@ -80,7 +86,8 @@ namespace FlightSimulatorApp.Views
                 "--generic=socket,in,10,127.0.0.1,6400,tcp,playback_small\n" +
                 "--fdm = null\n" +
                 "2) Insert the 'playback_small.xml' under the Flight Gear's \\data\\Protocol folder.\n\n" +
-                "For Your Information: The threshold is 0.5"
+                "For Your Information: The threshold is 0.5\n\n" +
+                "Please DO NOT close the Flight Gear while the Flight Simulator App is running."
                 , "Instuctions", MessageBoxButton.OK);
         }
     }

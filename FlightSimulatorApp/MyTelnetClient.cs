@@ -21,10 +21,20 @@ namespace FlightSimulatorApp
             this.port = 6400;
         }
 
-        public void connect()
+        public bool connect()
         {
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            socket.Connect(this.ip, this.port);
+            try
+            {
+                socket.Connect(this.ip, this.port);
+            }
+            catch (SocketException)
+            {
+                System.Windows.MessageBox.Show("Connection Error - please open FlightGear and press 'fly'\n" +
+                    "Make sure you follow the instructions under the 'Show Instructions' button");
+                return false;
+            }
+            return true;
         }
 
         public void disconnect()

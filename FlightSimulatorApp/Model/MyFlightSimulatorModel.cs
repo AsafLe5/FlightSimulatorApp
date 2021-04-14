@@ -38,9 +38,15 @@ namespace FlightSimulatorApp.Model
 
         #region Connect and Start
 
-        public void connect()
+        private bool isConnected = false;
+        public bool connect()
         {
-            telnetClient.connect();
+            if (telnetClient.connect())
+            {
+                isConnected = true;
+                return true;
+            }
+            return false;
         }
 
         public void disconnect()
@@ -52,85 +58,87 @@ namespace FlightSimulatorApp.Model
         private bool isStarted = false;
         public void start()
         {
-            isStarted = true;
-
-            this.PlaybackSpeed = 10;
-
-            new Thread(delegate ()
+            if (isConnected)
             {
-                bool playbackSpeedZero = false;
-                while (!stop)
+                isStarted = true;
+
+                this.PlaybackSpeed = 10;
+
+                new Thread(delegate ()
                 {
-                    float playbackSpeedRational = 10;
-                    if (this.playbackSpeed == 0.0)
+                    bool playbackSpeedZero = false;
+                    while (!stop)
                     {
-                        playbackSpeedZero = true;
-                    }
-                    else
-                    {
-                        playbackSpeedZero = false;
-                        playbackSpeedRational = 1000 / this.playbackSpeed;
-                    }
-
-                    // Keeping the animation running
-                    if (this.currentLineIndex < this.csvLinesNumber && !playbackSpeedZero && !isPaused)
-                    {
-                        telnetClient.write(this.csvLines[this.currentLineIndex]);
-
-                        // Joystick
-                        AileronCurrentValue = (float)Convert.ToDouble(this.csvDict[0][this.currentLineIndex]);
-                        ElevatorCurrentValue = (float)Convert.ToDouble(this.csvDict[1][this.currentLineIndex]);
-                        ThrottleCurrentValue = (float)Convert.ToDouble(this.csvDict[6][this.currentLineIndex]);
-                        RudderCurrentValue = (float)Convert.ToDouble(this.csvDict[2][this.currentLineIndex]);
-
-                        // Data Display
-                        CurrentAltimeter = (float)Convert.ToDouble(this.csvDict[24][this.currentLineIndex]);
-                        CurrentAirSpeed = (float)Convert.ToDouble(this.csvDict[20][this.currentLineIndex]);
-                        CurrentHeading = (float)Convert.ToDouble(this.csvDict[18][this.currentLineIndex]);
-                        CurrentPitch = (float)Convert.ToDouble(this.csvDict[17][this.currentLineIndex]);
-                        CurrentRoll = (float)Convert.ToDouble(this.csvDict[16][this.currentLineIndex]);
-                        CurrentYaw = (float)Convert.ToDouble(this.csvDict[19][this.currentLineIndex]);
-
-                        this.CurrentLineIndex += 1;
-
-                        float nTime = this.currentLineIndex / 10;
-                        Time = TimeSpan.FromSeconds(nTime).ToString();
-                    }
-
-                    DataPointsList = RenderDataPointsList(this.CurrentAttribute);
-
-                    if (findCorrelativeAttribute(this.currentAttribute) == "")
-                    {
-                        DataPointsListToCorrelative = this.regressionDataPointsList.GetRange(0, 0);
-                    }
-                    else
-                    {
-                        DataPointsListToCorrelative = RenderDataPointsList(this.CurrentCorrelativeAttribute);
-                    }
-
-                    // Last 30 seconds.
-                    if (this.isPressed)
-                    {
-                        if (findCorrelativeAttribute(this.currentAttribute) == "")
+                        float playbackSpeedRational = 10;
+                        if (this.playbackSpeed == 0.0)
                         {
-                            LastRecordsPointsList = this.regressionDataPointsList.GetRange(0, 0);
-                        }
-                        else if (this.currentLineIndex < 300)
-                        {
-                            LastRecordsPointsList = this.regressionDataPointsList.GetRange(0, this.currentLineIndex);
+                            playbackSpeedZero = true;
                         }
                         else
                         {
-                            LastRecordsPointsList = this.regressionDataPointsList.GetRange(
-                                this.currentLineIndex - 300, 300);
+                            playbackSpeedZero = false;
+                            playbackSpeedRational = 1000 / this.playbackSpeed;
                         }
+
+                        // Keeping the animation running
+                        if (this.currentLineIndex < this.csvLinesNumber && !playbackSpeedZero && !isPaused)
+                        {
+                            telnetClient.write(this.csvLines[this.currentLineIndex]);
+
+                            // Joystick
+                            AileronCurrentValue = (float)Convert.ToDouble(this.csvDict[0][this.currentLineIndex]);
+                            ElevatorCurrentValue = (float)Convert.ToDouble(this.csvDict[1][this.currentLineIndex]);
+                            ThrottleCurrentValue = (float)Convert.ToDouble(this.csvDict[6][this.currentLineIndex]);
+                            RudderCurrentValue = (float)Convert.ToDouble(this.csvDict[2][this.currentLineIndex]);
+
+                            // Data Display
+                            CurrentAltimeter = (float)Convert.ToDouble(this.csvDict[24][this.currentLineIndex]);
+                            CurrentAirSpeed = (float)Convert.ToDouble(this.csvDict[20][this.currentLineIndex]);
+                            CurrentHeading = (float)Convert.ToDouble(this.csvDict[18][this.currentLineIndex]);
+                            CurrentPitch = (float)Convert.ToDouble(this.csvDict[17][this.currentLineIndex]);
+                            CurrentRoll = (float)Convert.ToDouble(this.csvDict[16][this.currentLineIndex]);
+                            CurrentYaw = (float)Convert.ToDouble(this.csvDict[19][this.currentLineIndex]);
+
+                            this.CurrentLineIndex += 1;
+
+                            float nTime = this.currentLineIndex / 10;
+                            Time = TimeSpan.FromSeconds(nTime).ToString();
+                        }
+
+                        DataPointsList = RenderDataPointsList(this.CurrentAttribute);
+
+                        if (findCorrelativeAttribute(this.currentAttribute) == "")
+                        {
+                            DataPointsListToCorrelative = this.regressionDataPointsList.GetRange(0, 0);
+                        }
+                        else
+                        {
+                            DataPointsListToCorrelative = RenderDataPointsList(this.CurrentCorrelativeAttribute);
+                        }
+
+                        // Last 30 seconds.
+                        if (this.isPressed)
+                        {
+                            if (findCorrelativeAttribute(this.currentAttribute) == "")
+                            {
+                                LastRecordsPointsList = this.regressionDataPointsList.GetRange(0, 0);
+                            }
+                            else if (this.currentLineIndex < 300)
+                            {
+                                LastRecordsPointsList = this.regressionDataPointsList.GetRange(0, this.currentLineIndex);
+                            }
+                            else
+                            {
+                                LastRecordsPointsList = this.regressionDataPointsList.GetRange(
+                                    this.currentLineIndex - 300, 300);
+                            }
+                        }
+
+                        Thread.Sleep((int)playbackSpeedRational);
+
                     }
-
-                    Thread.Sleep((int)playbackSpeedRational);
-
-                }
-            }).Start();
-
+                }).Start();
+            }
         }
 
 

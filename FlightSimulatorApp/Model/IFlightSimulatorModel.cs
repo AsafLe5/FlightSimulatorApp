@@ -12,7 +12,7 @@ namespace FlightSimulatorApp.Model
     {
         #region Start and Connect
 
-        void connect();
+        bool connect();
         void disconnect();
         void start();
 

@@ -40,9 +40,9 @@ namespace FlightSimulatorApp.ViewModel
             model.updateTrainCSVPath(csvPath);
         }
 
-        public void connect()
+        public bool connect()
         {
-            model.connect();
+            return model.connect();
         }
 
         public void start()
