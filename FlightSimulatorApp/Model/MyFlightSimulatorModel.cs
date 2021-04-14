@@ -119,7 +119,7 @@ namespace FlightSimulatorApp.Model
                     // Last 30 seconds.
                     if (this.isPressed)
                     {
-                        if (findCorrelativeAttribute(this.currentAttribute) != "")
+                        if (findCorrelativeAttribute(this.currentAttribute) == "")
                         {
                             LastRecordsPointsList = this.regressionDataPointsList.GetRange(0, 0);
                         }
