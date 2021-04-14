@@ -75,9 +75,12 @@ namespace FlightSimulatorApp.Views
                 "If you want to start the program:\n" +
                 "Click on the 'Upload a Train CSV' button and choose the CSV file of\n" +
                 "the desired flight.\n " +
-                "Please make sure you insert the following instructions under the 'Additional Settings' in the Flight Gear's Setting:\n" +
+                "Please make sure you did the following:\n" + "" +
+                "1) Insert the following instructions under the 'Additional Settings' in the Flight Gear's Setting:\n" +
                 "--generic=socket,in,10,127.0.0.1,6400,tcp,playback_small\n" +
-                "--fdm = null", "Instuctions", MessageBoxButton.OK);
+                "--fdm = null\n" +
+                "2) Insert the 'playback_small.xml' under the Flight Gear's \\data\\Protocol folder."
+                , "Instuctions", MessageBoxButton.OK);
         }
     }
 
