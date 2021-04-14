@@ -94,7 +94,7 @@
                         Background="#00FF"
                         BorderThickness="0,0,0,0"
                         Click="onStartOnlineMode"
-                        Content="start online mode"
+                        Content="Start Online Mode"
                         FontSize="15" />
                 </Grid>
                 <Grid Grid.Column="1">
@@ -105,7 +105,7 @@
                         Background="#00FF"
                         BorderThickness="0,0,0,0"
                         Click="onStartOfflineMode"
-                        Content="start offline mode"
+                        Content="Start Offline Mode"
                         FontSize="15" />
                 </Grid>
             </Grid>
@@ -123,7 +123,7 @@
                         Background="#00FF"
                         BorderThickness="0,0,0,0"
                         Click="ShowInstructionsPopUp"
-                        Content="show instructions"
+                        Content="Show Instructions"
                         FontSize="15"
                         Foreground="Blue" />
                 </Grid>
