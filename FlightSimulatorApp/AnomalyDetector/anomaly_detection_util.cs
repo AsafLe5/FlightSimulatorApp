@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.AnomalyDetector
 {
-    // Checked
     public class Line
     {
         public float a, b;
@@ -26,7 +25,6 @@ namespace FlightSimulatorApp.AnomalyDetector
         }
     }
 
-    // Checked
     public class Point
     {
         public float x, y;
@@ -37,7 +35,6 @@ namespace FlightSimulatorApp.AnomalyDetector
         }
     }
 
-    // Checked
     public class anomaly_detection_util
     {
 

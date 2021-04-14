@@ -16,9 +16,6 @@ using FlightSimulatorApp.ViewModel;
 
 namespace FlightSimulatorApp.Views
 {
-    /// <summary>
-    /// Interaction logic for DataDisplayView.xaml
-    /// </summary>
     public partial class DataDisplayView : UserControl
     {
         public DataDisplayView()

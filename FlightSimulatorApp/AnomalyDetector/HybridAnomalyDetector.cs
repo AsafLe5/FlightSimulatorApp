@@ -22,7 +22,7 @@ namespace FlightSimulatorApp.AnomalyDetector
             cf.centerX = circle.center.x;
             cf.centerY = circle.center.y;
             cf.rad = circle.radius;
-            cf.threshold = (float)(cf.rad * 1.1); 
+            cf.threshold = (float)(cf.rad * 1.1);
             cf.isCircle = true;
             this.cf.Add(cf);
         }

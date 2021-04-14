@@ -29,8 +29,8 @@ namespace FlightSimulatorApp.Telnet
             }
             catch (SocketException)
             {
-                System.Windows.MessageBox.Show("Connection Error - please open FlightGear and press 'fly'\n" +
-                    "Make sure you follow the instructions under the 'Show Instructions' button");
+                System.Windows.MessageBox.Show("Connection Error - please open FlightGear and press 'fly'.\n" +
+                    "Make sure you follow the instructions under the 'Show Instructions' button.");
                 return false;
             }
             return true;

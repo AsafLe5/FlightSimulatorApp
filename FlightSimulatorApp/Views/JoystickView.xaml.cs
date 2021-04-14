@@ -16,9 +16,6 @@ using FlightSimulatorApp.ViewModel;
 
 namespace FlightSimulatorApp.Views
 {
-    /// <summary>
-    /// Interaction logic for JoystickView.xaml
-    /// </summary>
     public partial class JoystickView : UserControl
     {
 

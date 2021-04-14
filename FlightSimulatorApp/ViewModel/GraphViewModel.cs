@@ -64,7 +64,8 @@ namespace FlightSimulatorApp.ViewModel
         {
             get
             {
-                return this.model.DataPointsListToCorrelative; }
+                return this.model.DataPointsListToCorrelative;
+            }
         }
 
         public string VM_CurrentCorrelativeAttribute
@@ -101,7 +102,7 @@ namespace FlightSimulatorApp.ViewModel
             }
         }
 
-        
+
         #endregion
     }
 }
