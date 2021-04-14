@@ -18,10 +18,6 @@ namespace FlightSimulatorApp.Model
 
         #endregion
 
-        #region CSV
-
-        #endregion
-
         #region Media
 
         void onPlay();

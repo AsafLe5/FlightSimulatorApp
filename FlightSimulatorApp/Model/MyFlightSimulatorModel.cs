@@ -18,7 +18,6 @@ namespace FlightSimulatorApp.Model
 
         ITelnetClient telnetClient;
         volatile Boolean stop;
-        bool attributePress = false;
 
         public MyFlightSimulatorModel(ITelnetClient telnetClient)
         {
@@ -54,9 +53,6 @@ namespace FlightSimulatorApp.Model
         public void start()
         {
             isStarted = true;
-            loadAllCorrelatedFeatures();
-            initRegressionLinesPointsList();
-            initRegressionLinesList();
 
             this.PlaybackSpeed = 10;
 
@@ -81,21 +77,19 @@ namespace FlightSimulatorApp.Model
                     {
                         telnetClient.write(this.csvLines[this.currentLineIndex]);
 
-                        // In Function
+                        // Joystick
                         AileronCurrentValue = (float)Convert.ToDouble(this.csvDict[0][this.currentLineIndex]);
                         ElevatorCurrentValue = (float)Convert.ToDouble(this.csvDict[1][this.currentLineIndex]);
                         ThrottleCurrentValue = (float)Convert.ToDouble(this.csvDict[6][this.currentLineIndex]);
                         RudderCurrentValue = (float)Convert.ToDouble(this.csvDict[2][this.currentLineIndex]);
-                        //
 
-                        // In Function
+                        // Data Display
                         CurrentAltimeter = (float)Convert.ToDouble(this.csvDict[24][this.currentLineIndex]);
                         CurrentAirSpeed = (float)Convert.ToDouble(this.csvDict[20][this.currentLineIndex]);
                         CurrentHeading = (float)Convert.ToDouble(this.csvDict[18][this.currentLineIndex]);
                         CurrentPitch = (float)Convert.ToDouble(this.csvDict[17][this.currentLineIndex]);
                         CurrentRoll = (float)Convert.ToDouble(this.csvDict[16][this.currentLineIndex]);
                         CurrentYaw = (float)Convert.ToDouble(this.csvDict[19][this.currentLineIndex]);
-                        //
 
                         this.CurrentLineIndex += 1;
 
@@ -225,13 +219,6 @@ namespace FlightSimulatorApp.Model
             praseCSV(this.trainCSVPath);
         }
 
-        private string testCSVPath;
-        public void updateTestCSVPath(string csvPath)
-        {
-            this.testCSVPath = csvPath;
-            praseCSV(this.testCSVPath);
-        }
-
         private List<string> csvLines;
         private Dictionary<int, List<string>> csvDict = new Dictionary<int, List<string>>();
         public void praseCSV(string csvPath)
@@ -265,6 +252,11 @@ namespace FlightSimulatorApp.Model
             setMinAndMax(this.RudderMinimumValue, this.RudderMinimumValue, 2);
 
             file.Close();
+
+            // Loadding all the essentials dictionaries instead of runtime.
+            loadAllCorrelatedFeatures();
+            initRegressionLinesPointsList();
+            initRegressionLinesList();
         }
 
         private void setMinAndMax(float max, float min, int columnNumber)
@@ -285,7 +277,6 @@ namespace FlightSimulatorApp.Model
             }
             max = tempMaximunValue;
             min = tempMinimumValue;
-            //Console.WriteLine(max.ToString());
         }
 
         #endregion
@@ -569,9 +560,6 @@ namespace FlightSimulatorApp.Model
         // Finding the most correlative attribute by pearson to this.currentAttribute
         private string findCorrelativeAttribute(string attribute)
         {
-            /*            SimpleAnomalyDetector smp = new SimpleAnomalyDetector((float)0.5);
-                        CurrentCorrelativeAttribute = smp.findMostCorrelated(attribute, this.csvPath, this.xmlDict);*/
-
             foreach (correlatedFeatures corf in this.cf)
             {
                 if (corf.feature1.Equals(attribute))
