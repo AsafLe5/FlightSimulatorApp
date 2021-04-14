@@ -78,7 +78,7 @@ namespace FlightSimulatorApp.Views
         private void ShowInstructionsPopUp(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Instructions:\n" +
-                "You may start the program by clicking on the 'Upload a Train CSV File' button" +
+                "You may start the program by clicking on the 'Upload a Train CSV File' button " +
                 "and choose the CSV file of\n" +
                 "the desired flight.\n " +
                 "Please make sure you did the following:\n" + "" +
