@@ -602,14 +602,13 @@ namespace FlightSimulatorApp.Model
                 if (corf.feature2.Equals(attribute))
                 {
                     CurrentCorrelativeAttribute = corf.feature1;
-                    return corf.feature2;
+                    return corf.feature1;
                 }
             }
             return "";
 
         }
 
-        // Initillizing all the correlated features regression lines lists
         private Dictionary<int, List<DataPoint>> regressionLinesPointsDict = new Dictionary<int, List<DataPoint>>();
         private void initRegressionLinesPointsList()
         {
@@ -629,7 +628,7 @@ namespace FlightSimulatorApp.Model
                 string currentAttibute = xmlDict[i];
                 string currentCorrelatedAttribute = findCorrelativeAttribute(xmlDict[i]);
 
-                if(currentCorrelatedAttribute == "")
+                if (currentCorrelatedAttribute == "")
                 {
                     regressionLinesPointsDict[i] = tempList;
                     continue;
@@ -654,7 +653,6 @@ namespace FlightSimulatorApp.Model
         }
 
         private Dictionary<int, List<DataPoint>> regressionLinesDict = new Dictionary<int, List<DataPoint>>();
-        // FIX NOW
         private void initRegressionLinesList()
         {
             for (int i = 0; i < xmlDict.Count; i++)
@@ -680,11 +678,13 @@ namespace FlightSimulatorApp.Model
                 List<DataPoint> currentList = new List<DataPoint>();
 
                 List<DataPoint> currentRegressionLinesPointsList =
-                    regressionLinesPointsDict[findIndexByAttribute(this.currentAttribute)];
+                    regressionLinesPointsDict[findIndexByAttribute(xmlDict[i])];
 
                 AnomalyDetector.Line pointsLine;
                 anomaly_detection_util adu = new anomaly_detection_util();
                 AnomalyDetector.Point[] pointsList = new AnomalyDetector.Point[csvLinesNumber];
+
+                List<double> xs = new List<double>();
 
                 for (int j = 0; j < csvLinesNumber; j++)
                 {
@@ -692,13 +692,30 @@ namespace FlightSimulatorApp.Model
                         = new AnomalyDetector.Point(
                             (float)currentRegressionLinesPointsList[j].X, (float)currentRegressionLinesPointsList[j].Y);
                     pointsList[j] = point;
+                    xs.Add(currentRegressionLinesPointsList[j].X);
                 }
 
+                double minX = double.MaxValue;
+                double maxX = double.MinValue;
+                foreach (double x in xs)
+                {
+                    if (x < minX)
+                    {
+                        minX = x;
+                    }
+
+                    if(x > maxX)
+                    {
+                        maxX = x;
+                    }
+                }
+
+               
                 pointsLine = adu.linear_reg(pointsList, csvLinesNumber);
 
-                currentList.Add(new DataPoint(0, pointsLine.b));
-
-                currentList.Add(new DataPoint(this.csvLinesNumber, this.csvLinesNumber * pointsLine.a + pointsLine.b));
+                currentList.Add(new DataPoint(minX, minX * pointsLine.a + pointsLine.b));
+                
+                currentList.Add(new DataPoint(maxX, maxX * pointsLine.a + pointsLine.b));
 
                 regressionLinesDict[i] = currentList;
             }
@@ -855,7 +872,6 @@ namespace FlightSimulatorApp.Model
         List<correlatedFeatures> cf;
         private void loadAllCorrelatedFeatures()
         {
-            // What csv?
             string newPath = addHeader(this.trainCSVPath, this.xmlDict);
 
             this.ts = new Timeseries(newPath);
