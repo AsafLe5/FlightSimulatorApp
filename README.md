@@ -45,6 +45,8 @@ according to CSV and XML data FG will project flight on its window. Our app (wil
 # Installation
 Before running our app you need to download and install the FlightGear application - you can find [download link here](https://www.flightgear.org/download/). For more information about FlightGear, you can find [here](https://www.flightgear.org/)
 
+<img width="740" alt="3" src="https://user-images.githubusercontent.com/62257681/114746066-ff8bce00-9d57-11eb-8202-c206808ef756.png">
+
 You will also need .Net Framework version 4.6.1 and up. You can find download link [here](https://dotnet.microsoft.com/download/dotnet-framework).
 
 # Run application
