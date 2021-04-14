@@ -22,26 +22,26 @@ according to CSV and XML data FG will project flight on its window. Our app (wil
 
 **View Model:**
 
-**MediaViewModel** - controls the play speed, and sending notifies to the ViewController (MainWindow) of changes.
-**JoystickViewModel** - calculates the position of the flight variables and notify the JoystickView.
-**GraphViewModel** - user choose an attribute from a list. ViewModel finds taking the chosen feature and finds the most correlated attributes in data. Display different graph for every attributes and also their regression line. Data is updated in real-time.
-**DataDisplayViewModel** - get data attributes from the CSV file.
-**startMenuViewModel** - controls the start menu. have a 'Show Instructions' button that explain how to play the program. A 'upload train csv file' button that will upload a CSV file from the user and has a 'Start Online Mode' button that start the program.
+* **MediaViewModel** - controls the play speed, and sending notifies to the ViewController (MainWindow) of changes.
+* **JoystickViewModel** - calculates the position of the flight variables and notify the JoystickView.
+* **GraphViewModel** - user choose an attribute from a list. ViewModel finds taking the chosen feature and finds the most correlated attributes in data. Display different graph for every attributes and also their regression line. Data is updated in real-time.
+* **DataDisplayViewModel** - get data attributes from the CSV file.
+* **startMenuViewModel** - controls the start menu. have a 'Show Instructions' button that explain how to play the program. A 'upload train csv file' button that will upload a CSV file from the user and has a 'Start Online Mode' button that start the program.
 
 **View:**
 
-**MainWindow** - display the time management. From this window, the user can open all of the other views.
-**MediaPanelView** - display the play speed and other controls like Stop Pause and etc.
-**JoystickView** - display the position of the joystick and steers variables.
-**GraphView** - display the different graphs as described above.
-**DataDisplayView** - display the values from the CSV file.
-**StartMenuView** - display the main menu of the program.
+* **MainWindow** - display the time management. From this window, the user can open all of the other views.
+* **MediaPanelView** - display the play speed and other controls like Stop Pause and etc.
+* **JoystickView** - display the position of the joystick and steers variables.
+* **GraphView** - display the different graphs as described above.
+* **DataDisplayView** - display the values from the CSV file.
+* **StartMenuView** - display the main menu of the program.
 
 
 **Plugins:**
 
-**OxyPlot** - OxyPlot is a cross-platform plotting library for .NET using for graphs and etc.
-**Class Designer** - Used for building the a graph designer for the UML file.
+* **OxyPlot** - OxyPlot is a cross-platform plotting library for .NET using for graphs and etc.
+* **Class Designer** - Used for building the a graph designer for the UML file.
 
 # Installation
 Before running our app you need to download and install the FlightGear application - you can find [download link here](https://www.flightgear.org/download/). For more information about FlightGear, you can find [here](https://www.flightgear.org/)
