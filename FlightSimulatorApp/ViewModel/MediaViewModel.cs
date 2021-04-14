@@ -54,6 +54,11 @@ namespace FlightSimulatorApp.ViewModel
             set { this.model.PlaybackSpeed = value; }
         }
 
+        public string VM_Time
+        {
+            get { return this.model.Time; }
+        }
+
         #endregion
 
         #region Functions

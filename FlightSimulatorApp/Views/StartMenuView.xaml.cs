@@ -49,14 +49,8 @@ namespace FlightSimulatorApp.Views
 
         private void onStartOnlineMode(object sender, RoutedEventArgs e)
         {
-            this.startMenuVM.VM_IsOnline = true;
+            startButton.IsEnabled = false;
             startMenuVM.connect();
-            startMenuVM.start();
-        }
-
-        private void onStartOfflineMode(object sender, RoutedEventArgs e)
-        {
-            this.startMenuVM.VM_IsOnline = false;
             startMenuVM.start();
         }
 
@@ -70,35 +64,20 @@ namespace FlightSimulatorApp.Views
             {
                 trainCSVPathTextbox.Text = openFileDialog.FileName;
                 startMenuVM.updateTrainCSVPath(openFileDialog.FileName);
-            }
-        }
-
-        private void onUploadTestCSVFile(object sender, RoutedEventArgs e)
-        {
-            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
-
-            bool? response = openFileDialog.ShowDialog();
-
-            if (response == true)
-            {
-                testCSVPathTextbox.Text = openFileDialog.FileName;
-                startMenuVM.updateTestCSVPath(openFileDialog.FileName);
+                uploadTrainCSVButton.IsEnabled = false;
+                startButton.IsEnabled = true;
             }
         }
 
         private void ShowInstructionsPopUp(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Welcome to our instructions\n" +
-                "1) If you want to start the program:\n\t" +
-                "Click on 'upload train CSV button' and choose the correct file\n\t" +
-                "then you can choose Offline/Online mode.\n" +
-                "2) Offline mode: run the program without the FlightGear.\n" +
-                "3) Online mode: run the program with the FlightGear.\n" +
-                "4) If you want to speedup or slowup the program you can slide the " +
-                "'Play Speed' slider to change the current speed.\n" +
-                "5) If you want to see the values of the 'Linear Regression Graph' you need to roll the mouse pulley " +
-                "beside the left area of the graphs and choose your own attribute.\n" +
-                "♡ you from Ilan, Noam, Hanna and Asaf", "Instuctions", MessageBoxButton.OK);
+            MessageBoxResult result = MessageBox.Show("Instructions:\n" +
+                "If you want to start the program:\n" +
+                "Click on the 'Upload a Train CSV' button and choose the CSV file of\n" +
+                "the desired flight.\n " +
+                "Please make sure you insert the following instructions under the 'Additional Settings' in the Flight Gear's Setting:\n" +
+                "--generic=socket,in,10,127.0.0.1,6400,tcp,playback_small\n" +
+                "--fdm = null", "Instuctions", MessageBoxButton.OK);
         }
     }
 

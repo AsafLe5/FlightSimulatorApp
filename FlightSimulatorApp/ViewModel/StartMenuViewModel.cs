@@ -40,11 +40,6 @@ namespace FlightSimulatorApp.ViewModel
             model.updateTrainCSVPath(csvPath);
         }
 
-        public void updateTestCSVPath(string csvPath)
-        {
-            model.updateTestCSVPath(csvPath);
-        }
-
         public void connect()
         {
             model.connect();
@@ -57,19 +52,6 @@ namespace FlightSimulatorApp.ViewModel
 
         #endregion
 
-        public bool VM_IsOnline
-        {
-            get { return this.model.IsOnline; }
-            set
-            {
-                this.model.IsOnline = value;
-            }
-        }
-
-        public string VM_Time
-        {
-            get { return this.model.Time; }
-        }
 
 
     }

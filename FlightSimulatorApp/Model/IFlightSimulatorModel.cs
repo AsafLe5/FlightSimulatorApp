@@ -34,6 +34,8 @@ namespace FlightSimulatorApp.Model
 
         int CSVLinesNumber { set; get; }
 
+        string Time { set; get; }
+
         #endregion
 
         #region Joystick
@@ -86,13 +88,7 @@ namespace FlightSimulatorApp.Model
 
         #region Start Menu
 
-        bool IsOnline { set; get; }
-
-        string Time { set; get; }
-
         void updateTrainCSVPath(string csvPath);
-
-        void updateTestCSVPath(string csvPath);
 
         #endregion
 

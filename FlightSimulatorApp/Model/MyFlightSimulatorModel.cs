@@ -77,10 +77,7 @@ namespace FlightSimulatorApp.Model
                     // Keeping the animation running
                     if (this.currentLineIndex < this.csvLinesNumber && !playbackSpeedZero && !isPaused)
                     {
-                        if (this.isOnline)
-                        {
-                            telnetClient.write(this.csvLines[this.currentLineIndex]);
-                        }
+                        telnetClient.write(this.csvLines[this.currentLineIndex]);
 
                         // In Function
                         AileronCurrentValue = (float)Convert.ToDouble(this.csvDict[0][this.currentLineIndex]);
@@ -101,8 +98,7 @@ namespace FlightSimulatorApp.Model
                         this.CurrentLineIndex += 1;
 
                         float nTime = this.currentLineIndex / 10;
-                        //Time = TimeSpan.FromSeconds(nTime).ToString();
-                        Time = "asd";
+                        Time = TimeSpan.FromSeconds(nTime).ToString();
                     }
 
                     DataPointsList = RenderDataPointsList(this.CurrentAttribute);
@@ -138,34 +134,9 @@ namespace FlightSimulatorApp.Model
 
                 }
             }).Start();
+
         }
 
-
-        #endregion
-
-        #region Start Menu
-
-        private bool isOnline;
-        public bool IsOnline
-        {
-            get { return isOnline; }
-            set
-            {
-                isOnline = value;
-                NotifyPropertyChanged("IsOnline");
-            }
-        }
-
-        private string time;
-        public string Time
-        {
-            get { return time; }
-            set
-            {
-                time = value;
-                NotifyPropertyChanged("Time");
-            }
-        }
 
         #endregion
 
@@ -242,8 +213,6 @@ namespace FlightSimulatorApp.Model
         }
 
         #endregion
-
-        // TODO initXML out of csvParser
 
         #region CSV
 
@@ -322,6 +291,17 @@ namespace FlightSimulatorApp.Model
         #endregion
 
         #region Media
+
+        private string time;
+        public string Time
+        {
+            get { return time; }
+            set
+            {
+                time = value;
+                NotifyPropertyChanged("Time");
+            }
+        }
 
         private bool isPaused = false;
 
