@@ -17,9 +17,7 @@ according to CSV and XML data FG will project flight on its window. Our app (wil
 **Model:**
 
 **IFlightSimulatorModel** - an interface of the model.
-
 **MyFlightSimulatorModel** - open a TCP connection and sending data using this connection. In our case, the server is the FG app. Every data that send properties that change notifies the observers (View Model).
-
 **CSVPropery** - holds a float numbers from the CSV file and send them to the View Model's implementations.
 
 **View Model:**
@@ -33,22 +31,16 @@ according to CSV and XML data FG will project flight on its window. Our app (wil
 **View:**
 
 **MainWindow** - display the time management. From this window, the user can open all of the other views.
-
 **MediaPanelView** - display the play speed and other controls like Stop Pause and etc.
-
 **JoystickView** - display the position of the joystick and steers variables.
-
 **GraphView** - display the different graphs as described above.
-
 **DataDisplayView** - display the values from the CSV file.
-
 **StartMenuView** - display the main menu of the program.
 
 
 **Plugins:**
 
 **OxyPlot** - OxyPlot is a cross-platform plotting library for .NET using for graphs and etc.
-
 **Class Designer** - Used for building the a graph designer for the UML file.
 
 # Installation
