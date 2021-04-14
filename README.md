@@ -52,9 +52,11 @@ Dont forget to download the OxyPlot.
 
 # Run application
 run the exe file FlightSimulatorApp from FlightSimulatorApp folder. Make sure to run it from the exact location it is (\FlightSimulatorApp\FlightSimulatorApp) so it can find all the necessary files it's needed.
+**YOU HAVE TO FOLLOW THE FOLLOWING STEPS**
+* **1)** 
 
 # Documentation
 Here you can find a Link to UML contains partial information of the central classes. UML represents the various connections between the classes and the most important information found in each class. UML can be found [here](https://docs.microsoft.com/en-us/previous-versions/ff657806(v=vs.140)?redirectedfrom=MSDN). If you are a developer you can find full documentation of functions, variables, and more in the code.
 
 # Video
-Here you can find a link to our demo video - [link](https://youtu.be/Qs-tEBZg7to).
+Here you can find a link to our demo video - [link](https://www.youtube.com/watch?v=sMzB2ERWqjs&feature=youtu.be).
