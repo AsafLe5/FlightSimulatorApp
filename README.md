@@ -12,6 +12,9 @@ Our app (will display on a separate window from the FG app) provides the followi
 * **Time Control** - Mainwindow contain time control buttons and a slider that will allow the user to control flight time.
 * **Data Display** - From the main window user can open the steers window which shows you steer picture for the current time in the flight. Among steers features you can find - joystick, aileron, elevator, yaw, pitch, and etc.
 * **Graph Display** - From the main window user can open the data display window which allows him to choose one of the attributes of the flight. According to the chosen attribute, the user will see a graph that displays the value of this attribute during the flight. Users will also see the most correlative attributes display on a separate graph. The third graph will display a correlation graph for the attributes above. All of the graphs display real-time data (meaning live data is streaming into the graphs as the flight is playing).
+
+* **MVVM** - The project implements the MVVM design pattern. MyFlightSimulatorModel implements the IFlightSimulatorModel, the ViewModel's hold an IFlightSimulatorModel and the View's hold their corresponding ViewModel's - so that the model can be changed without changing the View's and the View's can be changed without changing the model. 
+
 # Directory hierarchy
 **Model:**
 
